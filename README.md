@@ -49,3 +49,13 @@ http://127.0.0.1:8000/
 - The hidden admin access is still available in the portal.
 - Super admin shortcut: `Ctrl + Shift + Alt + A`
 
+## Render Deployment
+
+- Build Command: leave empty
+- Start Command: `python app.py`
+
+This app is now configured for Render and will:
+
+- load `iee_government_portal.html` from the repository itself
+- bind to `0.0.0.0`
+- use Render's `PORT` environment variable automatically

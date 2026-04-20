@@ -1,4 +1,5 @@
 import json
+import os
 import secrets
 from copy import deepcopy
 from datetime import datetime
@@ -12,7 +13,7 @@ from urllib.parse import parse_qs, urlparse
 
 
 BASE_DIR = Path(__file__).resolve().parent
-PORTAL_HTML = Path(r"C:\Users\ADMIN\Downloads\iee_government_portal.html")
+PORTAL_HTML = BASE_DIR / "iee_government_portal.html"
 DB_PATH = BASE_DIR / "portal_data.json"
 SESSION_COOKIE = "iee_portal_session"
 STATE_LOCK = Lock()
@@ -1717,6 +1718,8 @@ if __name__ == "__main__":
     if not PORTAL_HTML.exists():
         raise FileNotFoundError(f"Portal file not found: {PORTAL_HTML}")
     read_state()
-    server = ThreadingHTTPServer(("127.0.0.1", 8000), PortalHandler)
-    print("IEE portal server running at http://127.0.0.1:8000")
+    host = os.environ.get("HOST", "0.0.0.0")
+    port = int(os.environ.get("PORT", "8000"))
+    server = ThreadingHTTPServer((host, port), PortalHandler)
+    print(f"IEE portal server running at http://{host}:{port}")
     server.serve_forever()
