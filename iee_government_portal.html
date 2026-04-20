@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IEE — Integrated Employment Ecosystem</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--navy:#003366;--blue:#1a4b8c;--blue2:#2563ab;
+--saffron:#ff9933;--orange:#d4651a;
+--green:#1a6b3a;--red:#b91c1c;
+--bg:#f0f3f9;--white:#fff;--border:#cdd5e2;
+--text:#1a2332;--muted:#6b7280;--light:#9ca3af;
+--card:#fff;--stripe:#f0f4fa;
+}
+html{font-size:13px}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:600px}
+
+/* TRICOLOR */
+.tricolor{height:4px;background:linear-gradient(90deg,#ff9933 33.33%,#fff 33.33% 66.66%,#138808 66.66%)}
+
+/* TOPBAR */
+.topbar{background:var(--navy);padding:4px 16px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#8ba8c8}
+.topbar a{color:#7a9ec4;text-decoration:none;cursor:pointer}.topbar a:hover{color:#fff}
+.topbar-sep{color:rgba(255,255,255,.2);margin:0 6px}
+.lang-btns{display:flex;gap:6px}.lang-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#a8bedc;border-radius:2px;padding:1px 6px;cursor:pointer;font-size:10.5px;font-family:inherit}
+.lang-btn:hover{background:rgba(255,255,255,.18);color:#fff}
+
+/* HEADER */
+.header{background:var(--navy);padding:0 16px;display:flex;align-items:center;gap:14px;min-height:66px;position:relative}
+.header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--saffron),var(--orange),var(--blue2))}
+.emblem{width:50px;height:50px;border-radius:50%;background:radial-gradient(circle,#f5e642 0%,#d4af37 55%,#9a7c20 100%);border:2px solid #d4af37;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.emblem svg{width:32px;height:32px}
+.brand{flex:1}
+.brand-ministry{font-size:10px;color:var(--saffron);letter-spacing:.06em;text-transform:uppercase;font-weight:600;margin-bottom:2px}
+.brand-title{font-size:1.2rem;font-weight:700;color:#fff;line-height:1.15;letter-spacing:-.01em}
+.brand-sub{font-size:11px;color:#8ba8c8;margin-top:1px}
+.header-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.clock-block{text-align:right}.clock-time{font-size:1rem;font-weight:700;color:#fff;font-variant-numeric:tabular-nums}
+.clock-date{font-size:10px;color:#7a9ec4}
+.btn-login{background:var(--saffron);color:#000;border:none;border-radius:3px;padding:7px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;letter-spacing:.02em;transition:background .2s}
+.btn-login:hover{background:#e87000}
+.btn-reg{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.3);border-radius:3px;padding:6px 14px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s}
+.btn-reg:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.6)}
+
+/* MAINNAV */
+.mainnav{background:var(--blue);border-bottom:3px solid var(--orange);position:sticky;top:0;z-index:50}
+.mainnav-inner{display:flex;align-items:stretch}
+.nl{color:#bdd0eb;font-size:12px;font-weight:500;padding:11px 14px;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-3px;transition:all .18s;letter-spacing:.01em}
+.nl:hover,.nl.act{color:#fff;background:rgba(255,255,255,.07);border-bottom-color:var(--saffron)}
+
+/* TICKER */
+.ticker{background:#fffbf0;border-bottom:1px solid #f3d78a;padding:5px 16px;display:flex;align-items:center;gap:10px;overflow:hidden}
+.ticker-lbl{background:var(--orange);color:#fff;border-radius:2px;padding:2px 8px;font-size:10.5px;font-weight:700;white-space:nowrap;letter-spacing:.04em;flex-shrink:0}
+.ticker-wrap{overflow:hidden;flex:1}
+.ticker-txt{font-size:11.5px;color:#6b4c10;white-space:nowrap;display:inline-block;animation:ticker 50s linear infinite}
+@keyframes ticker{0%{transform:translateX(100%)}100%{transform:translateX(-100%)}}
+
+/* PAGES */
+.page{display:none}.page.show{display:block}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 55%,#2563ab 100%);padding:44px 16px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Crect x='28' y='4' width='4' height='52'/%3E%3Crect x='4' y='28' width='52' height='4'/%3E%3C/g%3E%3C/svg%3E")}
+.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr 1fr;gap:36px;align-items:center;max-width:1140px;margin:0 auto}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(255,153,51,.12);border:1px solid rgba(255,153,51,.28);border-radius:2px;padding:3px 10px;font-size:10.5px;font-weight:600;color:#ffcc88;letter-spacing:.05em;text-transform:uppercase;margin-bottom:14px}
+.tag-dot{width:5px;height:5px;background:var(--saffron);border-radius:50%;animation:pulse 2.5s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.hero h1{font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:700;color:#fff;line-height:1.2;letter-spacing:-.02em;margin-bottom:12px}
+.hero h1 mark{background:none;color:var(--saffron)}
+.hero-desc{font-size:12.5px;color:#a8c4e0;line-height:1.8;margin-bottom:24px;max-width:480px}
+.hero-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:30px}
+.btn-hp{background:var(--saffron);color:#000;border:none;border-radius:3px;padding:10px 22px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s}
+.btn-hp:hover{background:#e87000;transform:translateY(-1px)}
+.btn-ho{background:rgba(255,255,255,.08);color:#fff;border:1.5px solid rgba(255,255,255,.28);border-radius:3px;padding:9px 18px;font-size:12.5px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s}
+.btn-ho:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.55)}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.hstat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:5px;padding:14px 12px;transition:all .2s}
+.hstat:hover{background:rgba(255,255,255,.11);transform:translateY(-2px)}
+.hstat-val{font-size:1.5rem;font-weight:800;color:var(--saffron);line-height:1;margin-bottom:3px}
+.hstat-lbl{font-size:10px;color:#8ba8c8;line-height:1.35}
+
+/* QUICK ACCESS */
+.qa-wrap{background:var(--white);border-bottom:1px solid var(--border);padding:16px}
+.qa-title{font-size:11px;font-weight:700;color:var(--navy);letter-spacing:.07em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.qa-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.qa-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:8px}
+.qa-item{border:1px solid var(--border);border-radius:4px;padding:12px 8px;text-align:center;cursor:pointer;background:var(--stripe);transition:all .18s;text-decoration:none}
+.qa-item:hover{background:var(--blue);border-color:var(--blue);transform:translateY(-2px)}
+.qa-item:hover .qa-lbl{color:#fff}
+.qa-ico{font-size:1.3rem;margin-bottom:5px;display:block}
+.qa-lbl{font-size:10.5px;font-weight:600;color:var(--navy);line-height:1.3}
+
+/* MAIN LAYOUT */
+.content{max-width:1140px;margin:0 auto;padding:20px 16px}
+.two-col{display:grid;grid-template-columns:1fr 280px;gap:18px;align-items:start}
+
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--border);border-radius:5px;overflow:hidden;margin-bottom:16px}
+.card-hd{background:linear-gradient(90deg,var(--blue) 0%,#2563ab 100%);color:#fff;padding:9px 14px;font-size:12px;font-weight:700;letter-spacing:.02em;border-left:4px solid var(--saffron);display:flex;align-items:center;justify-content:space-between}
+.card-hd.green{background:linear-gradient(90deg,var(--green),#1e7d44)}
+.card-hd.orange{background:linear-gradient(90deg,var(--orange),#c0551a)}
+.card-hd.red{background:linear-gradient(90deg,var(--red),#991b1b)}
+.card-bd{padding:14px}
+.card-bd-flush{padding:0}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;font-size:12px}
+.tbl th{background:#eef2fa;color:var(--navy);font-weight:700;padding:9px 11px;text-align:left;border:1px solid var(--border);font-size:11px;letter-spacing:.02em;white-space:nowrap}
+.tbl td{padding:8px 11px;border:1px solid #e5eaf3;vertical-align:middle;color:#374151}
+.tbl tr{transition:background .15s}
+.tbl tr:nth-child(even) td{background:#fafbfd}
+.tbl tr:hover td{background:#eef4ff}
+
+/* BADGES */
+.badge{display:inline-block;border-radius:2px;padding:2px 7px;font-size:10px;font-weight:700;letter-spacing:.03em;white-space:nowrap}
+.b-green{background:#dcfce7;color:#15803d;border:1px solid #bbf7d0}
+.b-amber{background:#fef9c3;color:#a16207;border:1px solid #fde68a}
+.b-red{background:#fee2e2;color:#b91c1c;border:1px solid #fecaca}
+.b-blue{background:#dbeafe;color:#1d4ed8;border:1px solid #bfdbfe}
+.b-gray{background:#f3f4f6;color:#374151;border:1px solid #e5e7eb}
+.b-orange{background:#fff7ed;color:#c2410c;border:1px solid #fed7aa}
+.b-purple{background:#ede9fe;color:#6d28d9;border:1px solid #ddd6fe}
+.b-navy{background:var(--navy);color:#fff}
+
+/* STAT BOXES */
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+.sbox{background:var(--white);border:1px solid var(--border);border-radius:5px;padding:16px 14px;border-top:4px solid var(--blue);transition:all .2s}
+.sbox:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,51,102,.1)}
+.sbox.or{border-top-color:var(--orange)}.sbox.gr{border-top-color:var(--green)}
+.sbox.rd{border-top-color:var(--red)}.sbox.sa{border-top-color:var(--saffron)}
+.sbox.pu{border-top-color:#7c3aed}
+.sval{font-size:1.75rem;font-weight:800;color:var(--navy);line-height:1;margin-bottom:3px}
+.slbl{font-size:11px;color:var(--muted);font-weight:500}
+.schg{font-size:10.5px;margin-top:4px;font-weight:500}
+.sup{color:var(--green)}.sdn{color:var(--red)}.snt{color:var(--muted)}
+
+/* FORMS */
+.fg{display:flex;flex-direction:column;gap:4px;margin-bottom:12px}
+.fl{font-size:11px;font-weight:600;color:#374151;letter-spacing:.02em}
+.fl .req{color:var(--red)}
+.fi,.fs,.ft{border:1.5px solid var(--border);border-radius:3px;padding:8px 10px;font-family:inherit;font-size:12.5px;color:var(--text);background:#fff;width:100%;transition:all .18s}
+.fi:focus,.fs:focus,.ft:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(26,75,140,.1)}
+.fi::placeholder{color:var(--light)}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fgrid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.fgrid4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px}
+.ffull{grid-column:1/-1}
+.fsec{font-size:11.5px;font-weight:700;color:var(--navy);border-left:3px solid var(--orange);padding-left:8px;margin-bottom:10px;letter-spacing:.03em;text-transform:uppercase}
+
+/* BUTTONS */
+.btn-p{background:var(--blue);color:#fff;border:none;border-radius:3px;padding:9px 20px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .18s;letter-spacing:.02em}
+.btn-p:hover{background:var(--navy);transform:translateY(-1px)}
+.btn-s{background:var(--green);color:#fff;border:none;border-radius:3px;padding:6px 12px;font-size:11.5px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .18s}
+.btn-s:hover{background:#15593a}
+.btn-d{background:var(--red);color:#fff;border:none;border-radius:3px;padding:6px 12px;font-size:11.5px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .18s}
+.btn-d:hover{background:#991b1b}
+.btn-w{background:var(--orange);color:#fff;border:none;border-radius:3px;padding:6px 12px;font-size:11.5px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .18s}
+.btn-w:hover{background:#c0551a}
+.btn-o{background:transparent;color:var(--blue);border:1.5px solid var(--blue);border-radius:3px;padding:7px 14px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .18s}
+.btn-o:hover{background:var(--blue);color:#fff}
+.btn-sm{padding:4px 9px;font-size:10.5px}
+.btn-full{width:100%;justify-content:center}
+
+/* ALERTS */
+.alert{border-radius:3px;padding:9px 13px;font-size:12px;margin-bottom:12px;display:flex;align-items:flex-start;gap:8px;line-height:1.6}
+.a-info{background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af}
+.a-success{background:#f0fdf4;border:1px solid #bbf7d0;color:#15803d}
+.a-warn{background:#fffbeb;border:1px solid #fde68a;color:#92400e}
+.a-danger{background:#fff1f2;border:1px solid #fecdd3;color:#be123c}
+
+/* DASH LAYOUT */
+.dash{display:grid;grid-template-columns:210px 1fr;min-height:calc(100vh - 160px)}
+.dsidebar{background:linear-gradient(180deg,#051c38 0%,var(--navy) 100%);border-right:1px solid rgba(255,255,255,.07)}
+.duser{padding:16px;border-bottom:1px solid rgba(255,255,255,.08);text-align:center}
+.davatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--saffron),var(--orange));color:#000;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:800;margin:0 auto 8px;border:2px solid rgba(255,255,255,.2)}
+.dname{color:#fff;font-size:12.5px;font-weight:700;line-height:1.3}
+.drole{color:#7a9ec4;font-size:10.5px;margin-top:2px}
+.did{color:rgba(255,153,51,.8);font-size:9.5px;font-family:monospace;margin-top:3px}
+.dbadge{margin-top:6px}
+.dmenu{padding:8px 0}
+.dsec{padding:10px 14px 3px;font-size:9.5px;font-weight:700;color:rgba(255,255,255,.25);letter-spacing:.12em;text-transform:uppercase}
+.dlink{display:flex;align-items:center;gap:8px;padding:9px 16px;color:#8ba8c8;font-size:12px;font-weight:500;cursor:pointer;border-left:3px solid transparent;transition:all .15s}
+.dlink:hover,.dlink.act{background:rgba(255,255,255,.07);color:#fff;border-left-color:var(--saffron)}
+.dbadge2{margin-left:auto;background:var(--red);color:#fff;border-radius:8px;padding:1px 5px;font-size:9.5px;font-weight:700}
+.dmain{background:var(--bg);padding:18px}
+.dtitle{font-size:1.2rem;font-weight:700;color:var(--navy);letter-spacing:-.01em;margin-bottom:2px}
+.dsub{font-size:11.5px;color:var(--muted);margin-bottom:16px}
+
+/* PROGRESS */
+.prog{height:5px;background:#e5eaf3;border-radius:50px;overflow:hidden}
+.prog-fill{height:100%;border-radius:50px;background:linear-gradient(90deg,var(--blue),#3578c7);transition:width .6s}
+
+/* WORKER ID CARD */
+.id-card{width:100%;max-width:360px;background:linear-gradient(155deg,#002855 0%,#003d82 45%,#004fa0 100%);border-radius:10px;color:#fff;position:relative;overflow:hidden;box-shadow:0 10px 36px rgba(0,0,0,.4),0 0 0 1px rgba(212,175,55,.35)}
+.id-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#ff9933 33.33%,#fff 33.33% 66.66%,#138808 66.66%)}
+.id-card::after{content:'IEE';position:absolute;bottom:-12px;right:8px;font-size:5.5rem;font-weight:900;color:rgba(255,255,255,.03);letter-spacing:-5px;pointer-events:none}
+.ic-inner{padding:16px 18px 14px}
+.ic-head{display:flex;justify-content:space-between;margin-bottom:14px}
+.ic-logo{font-size:12px;font-weight:700;color:#fff}
+.ic-ministry{text-align:right;font-size:8.5px;color:rgba(255,255,255,.5);line-height:1.4}
+.ic-num{font-size:9.5px;color:#fbbf24;font-family:monospace;margin-top:1px}
+.ic-body{display:flex;gap:12px;margin-bottom:12px}
+.ic-photo{width:68px;height:76px;border-radius:6px;background:linear-gradient(135deg,#2060a8,#38bdf8);display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:800;color:#fff;border:2px solid rgba(255,255,255,.22);flex-shrink:0;letter-spacing:-1px}
+.ic-details{flex:1}
+.ic-name{font-size:14px;font-weight:800;margin-bottom:2px;letter-spacing:-.02em}
+.ic-idnum{font-size:9.5px;color:#fbbf24;font-family:monospace;margin-bottom:5px}
+.ic-row{font-size:10.5px;color:rgba(255,255,255,.62);margin-bottom:1.5px;display:flex;gap:3px}
+.ic-row strong{color:rgba(255,255,255,.84);font-weight:600;min-width:26px}
+.ic-ver{display:inline-flex;align-items:center;gap:3px;background:rgba(20,120,60,.38);border:1px solid rgba(34,197,94,.45);border-radius:2px;padding:1.5px 6px;font-size:9.5px;color:#86efac;font-weight:600;margin-top:4px}
+.ic-qr{width:56px;height:56px;background:#fff;border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ic-footer{border-top:1px solid rgba(255,255,255,.11);padding-top:10px;display:flex;align-items:center;justify-content:space-between}
+.ic-skills{display:flex;gap:3px;flex-wrap:wrap}
+.ic-skill{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.17);border-radius:2px;padding:1.5px 6px;font-size:9.5px}
+.ic-validity{text-align:right;font-size:9.5px;color:rgba(255,255,255,.48)}
+
+/* WIDGET */
+.widget{margin-bottom:14px}
+.whead{background:var(--orange);color:#fff;padding:8px 12px;font-size:11.5px;font-weight:700;letter-spacing:.03em;display:flex;justify-content:space-between;align-items:center}
+.wbody{background:var(--white);border:1px solid var(--border);border-top:none;padding:10px 12px}
+.wlink{display:flex;align-items:center;padding:6px 0;border-bottom:1px dashed var(--border);color:var(--blue);font-size:11.5px;text-decoration:none;cursor:pointer;transition:color .15s}
+.wlink:hover{color:var(--orange)}.wlink:last-child{border-bottom:none;padding-bottom:0}
+.wlink-arr{margin-left:auto;font-size:10px;color:var(--light)}
+
+/* VERIFY STEPS */
+.vsteps{display:flex;align-items:center;margin-bottom:18px}
+.vstep{flex:1;text-align:center;position:relative}
+.vstep::after{content:'';position:absolute;top:14px;left:60%;width:80%;height:2px;background:var(--border);z-index:0}
+.vstep:last-child::after{display:none}
+.vsnum{width:28px;height:28px;border-radius:50%;background:var(--border);color:var(--muted);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;margin:0 auto 5px;position:relative;z-index:1;transition:all .2s}
+.vstep.done .vsnum{background:var(--green);color:#fff}
+.vstep.act .vsnum{background:var(--blue);color:#fff;box-shadow:0 0 0 3px rgba(26,75,140,.18)}
+.vslbl{font-size:10.5px;color:var(--muted)}
+.vstep.done .vslbl,.vstep.act .vslbl{color:var(--navy);font-weight:600}
+
+/* BAR CHART */
+.barchart{display:flex;align-items:flex-end;gap:5px;height:80px}
+.bar{flex:1;border-radius:2px 2px 0 0;min-width:12px;transition:all .4s;cursor:pointer;opacity:.85;background:var(--blue)}
+.bar:hover{opacity:1;background:var(--orange);transform:scaleY(1.04);transform-origin:bottom}
+.barlbls{display:flex;gap:5px;margin-top:4px}
+.barlbl{flex:1;text-align:center;font-size:9.5px;color:var(--muted)}
+
+/* MODALS */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.58);backdrop-filter:blur(3px);z-index:200;display:none;align-items:center;justify-content:center}
+.overlay.show{display:flex;animation:fadeIn .18s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal{background:#fff;border-radius:6px;width:420px;max-width:96vw;max-height:90vh;overflow-y:auto;box-shadow:0 24px 56px rgba(0,0,0,.4);animation:slideUp .22s cubic-bezier(.4,0,.2,1)}
+@keyframes slideUp{from{transform:translateY(18px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal-hd{background:linear-gradient(90deg,var(--navy),var(--blue));color:#fff;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--saffron);position:sticky;top:0}
+.modal-hd h3{font-size:13px;font-weight:700;letter-spacing:.01em}
+.mclose{background:none;border:none;color:#8ba8c8;cursor:pointer;font-size:17px;line-height:1;padding:2px;transition:color .15s}
+.mclose:hover{color:#fff}
+.modal-bd{padding:20px}
+.mtabs{display:flex;border-bottom:2px solid var(--border);margin-bottom:16px}
+.mtab{flex:1;text-align:center;padding:8px 6px;font-size:11.5px;font-weight:600;cursor:pointer;color:var(--muted);border-bottom:2.5px solid transparent;margin-bottom:-2px;transition:all .15s}
+.mtab:hover{color:var(--blue)}.mtab.act{color:var(--blue);border-bottom-color:var(--blue)}
+.mpane{display:none}.mpane.show{display:block}
+.caprow{display:flex;align-items:center;gap:8px;background:var(--stripe);border:1px solid var(--border);border-radius:3px;padding:7px 10px;margin-bottom:10px}
+.captxt{font-family:'Courier New',monospace;font-size:14px;font-weight:900;color:var(--navy);letter-spacing:5px;background:linear-gradient(135deg,#e0e8f8,#cdd8f0);padding:3px 12px;border-radius:2px;user-select:none;border:1px solid var(--border)}
+.capref{background:none;border:none;color:var(--blue);cursor:pointer;font-size:11px;font-weight:600;font-family:inherit}
+.mnote{font-size:11px;color:var(--muted);margin-top:10px;text-align:center}
+.tlink{color:var(--blue);cursor:pointer;text-decoration:none}.tlink:hover{text-decoration:underline}
+
+/* ADMIN MODAL */
+.modal.admin-modal .modal-hd{background:linear-gradient(90deg,#1e0a4e,#2d1172);border-bottom-color:#7c3aed}
+.restricted{background:#fff1f2;border:1px solid #fecdd3;border-left:4px solid var(--red);border-radius:3px;padding:9px 12px;font-size:11.5px;color:#9f1239;font-weight:600;margin-bottom:14px;letter-spacing:.02em}
+
+/* TOAST */
+.toast{position:fixed;bottom:22px;right:22px;background:var(--navy);color:#fff;border-radius:5px;padding:11px 18px;font-size:12.5px;font-weight:500;display:none;z-index:500;box-shadow:0 8px 28px rgba(0,0,0,.35);border-left:4px solid var(--green);max-width:320px;animation:toastIn .25s cubic-bezier(.4,0,.2,1)}
+.toast.show{display:block}
+@keyframes toastIn{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
+
+/* HIDDEN TRIGGER */
+#htrig{position:fixed;bottom:0;right:0;width:44px;height:44px;cursor:default;z-index:9999}
+
+/* FOOTER */
+.footer{background:linear-gradient(180deg,#051c38 0%,#02111f 100%);color:#8ba8c8;padding:28px 16px 18px;border-top:3px solid var(--blue)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px;max-width:1140px;margin:0 auto 18px}
+.fb h3{font-size:13px;font-weight:700;color:#fff;margin-bottom:8px}
+.fb p{font-size:11px;line-height:1.75;color:#6a8aac}
+.fc h4{font-size:11.5px;font-weight:700;color:rgba(255,255,255,.75);margin-bottom:8px;letter-spacing:.03em}
+.fc a{display:block;color:#6a8aac;font-size:11px;margin-bottom:5px;cursor:pointer;text-decoration:none;transition:color .15s}
+.fc a:hover{color:var(--saffron)}
+.footer-bottom{max-width:1140px;margin:0 auto;border-top:1px solid rgba(255,255,255,.07);padding-top:14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.fcopy{font-size:10.5px;color:#4a6a8a}
+.fbadges{display:flex;gap:6px}
+.fbadge{border:1px solid rgba(255,255,255,.1);border-radius:2px;padding:2px 7px;font-size:10px;color:#4a6a8a}
+
+/* BREADCRUMB */
+.bc{background:#fff;border-bottom:1px solid var(--border);padding:6px 16px}
+.bci{max-width:1140px;margin:0 auto;display:flex;align-items:center;gap:5px;font-size:11.5px;color:var(--muted)}
+.bci a{color:var(--blue);text-decoration:none;cursor:pointer}.bci a:hover{text-decoration:underline}
+.bc-sep{color:var(--border)}
+
+/* PRINT */
+@media print{body>*:not(#print-area){display:none}}
+</style>
+</head>
+<body>
+
+<!-- TRICOLOR -->
+<div class="tricolor"></div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div style="display:flex;align-items:center;gap:12px">
+    <span>Government of India &nbsp;|&nbsp; Bharat Sarkar</span>
+    <span class="topbar-sep">|</span>
+    <a onclick="showPage('home')">Ministry of Labour &amp; Employment</a>
+    <span class="topbar-sep">|</span>
+    <a>Screen Reader Access</a>
+    <span class="topbar-sep">|</span>
+    <a>Skip to Main Content</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px">
+    <div class="lang-btns">
+      <button class="lang-btn">A-</button>
+      <button class="lang-btn">A</button>
+      <button class="lang-btn">A+</button>
+    </div>
+    <span class="topbar-sep">|</span>
+    <a>&#2361;&#2367;&#2306;&#2342;&#2368;</a>
+    <span class="topbar-sep">|</span>
+    <a>&#2980;&#2990;&#3007;&#2996;&#3021;</a>
+    <span class="topbar-sep">|</span>
+    <a>English</a>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="emblem">
+    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="32" cy="24" r="14" stroke="#003366" stroke-width="2.5" fill="rgba(0,51,102,.1)"/>
+      <circle cx="32" cy="24" r="8" fill="none" stroke="#003366" stroke-width="1.5" stroke-dasharray="2.5 2.5"/>
+      <line x1="32" y1="10" x2="32" y2="38" stroke="#003366" stroke-width="1.2"/>
+      <line x1="18" y1="16" x2="46" y2="32" stroke="#003366" stroke-width="1.2"/>
+      <line x1="46" y1="16" x2="18" y2="32" stroke="#003366" stroke-width="1.2"/>
+      <path d="M16 40 C11 34 10 26 14 18" stroke="#003366" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <path d="M48 40 C53 34 54 26 50 18" stroke="#003366" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <path d="M14 42 C14 42 22 50 32 50 C42 50 50 42 50 42" stroke="#003366" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <text x="32" y="60" text-anchor="middle" fill="#003366" font-size="5.5" font-family="serif" font-weight="bold">SATYAMEVA JAYATE</text>
+    </svg>
+  </div>
+  <div class="brand">
+    <div class="brand-ministry">Ministry of Labour &amp; Employment &nbsp;|&nbsp; Government of India</div>
+    <div class="brand-title">IEE — Integrated Employment Ecosystem</div>
+    <div class="brand-sub">One Worker &nbsp;·&nbsp; One Identity &nbsp;·&nbsp; Unlimited Opportunities &nbsp;&nbsp; | &nbsp;&nbsp; &#2319;&#2325;&#2368;&#2325;&#2371;&#2340; &#2352;&#2379;&#2332;&#2327;&#2366;&#2352; &#2346;&#2366;&#2352;&#2367;&#2360;&#3021;&#2360;&#3021;&#2340;&#2367;&#2340;&#3007;&#2340;&#3007;</div>
+  </div>
+  <div class="header-right">
+    <div class="clock-block">
+      <div class="clock-time" id="clk">--:--:-- --</div>
+      <div class="clock-date" id="clkd">IST</div>
+    </div>
+    <div id="header-btns">
+      <button class="btn-reg" onclick="showPage('register-page')" style="margin-right:6px">Register</button>
+      <button class="btn-login" onclick="openModal('login-modal')">Login</button>
+    </div>
+  </div>
+</header>
+
+<!-- MAINNAV -->
+<nav class="mainnav">
+  <div class="mainnav-inner">
+    <div class="nl act" onclick="showPage('home');setNav(this)">Home</div>
+    <div class="nl" onclick="requireLogin('worker');setNav(this)">Worker Portal</div>
+    <div class="nl" onclick="requireLogin('employer');setNav(this)">Employer Portal</div>
+    <div class="nl" onclick="requireLogin('verifier');setNav(this)">Verifier Portal</div>
+    <div class="nl" onclick="showPage('id-page');setNav(this)">Generate Worker ID</div>
+    <div class="nl" onclick="showPage('verify-page');setNav(this)">Verify a Worker</div>
+    <div class="nl" onclick="showPage('register-page');setNav(this)">Register</div>
+    <div class="nl" onclick="showToast('Help section coming soon.')">Help &amp; Support</div>
+  </div>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker">
+  <span class="ticker-lbl">Notice</span>
+  <div class="ticker-wrap">
+    <span class="ticker-txt">
+      Worker Registration Drive Active — Register before 30 April 2026 to receive joining benefit &nbsp;&nbsp;|&nbsp;&nbsp;
+      eShram-IEE Integration Activated — existing UAN holders can link directly &nbsp;&nbsp;|&nbsp;&nbsp;
+      Verifier Certification Exam — Apply by 20 April 2026 through your zone supervisor &nbsp;&nbsp;|&nbsp;&nbsp;
+      New Bulk Hiring module live for Construction sector — post requirements for up to 500 workers instantly &nbsp;&nbsp;|&nbsp;&nbsp;
+      IEE Mobile Application available on Android and iOS — WhatsApp and IVR registration also supported
+    </span>
+  </div>
+</div>
+
+<!-- ════════════════════ HOME PAGE ════════════════════ -->
+<div id="home" class="page show">
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-tag"><span class="tag-dot"></span>National Employment Initiative 2026</div>
+        <h1>Connecting India's Workforce<br>with <mark>Verified Opportunities</mark></h1>
+        <p class="hero-desc">A unified digital infrastructure under the Ministry of Labour &amp; Employment to organise, verify and mobilise blue-collar, skilled and informal workers across India — with QR-linked identity, smart job matching, bulk hiring and real-time placement at scale.</p>
+        <div class="hero-actions">
+          <button class="btn-hp" onclick="showPage('register-page')">Register as Worker</button>
+          <button class="btn-ho" onclick="requireLogin('employer')">Post a Job</button>
+          <button class="btn-ho" onclick="showPage('id-page')">Generate Worker ID</button>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><div class="hstat-val" data-count="5421">0</div><div class="hstat-lbl">Workers Registered</div></div>
+        <div class="hstat"><div class="hstat-val" data-count="4087">0</div><div class="hstat-lbl">Verified Profiles</div></div>
+        <div class="hstat"><div class="hstat-val" data-count="312">0</div><div class="hstat-lbl">Active Employers</div></div>
+        <div class="hstat"><div class="hstat-val" data-count="23480">0</div><div class="hstat-lbl">Total Placements</div></div>
+        <div class="hstat"><div class="hstat-val">85%</div><div class="hstat-lbl">Average Fill Rate</div></div>
+        <div class="hstat"><div class="hstat-val">1.8 hr</div><div class="hstat-lbl">Avg. Time-to-Fill</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK ACCESS -->
+  <div class="qa-wrap">
+    <div class="qa-title">Citizen Services</div>
+    <div class="qa-grid">
+      <div class="qa-item" onclick="showPage('register-page')"><span class="qa-ico">&#128203;</span><div class="qa-lbl">Worker Registration</div></div>
+      <div class="qa-item" onclick="requireLogin('employer')"><span class="qa-ico">&#128188;</span><div class="qa-lbl">Post a Job</div></div>
+      <div class="qa-item" onclick="requireLogin('employer')"><span class="qa-ico">&#128101;</span><div class="qa-lbl">Bulk Hiring</div></div>
+      <div class="qa-item" onclick="showPage('id-page')"><span class="qa-ico">&#128196;</span><div class="qa-lbl">Worker ID Card</div></div>
+      <div class="qa-item" onclick="showPage('verify-page')"><span class="qa-ico">&#128269;</span><div class="qa-lbl">Verify a Worker</div></div>
+      <div class="qa-item" onclick="showToast('Upskilling portal loading...')"><span class="qa-ico">&#127891;</span><div class="qa-lbl">Upskilling Courses</div></div>
+      <div class="qa-item" onclick="showToast('Payment status portal loading...')"><span class="qa-ico">&#128184;</span><div class="qa-lbl">Payment Status</div></div>
+      <div class="qa-item" onclick="showToast('Grievance portal loading...')"><span class="qa-ico">&#128221;</span><div class="qa-lbl">Grievance Portal</div></div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="two-col">
+      <div>
+        <!-- NOTICES -->
+        <div class="card">
+          <div class="card-hd">Announcements &amp; Notices</div>
+          <div class="card-bd-flush">
+            <table class="tbl">
+              <thead><tr><th>Date</th><th>Notice</th><th>Category</th><th>View</th></tr></thead>
+              <tbody>
+                <tr><td>18 Apr 2026</td><td>New Bulk Hiring module live for Construction sector</td><td><span class="badge b-blue">Feature</span></td><td><a class="tlink" style="font-size:11.5px">View</a></td></tr>
+                <tr><td>15 Apr 2026</td><td>eShram-IEE Integration: Link your UAN to IEE profile directly</td><td><span class="badge b-green">Integration</span></td><td><a class="tlink" style="font-size:11.5px">View</a></td></tr>
+                <tr><td>12 Apr 2026</td><td>Verifier Certification Exam scheduled — Apply by 20 April 2026</td><td><span class="badge b-amber">Exam</span></td><td><a class="tlink" style="font-size:11.5px">View</a></td></tr>
+                <tr><td>08 Apr 2026</td><td>Tamil Nadu Pilot Report Q1 2026: 1,247 workers placed</td><td><span class="badge b-orange">Report</span></td><td><a class="tlink" style="font-size:11.5px">View</a></td></tr>
+                <tr><td>01 Apr 2026</td><td>IEE Mobile Application launched on Android and iOS</td><td><span class="badge b-blue">App</span></td><td><a class="tlink" style="font-size:11.5px">View</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- SECTORS -->
+        <div class="card">
+          <div class="card-hd">Sectors &amp; Trades Covered Under IEE</div>
+          <div class="card-bd">
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:9px">
+              <div style="border:1px solid var(--border);border-radius:4px;padding:12px;text-align:center;cursor:pointer;background:var(--stripe);transition:all .18s" onmouseover="this.style.background='var(--blue)';this.querySelector('b').style.color='#fff';this.querySelector('small').style.color='rgba(255,255,255,.65)'" onmouseout="this.style.background='var(--stripe)';this.querySelector('b').style.color='';this.querySelector('small').style.color=''"><b style="display:block;font-size:12px;margin-bottom:4px;color:var(--navy)">Construction</b><small style="font-size:10.5px;color:var(--muted)">Masons, Carpenters, Welders</small></div>
+              <div style="border:1px solid var(--border);border-radius:4px;padding:12px;text-align:center;cursor:pointer;background:var(--stripe);transition:all .18s" onmouseover="this.style.background='var(--blue)';this.querySelector('b').style.color='#fff';this.querySelector('small').style.color='rgba(255,255,255,.65)'" onmouseout="this.style.background='var(--stripe)';this.querySelector('b').style.color='';this.querySelector('small').style.color=''"><b style="display:block;font-size:12px;margin-bottom:4px;color:var(--navy)">Home Services</b><small style="font-size:10.5px;color:var(--muted)">Plumbers, Electricians</small></div>
+              <div style="border:1px solid var(--border);border-radius:4px;padding:12px;text-align:center;cursor:pointer;background:var(--stripe);transition:all .18s" onmouseover="this.style.background='var(--blue)';this.querySelector('b').style.color='#fff';this.querySelector('small').style.color='rgba(255,255,255,.65)'" onmouseout="this.style.background='var(--stripe)';this.querySelector('b').style.color='';this.querySelector('small').style.color=''"><b style="display:block;font-size:12px;margin-bottom:4px;color:var(--navy)">Manufacturing</b><small style="font-size:10.5px;color:var(--muted)">Factory Workers, Operators</small></div>
+              <div style="border:1px solid var(--border);border-radius:4px;padding:12px;text-align:center;cursor:pointer;background:var(--stripe);transition:all .18s" onmouseover="this.style.background='var(--blue)';this.querySelector('b').style.color='#fff';this.querySelector('small').style.color='rgba(255,255,255,.65)'" onmouseout="this.style.background='var(--stripe)';this.querySelector('b').style.color='';this.querySelector('small').style.color=''"><b style="display:block;font-size:12px;margin-bottom:4px;color:var(--navy)">Household Help</b><small style="font-size:10.5px;color:var(--muted)">Maids, Cooks, Caretakers</small></div>
+              <div style="border:1px solid var(--border);border-radius:4px;padding:12px;text-align:center;cursor:pointer;background:var(--stripe);transition:all .18s" onmouseover="this.style.background='var(--blue)';this.querySelector('b').style.color='#fff';this.querySelector('small').style.color='rgba(255,255,255,.65)'" onmouseout="this.style.background='var(--stripe)';this.querySelector('b').style.color='';this.querySelector('small').style.color=''"><b style="display:block;font-size:12px;margin-bottom:4px;color:var(--navy)">Events &amp; Venue</b><small style="font-size:10.5px;color:var(--muted)">Setup Crew, Security</small></div>
+              <div style="border:1px solid var(--border);border-radius:4px;padding:12px;text-align:center;cursor:pointer;background:var(--stripe);transition:all .18s" onmouseover="this.style.background='var(--blue)';this.querySelector('b').style.color='#fff';this.querySelector('small').style.color='rgba(255,255,255,.65)'" onmouseout="this.style.background='var(--stripe)';this.querySelector('b').style.color='';this.querySelector('small').style.color=''"><b style="display:block;font-size:12px;margin-bottom:4px;color:var(--navy)">Skilled Technical</b><small style="font-size:10.5px;color:var(--muted)">Technicians, Mechanics</small></div>
+              <div style="border:1px solid var(--border);border-radius:4px;padding:12px;text-align:center;cursor:pointer;background:var(--stripe);transition:all .18s" onmouseover="this.style.background='var(--blue)';this.querySelector('b').style.color='#fff';this.querySelector('small').style.color='rgba(255,255,255,.65)'" onmouseout="this.style.background='var(--stripe)';this.querySelector('b').style.color='';this.querySelector('small').style.color=''"><b style="display:block;font-size:12px;margin-bottom:4px;color:var(--navy)">Security Services</b><small style="font-size:10.5px;color:var(--muted)">Guards, Supervisors</small></div>
+              <div style="border:1px solid var(--border);border-radius:4px;padding:12px;text-align:center;cursor:pointer;background:var(--stripe);transition:all .18s" onmouseover="this.style.background='var(--blue)';this.querySelector('b').style.color='#fff';this.querySelector('small').style.color='rgba(255,255,255,.65)'" onmouseout="this.style.background='var(--stripe)';this.querySelector('b').style.color='';this.querySelector('small').style.color=''"><b style="display:block;font-size:12px;margin-bottom:4px;color:var(--navy)">Logistics</b><small style="font-size:10.5px;color:var(--muted)">Loaders, Drivers, Packers</small></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HOW IT WORKS -->
+        <div class="card">
+          <div class="card-hd">How the IEE Platform Works</div>
+          <div class="card-bd">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+              <div>
+                <div class="fsec" style="margin-bottom:10px">For Workers</div>
+                <div id="worker-steps"></div>
+              </div>
+              <div>
+                <div class="fsec" style="margin-bottom:10px;border-left-color:var(--green)">For Employers</div>
+                <div id="emp-steps"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div>
+        <div class="widget">
+          <div class="whead">Platform Statistics</div>
+          <div class="wbody">
+            <table style="width:100%;font-size:11.5px;border-collapse:collapse">
+              <tr><td style="padding:4px 0;color:var(--muted)">Workers Registered</td><td style="text-align:right;font-weight:700;color:var(--navy)">5,421</td></tr>
+              <tr><td style="padding:4px 0;color:var(--muted)">Verified Workers</td><td style="text-align:right;font-weight:700;color:var(--green)">4,087</td></tr>
+              <tr><td style="padding:4px 0;color:var(--muted)">Active Employers</td><td style="text-align:right;font-weight:700;color:var(--navy)">312</td></tr>
+              <tr><td style="padding:4px 0;color:var(--muted)">Active Job Postings</td><td style="text-align:right;font-weight:700;color:var(--navy)">142</td></tr>
+              <tr><td style="padding:4px 0;color:var(--muted)">Total Placements</td><td style="text-align:right;font-weight:700;color:var(--navy)">23,480</td></tr>
+              <tr><td style="padding:4px 0;color:var(--muted)">Certifications Issued</td><td style="text-align:right;font-weight:700;color:var(--navy)">1,204</td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="widget">
+          <div class="whead">Important Links</div>
+          <div class="wbody">
+            <a class="wlink" href="https://eshram.gov.in" target="_blank">eShram Portal (NDUW)<span class="wlink-arr">&#8599;</span></a>
+            <a class="wlink" href="https://www.ncs.gov.in" target="_blank">NCS — National Career Service<span class="wlink-arr">&#8599;</span></a>
+            <a class="wlink" href="https://www.epfindia.gov.in" target="_blank">EPFO India<span class="wlink-arr">&#8599;</span></a>
+            <a class="wlink" href="https://esic.gov.in" target="_blank">ESIC Portal<span class="wlink-arr">&#8599;</span></a>
+            <a class="wlink" href="https://shramsuvidha.gov.in" target="_blank">Shram Suvidha Portal<span class="wlink-arr">&#8599;</span></a>
+            <a class="wlink" href="https://www.skillindia.gov.in" target="_blank">Skill India<span class="wlink-arr">&#8599;</span></a>
+            <a class="wlink" href="https://digilocker.gov.in" target="_blank">DigiLocker<span class="wlink-arr">&#8599;</span></a>
+          </div>
+        </div>
+        <div class="widget">
+          <div class="whead">Helpline &amp; Support</div>
+          <div class="wbody">
+            <div style="font-size:20px;font-weight:800;color:var(--blue);margin-bottom:5px;letter-spacing:-.02em">1800-XXX-XXXX</div>
+            <div style="font-size:11px;color:var(--muted);margin-bottom:6px">Toll Free — Monday to Saturday, 9 AM–6 PM IST</div>
+            <div style="font-size:11.5px;margin-bottom:3px;font-weight:500">WhatsApp: +91-XXXXX-XXXXX</div>
+            <div style="font-size:11.5px">Email: <a href="mailto:support@iee.gov.in" style="color:var(--blue)">support@iee.gov.in</a></div>
+            <div style="font-size:10.5px;color:var(--muted);margin-top:7px;padding-top:7px;border-top:1px dashed var(--border)">IVR registration available in Tamil, Hindi, Telugu and English</div>
+          </div>
+        </div>
+        <div class="widget">
+          <div class="whead">Download IEE Application</div>
+          <div class="wbody" style="text-align:center">
+            <div style="font-size:11px;color:var(--muted);margin-bottom:10px">Available on Android &amp; iOS. IVR registration for feature phones.</div>
+            <div style="display:flex;gap:8px;justify-content:center">
+              <button class="btn-o btn-sm">Android APK</button>
+              <button class="btn-o btn-sm">iOS App Store</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════ WORKER DASHBOARD ════════════════════ -->
+<div id="worker-page" class="page">
+  <div class="bc"><div class="bci"><a onclick="showPage('home')">Home</a><span class="bc-sep">/</span>Worker Portal<span class="bc-sep">/</span>Dashboard</div></div>
+  <div class="dash">
+    <aside class="dsidebar">
+      <div class="duser">
+        <div class="davatar" id="w-avatar">RK</div>
+        <div class="dname" id="w-name">Rajan Kumar</div>
+        <div class="drole">Registered Worker</div>
+        <div class="did" id="w-iee-id">IEE-WK-2026-00045821</div>
+        <div class="dbadge"><span class="badge b-green">Verified</span></div>
+      </div>
+      <div class="dmenu">
+        <div class="dsec">My Portal</div>
+        <div class="dlink act">Dashboard Overview</div>
+        <div class="dlink">My Profile</div>
+        <div class="dlink" onclick="showPage('id-page')">Worker ID Card</div>
+        <div class="dsec">Employment</div>
+        <div class="dlink">Available Jobs <span class="dbadge2">5</span></div>
+        <div class="dlink">My Applications</div>
+        <div class="dlink">Work History</div>
+        <div class="dsec">Development</div>
+        <div class="dlink">Earnings &amp; Payments</div>
+        <div class="dlink">Upskilling Courses</div>
+        <div class="dlink">Certifications</div>
+        <div class="dsec">Account</div>
+        <div class="dlink">Notifications <span class="dbadge2">3</span></div>
+        <div class="dlink">Grievance &amp; Support</div>
+        <div class="dlink" onclick="doLogout()" style="border-left-color:var(--red);color:#f87171">Sign Out</div>
+      </div>
+    </aside>
+    <main class="dmain">
+      <div class="alert a-warn">Your profile is 78% complete. Add Aadhaar details to unlock full verification and access premium job matches.</div>
+      <div class="dtitle" id="w-dash-title">Worker Dashboard</div>
+      <div class="dsub" id="w-dash-sub">Welcome — Construction Mason — Chennai, Tamil Nadu</div>
+      <div class="stat-row">
+        <div class="sbox"><div class="sval">23</div><div class="slbl">Jobs Completed</div><div class="schg sup">+3 this month</div></div>
+        <div class="sbox or"><div class="sval">4.7<span style="font-size:1rem">/5</span></div><div class="slbl">Average Rating</div></div>
+        <div class="sbox gr"><div class="sval">&#8377;42,800</div><div class="slbl">Earnings This Month</div><div class="schg sup">+&#8377;3,200 vs last</div></div>
+        <div class="sbox sa"><div class="sval">5</div><div class="slbl">Job Alerts Today</div><div class="schg snt">3 within 3 km</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+        <div class="card">
+          <div class="card-hd">Available Jobs Near You</div>
+          <div class="card-bd-flush">
+            <table class="tbl">
+              <thead><tr><th>Job Title</th><th>Wage</th><th>Type</th><th>Apply</th></tr></thead>
+              <tbody>
+                <tr><td><div style="font-weight:600;font-size:12px">Brick Mason — Full Day</div><div style="font-size:10.5px;color:var(--muted)">Skyline Constructions · 1.2 km</div></td><td style="font-weight:700;color:var(--green);white-space:nowrap">&#8377;850/day</td><td><span class="badge b-orange">Urgent</span></td><td><button class="btn-s btn-sm" onclick="showToast('Application submitted for Brick Mason role.')">Apply</button></td></tr>
+                <tr><td><div style="font-weight:600;font-size:12px">Plastering Work — 3 Days</div><div style="font-size:10.5px;color:var(--muted)">Prestige Builders · 2.8 km</div></td><td style="font-weight:700;color:var(--green)">&#8377;750/day</td><td><span class="badge b-blue">Daily</span></td><td><button class="btn-s btn-sm" onclick="showToast('Application submitted.')">Apply</button></td></tr>
+                <tr><td><div style="font-weight:600;font-size:12px">Concrete Laying — 7 Days</div><div style="font-size:10.5px;color:var(--muted)">Metro Works · 4.1 km</div></td><td style="font-weight:700;color:var(--green)">&#8377;900/day</td><td><span class="badge b-orange">Bulk</span></td><td><button class="btn-s btn-sm" onclick="showToast('Application submitted.')">Apply</button></td></tr>
+                <tr><td><div style="font-weight:600;font-size:12px">Foundation Work — 10 Days</div><div style="font-size:10.5px;color:var(--muted)">CMRL Phase 2 · 5.2 km</div></td><td style="font-weight:700;color:var(--green)">&#8377;950/day</td><td><span class="badge b-orange">Bulk</span></td><td><button class="btn-s btn-sm" onclick="showToast('Application submitted.')">Apply</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-hd">Recent Work History</div>
+          <div class="card-bd-flush">
+            <table class="tbl">
+              <thead><tr><th>Employer</th><th>Role</th><th>Days</th><th>Earnings</th><th>Rating</th></tr></thead>
+              <tbody>
+                <tr><td>Skyline Const.</td><td style="font-size:11px">Mason</td><td>3</td><td style="color:var(--green);font-weight:600">&#8377;2,550</td><td style="color:#f59e0b">5.0&#9733;</td></tr>
+                <tr><td>Prestige Bldrs</td><td style="font-size:11px">Plastering</td><td>5</td><td style="color:var(--green);font-weight:600">&#8377;3,750</td><td style="color:#f59e0b">4.8&#9733;</td></tr>
+                <tr><td>Annur Infra</td><td style="font-size:11px">Masonry</td><td>7</td><td style="color:var(--green);font-weight:600">&#8377;5,600</td><td style="color:#f59e0b">4.6&#9733;</td></tr>
+                <tr><td>CMRL Phase 2</td><td style="font-size:11px">Labour</td><td>10</td><td style="color:var(--green);font-weight:600">&#8377;9,000</td><td style="color:#f59e0b">5.0&#9733;</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-hd">Upskilling &amp; Certification Progress</div>
+        <div class="card-bd">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+            <div style="border:1px solid var(--border);border-radius:4px;padding:12px;border-top:3px solid var(--blue)"><div style="font-weight:600;font-size:12px;margin-bottom:7px">Advanced Masonry — Level 2</div><div class="prog"><div class="prog-fill" style="width:65%"></div></div><div style="display:flex;justify-content:space-between;margin-top:4px;align-items:center"><span style="font-size:10.5px;color:var(--muted)">65% complete</span><button class="btn-o btn-sm">Continue</button></div></div>
+            <div style="border:1px solid var(--border);border-radius:4px;padding:12px;border-top:3px solid var(--green)"><div style="font-weight:600;font-size:12px;margin-bottom:7px">Construction Safety (OSHA)</div><div class="prog"><div class="prog-fill" style="width:100%;background:var(--green)"></div></div><div style="display:flex;justify-content:space-between;margin-top:4px;align-items:center"><span style="font-size:10.5px;color:var(--green);font-weight:600">Completed</span><button class="btn-s btn-sm" onclick="showToast('Certificate download started.')">Download</button></div></div>
+            <div style="border:1px solid var(--border);border-radius:4px;padding:12px;border-top:3px solid var(--orange)"><div style="font-weight:600;font-size:12px;margin-bottom:7px">Waterproofing Techniques</div><div class="prog"><div class="prog-fill" style="width:20%;background:linear-gradient(90deg,var(--orange),#c0551a)"></div></div><div style="display:flex;justify-content:space-between;margin-top:4px;align-items:center"><span style="font-size:10.5px;color:var(--muted)">20% complete</span><button class="btn-o btn-sm">Start</button></div></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ════════════════════ EMPLOYER DASHBOARD ════════════════════ -->
+<div id="employer-page" class="page">
+  <div class="bc"><div class="bci"><a onclick="showPage('home')">Home</a><span class="bc-sep">/</span>Employer Portal<span class="bc-sep">/</span>Dashboard</div></div>
+  <div class="dash">
+    <aside class="dsidebar">
+      <div class="duser">
+        <div class="davatar" style="background:linear-gradient(135deg,var(--orange),#c0551a)">SC</div>
+        <div class="dname" id="e-name">Skyline Constructions</div>
+        <div class="drole">Registered Employer</div>
+        <div class="did" id="e-emp-id">EMP-TN-2026-001248</div>
+        <div class="dbadge"><span class="badge b-green">Verified Employer</span></div>
+      </div>
+      <div class="dmenu">
+        <div class="dsec">Dashboard</div>
+        <div class="dlink act">Overview</div>
+        <div class="dlink">Company Profile</div>
+        <div class="dsec">Hiring</div>
+        <div class="dlink">Post a Single Job</div>
+        <div class="dlink">Bulk Hiring Request</div>
+        <div class="dlink">Browse Verified Workers</div>
+        <div class="dlink">My Posted Jobs</div>
+        <div class="dsec">Management</div>
+        <div class="dlink">Active Workforce</div>
+        <div class="dlink">Payroll &amp; Payments</div>
+        <div class="dlink">Analytics &amp; Reports</div>
+        <div class="dlink" onclick="doLogout()" style="border-left-color:var(--red);color:#f87171">Sign Out</div>
+      </div>
+    </aside>
+    <main class="dmain">
+      <div class="dtitle" id="e-dash-title">Employer Dashboard</div>
+      <div class="dsub" id="e-dash-sub">Skyline Constructions Pvt. Ltd. — Chennai, Tamil Nadu — GST: 33AABCS1234Z1Z5</div>
+      <div class="stat-row">
+        <div class="sbox"><div class="sval">148</div><div class="slbl">Active Workers Hired</div><div class="schg sup">+12 this week</div></div>
+        <div class="sbox or"><div class="sval">12</div><div class="slbl">Open Positions</div><div class="schg sdn">3 urgent</div></div>
+        <div class="sbox gr"><div class="sval">94%</div><div class="slbl">Fill Rate</div><div class="schg sup">Above benchmark</div></div>
+        <div class="sbox sa"><div class="sval">+42</div><div class="slbl">Employer NPS Score</div></div>
+      </div>
+      <!-- BULK HIRING -->
+      <div class="card" style="margin-bottom:14px">
+        <div class="card-hd card-hd orange">Bulk Hiring Request — Fill Multiple Positions Instantly</div>
+        <div class="card-bd">
+          <div class="alert a-info">Submit a bulk hiring request to instantly match and notify verified workers. IEE guarantees placement within 2 hours for standard roles.</div>
+          <div class="fgrid4" style="margin-bottom:10px">
+            <div class="fg"><label class="fl">Job Category <span class="req">*</span></label><select class="fs"><option>Construction Mason</option><option>General Labour</option><option>Concrete Worker</option><option>Carpenter</option><option>Painter</option><option>Welder</option><option>Security Guard</option></select></div>
+            <div class="fg"><label class="fl">Workers Required <span class="req">*</span></label><input class="fi" type="number" placeholder="e.g. 50" value="50"></div>
+            <div class="fg"><label class="fl">Site Location <span class="req">*</span></label><input class="fi" placeholder="Site address, Chennai"></div>
+            <div class="fg"><label class="fl">Daily Wage (INR) <span class="req">*</span></label><input class="fi" type="number" placeholder="850"></div>
+          </div>
+          <div class="fgrid" style="margin-bottom:12px">
+            <div class="fg"><label class="fl">Duration</label><select class="fs"><option>1 Week</option><option>2 Weeks</option><option>1 Month</option><option>3 Months</option><option>Ongoing</option></select></div>
+            <div class="fg"><label class="fl">Skill Level Required</label><select class="fs"><option>Any — Unskilled</option><option>Level 1 — Basic</option><option>Level 2 — Semi-Skilled</option><option>Level 3 — Skilled</option></select></div>
+          </div>
+          <button class="btn-p" onclick="showToast('Bulk request submitted. Matching 50 verified workers now...')">Submit Bulk Hiring Request</button>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+        <!-- POST JOB -->
+        <div class="card">
+          <div class="card-hd">Post a Single Job</div>
+          <div class="card-bd">
+            <div class="fgrid" style="margin-bottom:10px">
+              <div class="fg"><label class="fl">Job Title <span class="req">*</span></label><input class="fi" placeholder="e.g. Brick Mason — 3 Days"></div>
+              <div class="fg"><label class="fl">Sector</label><select class="fs"><option>Construction</option><option>Manufacturing</option><option>Events</option><option>Logistics</option></select></div>
+              <div class="fg"><label class="fl">Daily Wage (INR) <span class="req">*</span></label><input class="fi" type="number" placeholder="850"></div>
+              <div class="fg"><label class="fl">Duration</label><select class="fs"><option>1 Day</option><option>3 Days</option><option>1 Week</option><option>1 Month</option></select></div>
+            </div>
+            <div class="fg" style="margin-bottom:12px"><label class="fl">Site Address <span class="req">*</span></label><input class="fi" placeholder="Full site address with PIN code"></div>
+            <button class="btn-p" onclick="showToast('Job posted. Workers are being matched and notified.')">Post Job Now</button>
+          </div>
+        </div>
+        <!-- MATCHED WORKERS -->
+        <div class="card">
+          <div class="card-hd">Top Verified Workers — Available Now</div>
+          <div class="card-bd-flush">
+            <table class="tbl">
+              <thead><tr><th>Name</th><th>Role</th><th>Rating</th><th>Match</th><th>Action</th></tr></thead>
+              <tbody>
+                <tr><td><div style="font-weight:600;font-size:12px">Rajan Kumar</div><div style="font-size:10px;color:var(--green)">Verified · 1.2 km</div></td><td style="font-size:11px">Mason</td><td style="color:#f59e0b">4.9&#9733;</td><td><span class="badge b-green">94%</span></td><td><button class="btn-s btn-sm" onclick="showToast('Rajan Kumar hired. Confirmation sent.')">Hire</button></td></tr>
+                <tr><td><div style="font-weight:600;font-size:12px">Suresh Babu</div><div style="font-size:10px;color:var(--green)">Verified · 2.1 km</div></td><td style="font-size:11px">Carpenter</td><td style="color:#f59e0b">4.8&#9733;</td><td><span class="badge b-green">88%</span></td><td><button class="btn-s btn-sm" onclick="showToast('Suresh Babu hired.')">Hire</button></td></tr>
+                <tr><td><div style="font-weight:600;font-size:12px">Murugan S</div><div style="font-size:10px;color:var(--green)">Verified · 3.4 km</div></td><td style="font-size:11px">Electrician</td><td style="color:#f59e0b">4.5&#9733;</td><td><span class="badge b-amber">82%</span></td><td><button class="btn-s btn-sm" onclick="showToast('Murugan S hired.')">Hire</button></td></tr>
+                <tr><td><div style="font-weight:600;font-size:12px">Vijay R</div><div style="font-size:10px;color:var(--green)">Verified · 1.8 km</div></td><td style="font-size:11px">Plumber</td><td style="color:#f59e0b">4.7&#9733;</td><td><span class="badge b-green">91%</span></td><td><button class="btn-s btn-sm" onclick="showToast('Vijay R hired.')">Hire</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ════════════════════ VERIFIER DASHBOARD ════════════════════ -->
+<div id="verifier-page" class="page">
+  <div class="bc"><div class="bci"><a onclick="showPage('home')">Home</a><span class="bc-sep">/</span>Verifier Portal<span class="bc-sep">/</span>Dashboard</div></div>
+  <div class="dash">
+    <aside class="dsidebar">
+      <div class="duser">
+        <div class="davatar" style="background:linear-gradient(135deg,var(--green),#059669)">SA</div>
+        <div class="dname" id="vf-name">S. Anbarasan</div>
+        <div class="drole">Certified Field Verifier</div>
+        <div class="did">IEE-VRF-2026-001</div>
+        <div class="dbadge"><span class="badge b-green">Certified</span></div>
+      </div>
+      <div class="dmenu">
+        <div class="dsec">Verification Queue</div>
+        <div class="dlink act">Dashboard</div>
+        <div class="dlink">Pending KYC <span class="dbadge2">18</span></div>
+        <div class="dlink">Completed Today</div>
+        <div class="dlink">Rejected / Flagged</div>
+        <div class="dsec">Tools</div>
+        <div class="dlink">Field KYC Upload</div>
+        <div class="dlink">QR Scanner</div>
+        <div class="dlink">Zone Map</div>
+        <div class="dsec">Reports</div>
+        <div class="dlink">My Statistics</div>
+        <div class="dlink">Monthly Report</div>
+        <div class="dlink" onclick="doLogout()" style="border-left-color:var(--red);color:#f87171">Sign Out</div>
+      </div>
+    </aside>
+    <main class="dmain">
+      <div class="dtitle">Field Verifier Dashboard</div>
+      <div class="dsub" id="vf-sub">S. Anbarasan — Zone 3, North Chennai — ID: IEE-VRF-2026-001</div>
+      <div class="stat-row">
+        <div class="sbox"><div class="sval">247</div><div class="slbl">Total Verified</div></div>
+        <div class="sbox rd"><div class="sval">18</div><div class="slbl">Pending Today</div><div class="schg sdn">Requires attention</div></div>
+        <div class="sbox gr"><div class="sval">12</div><div class="slbl">Completed Today</div></div>
+        <div class="sbox or"><div class="sval">14</div><div class="slbl">Rejected Total</div></div>
+      </div>
+      <!-- VERIFICATION STEPS -->
+      <div class="card" style="margin-bottom:14px">
+        <div class="card-hd">Verification Process Flow</div>
+        <div class="card-bd">
+          <div class="vsteps">
+            <div class="vstep done"><div class="vsnum">1</div><div class="vslbl">Identity Received</div></div>
+            <div class="vstep act"><div class="vsnum">2</div><div class="vslbl">Document Check</div></div>
+            <div class="vstep"><div class="vsnum">3</div><div class="vslbl">Photo Capture</div></div>
+            <div class="vstep"><div class="vsnum">4</div><div class="vslbl">Approve &amp; Issue ID</div></div>
+          </div>
+        </div>
+      </div>
+      <!-- PENDING QUEUE -->
+      <div class="card" style="margin-bottom:14px">
+        <div class="card-hd">Pending Verification Queue</div>
+        <div class="card-bd-flush">
+          <table class="tbl">
+            <thead><tr><th>Worker Name</th><th>IEE ID</th><th>Mobile</th><th>Role</th><th>Aadhaar</th><th>Priority</th><th>Actions</th></tr></thead>
+            <tbody id="vqueue">
+              <tr id="vr-1"><td style="font-weight:600">Ganesh Kumar</td><td style="font-family:monospace;font-size:10.5px;color:var(--blue)">IEE-WK-2026-00091</td><td>+91 99345 67890</td><td><span class="badge b-blue">Mason</span></td><td><span class="badge b-amber">Pending</span></td><td><span class="badge b-red">HIGH</span></td><td><div style="display:flex;gap:4px"><button class="btn-s btn-sm" onclick="vAction('vr-1','Ganesh Kumar','Approved')">Approve</button><button class="btn-d btn-sm" onclick="vAction('vr-1','Ganesh Kumar','Rejected')">Reject</button><button class="btn-w btn-sm" onclick="vAction('vr-1','Ganesh Kumar','Flagged')">Flag</button></div></td></tr>
+              <tr id="vr-2"><td style="font-weight:600">Priya Devi</td><td style="font-family:monospace;font-size:10.5px;color:var(--blue)">IEE-WK-2026-00092</td><td>+91 98765 43210</td><td><span class="badge b-blue">Maid</span></td><td><span class="badge b-green">Provided</span></td><td><span class="badge b-amber">MED</span></td><td><div style="display:flex;gap:4px"><button class="btn-s btn-sm" onclick="vAction('vr-2','Priya Devi','Approved')">Approve</button><button class="btn-d btn-sm" onclick="vAction('vr-2','Priya Devi','Rejected')">Reject</button><button class="btn-w btn-sm" onclick="vAction('vr-2','Priya Devi','Flagged')">Flag</button></div></td></tr>
+              <tr id="vr-3"><td style="font-weight:600">Mohammed Rafi</td><td style="font-family:monospace;font-size:10.5px;color:var(--blue)">IEE-WK-2026-00093</td><td>+91 87654 32109</td><td><span class="badge b-blue">Electrician</span></td><td><span class="badge b-amber">Pending</span></td><td><span class="badge b-red">HIGH</span></td><td><div style="display:flex;gap:4px"><button class="btn-s btn-sm" onclick="vAction('vr-3','Mohammed Rafi','Approved')">Approve</button><button class="btn-d btn-sm" onclick="vAction('vr-3','Mohammed Rafi','Rejected')">Reject</button><button class="btn-w btn-sm" onclick="vAction('vr-3','Mohammed Rafi','Flagged')">Flag</button></div></td></tr>
+              <tr id="vr-4"><td style="font-weight:600">Lakshmi Bai</td><td style="font-family:monospace;font-size:10.5px;color:var(--blue)">IEE-WK-2026-00094</td><td>+91 76543 21098</td><td><span class="badge b-blue">Cook</span></td><td><span class="badge b-green">Provided</span></td><td><span class="badge b-gray">LOW</span></td><td><div style="display:flex;gap:4px"><button class="btn-s btn-sm" onclick="vAction('vr-4','Lakshmi Bai','Approved')">Approve</button><button class="btn-d btn-sm" onclick="vAction('vr-4','Lakshmi Bai','Rejected')">Reject</button><button class="btn-w btn-sm" onclick="vAction('vr-4','Lakshmi Bai','Flagged')">Flag</button></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- FIELD KYC -->
+      <div class="card">
+        <div class="card-hd card-hd green">Field KYC — On-Site Worker Verification</div>
+        <div class="card-bd">
+          <div class="alert a-info">Enter the worker's IEE ID or mobile number to retrieve profile. Confirm physical presence before proceeding.</div>
+          <div class="fgrid" style="margin-bottom:10px">
+            <div class="fg"><label class="fl">Worker IEE ID or Mobile <span class="req">*</span></label><input class="fi" placeholder="IEE-WK-2026-XXXXXXXX or mobile"></div>
+            <div class="fg"><label class="fl">Aadhaar (last 4 digits)</label><input class="fi" placeholder="XXXX" maxlength="4"></div>
+            <div class="fg"><label class="fl">Document Type Presented</label><select class="fs"><option>Aadhaar Card</option><option>Voter Identity Card</option><option>Driving Licence</option><option>Ration Card</option></select></div>
+            <div class="fg"><label class="fl">Physical Presence</label><select class="fs"><option>Yes — Worker physically present</option><option>No — Remote KYC</option></select></div>
+          </div>
+          <div class="fg" style="margin-bottom:12px"><label class="fl">Field Notes</label><textarea class="ft" rows="2" placeholder="Observations, discrepancies, or special notes..."></textarea></div>
+          <button class="btn-p" onclick="showToast('Field KYC submitted for processing.')">Submit Field KYC</button>
+          <button class="btn-o" style="margin-left:8px" onclick="showToast('QR scanner opening...')">Scan QR Code</button>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ════════════════════ SUPER ADMIN ════════════════════ -->
+<div id="superadmin-page" class="page">
+  <div class="bc"><div class="bci">System Administration<span class="bc-sep">/</span>Dashboard</div></div>
+  <div class="dash">
+    <aside class="dsidebar">
+      <div class="duser">
+        <div class="davatar" style="background:linear-gradient(135deg,#7c3aed,#4f46e5);font-size:.9rem">SA</div>
+        <div class="dname">Super Administrator</div>
+        <div class="drole">System Level Access</div>
+        <div class="did">system@iee.gov.in</div>
+        <div class="dbadge"><span class="badge b-purple">SUPER ADMIN</span></div>
+      </div>
+      <div class="dmenu">
+        <div class="dsec">System</div>
+        <div class="dlink act">Admin Dashboard</div>
+        <div class="dlink">All Users</div>
+        <div class="dlink">Worker Profiles</div>
+        <div class="dlink">Employer Accounts</div>
+        <div class="dlink">Verifier Management</div>
+        <div class="dsec">Platform</div>
+        <div class="dlink">All Job Postings</div>
+        <div class="dlink">Payment Ledger</div>
+        <div class="dlink">Flagged Profiles</div>
+        <div class="dlink">Broadcast Notices</div>
+        <div class="dsec">Configuration</div>
+        <div class="dlink">System Settings</div>
+        <div class="dlink">Role &amp; Permissions</div>
+        <div class="dlink">Audit Log</div>
+        <div class="dlink" onclick="doLogout()" style="border-left-color:var(--red);color:#f87171">Secure Sign Out</div>
+      </div>
+    </aside>
+    <main class="dmain">
+      <div class="alert a-danger"><strong>Restricted Area — Super Administrator Session Active.</strong> All actions are recorded. Misuse is a criminal offence under the IT Act, 2000. IP: 103.38.50.x | Session: ACTIVE</div>
+      <div class="dtitle">System Administration Dashboard</div>
+      <div class="dsub">IEE Platform Control Centre — As of 19 April 2026</div>
+      <div class="stat-row" style="grid-template-columns:repeat(5,1fr)">
+        <div class="sbox"><div class="sval">5,421</div><div class="slbl">Total Workers</div><div class="schg sup">+124 this week</div></div>
+        <div class="sbox gr"><div class="sval">4,087</div><div class="slbl">Verified Workers</div><div class="schg snt">75.4% of total</div></div>
+        <div class="sbox rd"><div class="sval">38</div><div class="slbl">Pending KYC</div><div class="schg sdn">Needs attention</div></div>
+        <div class="sbox or"><div class="sval">312</div><div class="slbl">Employers</div></div>
+        <div class="sbox pu"><div class="sval">23,480</div><div class="slbl">Total Placements</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+        <!-- KPIs -->
+        <div class="card">
+          <div class="card-hd">Platform KPIs &amp; Analytics</div>
+          <div class="card-bd">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+              <div style="background:var(--stripe);border:1px solid var(--border);border-radius:4px;padding:10px;text-align:center;border-top:3px solid var(--green)"><div style="font-size:1.4rem;font-weight:800;color:var(--green)">94%</div><div style="font-size:10.5px;color:var(--muted)">Avg. Fill Rate</div></div>
+              <div style="background:var(--stripe);border:1px solid var(--border);border-radius:4px;padding:10px;text-align:center;border-top:3px solid var(--blue)"><div style="font-size:1.4rem;font-weight:800;color:var(--blue)">1.8 hr</div><div style="font-size:10.5px;color:var(--muted)">Avg. Time-to-Fill</div></div>
+              <div style="background:var(--stripe);border:1px solid var(--border);border-radius:4px;padding:10px;text-align:center;border-top:3px solid var(--orange)"><div style="font-size:1.4rem;font-weight:800;color:var(--orange)">4.7/5</div><div style="font-size:10.5px;color:var(--muted)">Worker Avg. Rating</div></div>
+              <div style="background:var(--stripe);border:1px solid var(--border);border-radius:4px;padding:10px;text-align:center;border-top:3px solid var(--red)"><div style="font-size:1.4rem;font-weight:800;color:var(--red)">2.3%</div><div style="font-size:10.5px;color:var(--muted)">No-Show Rate</div></div>
+            </div>
+            <div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:7px">Monthly Placements Trend</div>
+            <div class="barchart">
+              <div class="bar" style="height:45%" title="Nov 2025"></div>
+              <div class="bar" style="height:55%" title="Dec 2025"></div>
+              <div class="bar" style="height:42%" title="Jan 2026"></div>
+              <div class="bar" style="height:68%" title="Feb 2026"></div>
+              <div class="bar" style="height:78%" title="Mar 2026"></div>
+              <div class="bar" style="height:92%;background:var(--orange)" title="Apr 2026"></div>
+            </div>
+            <div class="barlbls"><div class="barlbl">Nov</div><div class="barlbl">Dec</div><div class="barlbl">Jan</div><div class="barlbl">Feb</div><div class="barlbl">Mar</div><div class="barlbl">Apr</div></div>
+          </div>
+        </div>
+        <!-- AUDIT LOG -->
+        <div class="card">
+          <div class="card-hd">Recent Audit Log</div>
+          <div class="card-bd-flush">
+            <table class="tbl" style="font-size:11.5px">
+              <thead><tr><th>Time</th><th>User</th><th>Action</th><th>IP</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>09:42</td><td>superadmin</td><td>LOGIN</td><td style="font-family:monospace;font-size:10.5px">103.38.50.x</td><td><span class="badge b-green">OK</span></td></tr>
+                <tr><td>09:38</td><td>verifier-001</td><td>VERIFY_APPROVE</td><td style="font-family:monospace;font-size:10.5px">103.38.50.x</td><td><span class="badge b-green">OK</span></td></tr>
+                <tr><td>09:25</td><td>skyline</td><td>BULK_HIRE_REQ</td><td style="font-family:monospace;font-size:10.5px">103.38.50.x</td><td><span class="badge b-blue">Pending</span></td></tr>
+                <tr><td>09:10</td><td>system</td><td>SCHEDULED_MATCH</td><td style="font-family:monospace;font-size:10.5px">internal</td><td><span class="badge b-green">OK</span></td></tr>
+                <tr><td>08:55</td><td>verifier-001</td><td>VERIFY_REJECT</td><td style="font-family:monospace;font-size:10.5px">103.38.50.x</td><td><span class="badge b-amber">Review</span></td></tr>
+                <tr><td>08:30</td><td>superadmin</td><td>CONFIG_UPDATE</td><td style="font-family:monospace;font-size:10.5px">103.38.50.x</td><td><span class="badge b-green">OK</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- USERS TABLE -->
+      <div class="card" style="margin-bottom:14px">
+        <div class="card-hd">All Registered Users</div>
+        <div class="card-bd-flush">
+          <table class="tbl">
+            <thead><tr><th>ID</th><th>Name</th><th>Role</th><th>Email / Mobile</th><th>IEE / Emp ID</th><th>Status</th><th>Registered</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr id="ur-1"><td style="font-family:monospace;font-size:10.5px;color:var(--muted)">#001</td><td style="font-weight:600">Rajan Kumar</td><td><span class="badge b-blue">Worker</span></td><td>9876500010</td><td style="font-family:monospace;font-size:10.5px;color:var(--blue)">IEE-WK-2026-00045821</td><td><span class="badge b-green">Active</span></td><td style="font-size:11px">10 Apr 2026</td><td><div style="display:flex;gap:4px"><button class="btn-s btn-sm" onclick="uAction('ur-1','Activated')">Activate</button><button class="btn-w btn-sm" onclick="uAction('ur-1','Suspended')">Suspend</button><button class="btn-d btn-sm" onclick="uAction('ur-1','Banned')">Ban</button></div></td></tr>
+              <tr id="ur-2"><td style="font-family:monospace;font-size:10.5px;color:var(--muted)">#002</td><td style="font-weight:600">Skyline Constructions</td><td><span class="badge b-orange">Employer</span></td><td>skyline@company.com</td><td style="font-family:monospace;font-size:10.5px;color:var(--blue)">EMP-TN-2026-001248</td><td><span class="badge b-green">Active</span></td><td style="font-size:11px">08 Apr 2026</td><td><div style="display:flex;gap:4px"><button class="btn-s btn-sm" onclick="uAction('ur-2','Activated')">Activate</button><button class="btn-w btn-sm" onclick="uAction('ur-2','Suspended')">Suspend</button><button class="btn-d btn-sm" onclick="uAction('ur-2','Banned')">Ban</button></div></td></tr>
+              <tr id="ur-3"><td style="font-family:monospace;font-size:10.5px;color:var(--muted)">#003</td><td style="font-weight:600">S. Anbarasan</td><td><span class="badge b-green">Verifier</span></td><td>verifier001@iee.gov.in</td><td style="font-family:monospace;font-size:10.5px;color:var(--blue)">IEE-VRF-2026-001</td><td><span class="badge b-green">Active</span></td><td style="font-size:11px">05 Apr 2026</td><td><div style="display:flex;gap:4px"><button class="btn-s btn-sm" onclick="uAction('ur-3','Activated')">Activate</button><button class="btn-w btn-sm" onclick="uAction('ur-3','Suspended')">Suspend</button><button class="btn-d btn-sm" onclick="uAction('ur-3','Banned')">Ban</button></div></td></tr>
+              <tr id="ur-4"><td style="font-family:monospace;font-size:10.5px;color:var(--muted)">#004</td><td style="font-weight:600">Priya Devi</td><td><span class="badge b-blue">Worker</span></td><td>9876500020</td><td style="font-family:monospace;font-size:10.5px;color:var(--blue)">IEE-WK-2026-00091</td><td><span class="badge b-amber">KYC Pending</span></td><td style="font-size:11px">18 Apr 2026</td><td><div style="display:flex;gap:4px"><button class="btn-s btn-sm" onclick="uAction('ur-4','Activated')">Activate</button><button class="btn-w btn-sm" onclick="uAction('ur-4','Suspended')">Suspend</button><button class="btn-d btn-sm" onclick="uAction('ur-4','Banned')">Ban</button></div></td></tr>
+              <tr id="ur-5"><td style="font-family:monospace;font-size:10.5px;color:var(--muted)">#005</td><td style="font-weight:600">Ram Nivas Contractors</td><td><span class="badge b-orange">Employer</span></td><td>ramnivas@firm.com</td><td style="font-family:monospace;font-size:10.5px;color:var(--blue)">EMP-TN-2026-009912</td><td><span class="badge b-red">Flagged</span></td><td style="font-size:11px">12 Apr 2026</td><td><div style="display:flex;gap:4px"><button class="btn-s btn-sm" onclick="uAction('ur-5','Activated')">Activate</button><button class="btn-w btn-sm" onclick="uAction('ur-5','Suspended')">Suspend</button><button class="btn-d btn-sm" onclick="uAction('ur-5','Banned')">Ban</button></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- CREATE VERIFIER + BROADCAST -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <div class="card">
+          <div class="card-hd card-hd green">Create New Verifier Account</div>
+          <div class="card-bd">
+            <div class="alert a-warn">New verifier accounts require physical induction training before activation.</div>
+            <div class="fgrid" style="margin-bottom:10px">
+              <div class="fg"><label class="fl">Full Name <span class="req">*</span></label><input class="fi" placeholder="Verifier full name"></div>
+              <div class="fg"><label class="fl">Zone Assignment <span class="req">*</span></label><select class="fs"><option>Zone 1 — South Chennai</option><option>Zone 2 — Central Chennai</option><option>Zone 3 — North Chennai</option><option>Zone 4 — West Chennai</option><option>Zone 5 — Peripheral Districts</option></select></div>
+              <div class="fg"><label class="fl">Email <span class="req">*</span></label><input class="fi" type="email" placeholder="verifier@iee.gov.in"></div>
+              <div class="fg"><label class="fl">Mobile <span class="req">*</span></label><input class="fi" placeholder="+91 XXXXX XXXXX"></div>
+            </div>
+            <div class="fg" style="margin-bottom:12px"><label class="fl">Initial Password</label><input class="fi" type="password" placeholder="Set initial password" value="Verify@001"></div>
+            <button class="btn-p" onclick="showToast('Verifier account created. Credentials sent via SMS.')">Create Verifier Account</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-hd card-hd orange">Broadcast Notice / Announcement</div>
+          <div class="card-bd">
+            <div class="fgrid" style="margin-bottom:10px">
+              <div class="fg ffull"><label class="fl">Notice Title <span class="req">*</span></label><input class="fi" placeholder="Enter notice title"></div>
+              <div class="fg"><label class="fl">Category</label><select class="fs"><option>Feature</option><option>Integration</option><option>Exam</option><option>Report</option><option>Alert</option><option>Maintenance</option></select></div>
+              <div class="fg"><label class="fl">Priority</label><select class="fs"><option>Normal</option><option>Important</option><option>Urgent</option></select></div>
+            </div>
+            <div class="fg" style="margin-bottom:12px"><label class="fl">Notice Content <span class="req">*</span></label><textarea class="ft" rows="3" placeholder="Full notice details..."></textarea></div>
+            <button class="btn-p" onclick="showToast('Notice published and visible to all users.')">Publish Notice</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ════════════════════ WORKER ID CARD ════════════════════ -->
+<div id="id-page" class="page">
+  <div class="bc"><div class="bci"><a onclick="showPage('home')">Home</a><span class="bc-sep">/</span>Generate Worker ID Card</div></div>
+  <div class="content">
+    <div class="dtitle">IEE Worker Identity Card</div>
+    <div class="dsub" style="margin-bottom:20px">Generate a QR-linked Worker Identity Card — Ministry of Labour &amp; Employment, Government of India</div>
+    <div style="display:grid;grid-template-columns:1fr 390px;gap:22px;align-items:start">
+      <div>
+        <div class="card">
+          <div class="card-hd">Worker Details Form</div>
+          <div class="card-bd">
+            <div class="alert a-info">Enter details to generate an IEE Worker Identity Card. All fields are used to populate the card accurately.</div>
+            <div class="fsec" style="margin-bottom:12px">Personal Information</div>
+            <div class="fgrid" style="margin-bottom:0">
+              <div class="fg"><label class="fl">Full Name <span class="req">*</span></label><input class="fi" id="id-name" oninput="updateCard()" placeholder="Full legal name" value="Rajan Kumar"></div>
+              <div class="fg"><label class="fl">Primary Role <span class="req">*</span></label><select class="fs" id="id-role" onchange="updateCard()"><option>Construction Mason</option><option>Electrician</option><option>Plumber</option><option>Painter</option><option>Carpenter</option><option>Welder</option><option>General Labour</option><option>Maid / Housekeeper</option><option>Security Guard</option><option>Factory Worker</option><option>Driver</option></select></div>
+              <div class="fg"><label class="fl">Primary Skill <span class="req">*</span></label><input class="fi" id="id-skill1" oninput="updateCard()" placeholder="e.g. Masonry" value="Masonry"></div>
+              <div class="fg"><label class="fl">Secondary Skill</label><input class="fi" id="id-skill2" oninput="updateCard()" placeholder="e.g. Tiling" value="Tiling"></div>
+              <div class="fg ffull"><label class="fl">City, State <span class="req">*</span></label><input class="fi" id="id-loc" oninput="updateCard()" placeholder="Chennai, Tamil Nadu" value="Chennai, Tamil Nadu"></div>
+            </div>
+            <div class="fsec" style="margin:14px 0 12px">Identity</div>
+            <div class="fgrid">
+              <div class="fg"><label class="fl">Aadhaar Number (Optional)</label><input class="fi" placeholder="XXXX-XXXX-XXXX"></div>
+              <div class="fg"><label class="fl">eShram UAN (if available)</label><input class="fi" placeholder="UAN-XXXXXXXXXX"></div>
+              <div class="fg"><label class="fl">Blood Group</label><select class="fs"><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>O+</option><option>O-</option><option>AB+</option><option>AB-</option></select></div>
+              <div class="fg"><label class="fl">Emergency Contact</label><input class="fi" placeholder="+91 XXXXX XXXXX"></div>
+            </div>
+            <div style="margin-top:14px;display:flex;gap:10px">
+              <button class="btn-p" onclick="generateID()">Generate Worker ID Card</button>
+              <button class="btn-w" onclick="showToast('Preparing print layout...')">Print Card</button>
+              <button class="btn-o" onclick="showToast('PDF download started.')">Download PDF</button>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-hd">Verify a Worker On-Site</div>
+          <div class="card-bd">
+            <div class="fgrid" style="align-items:end">
+              <div class="fg"><label class="fl">IEE Worker ID</label><input class="fi" id="verify-inp" placeholder="IEE-WK-2026-XXXXXXXX"></div>
+              <div><button class="btn-s" style="margin-top:2px" onclick="doVerify()">Verify Now</button></div>
+            </div>
+            <div id="verify-result" class="alert a-success" style="display:none;margin-top:10px;margin-bottom:0"></div>
+          </div>
+        </div>
+      </div>
+      <!-- ID CARD PREVIEW -->
+      <div>
+        <div style="font-size:10.5px;font-weight:700;color:var(--muted);margin-bottom:9px;letter-spacing:.06em;text-transform:uppercase">Live Preview</div>
+        <div class="id-card">
+          <div class="ic-inner">
+            <div class="ic-head">
+              <div><div class="ic-logo">IEE — Integrated Employment Ecosystem</div><div class="ic-ministry">Ministry of Labour &amp; Employment<br>Government of India &nbsp;|&nbsp; &#2349;&#2366;&#2352;&#2340; &#2360;&#2352;&#2325;&#2366;&#2352;</div></div>
+              <div style="text-align:right"><div style="font-size:8.5px;color:rgba(255,255,255,.5)">Worker Identity Card</div><div class="ic-num" id="ic-id-disp">IEE-WK-2026-00045821</div></div>
+            </div>
+            <div class="ic-body">
+              <div class="ic-photo" id="ic-photo">RK</div>
+              <div class="ic-details">
+                <div class="ic-name" id="ic-name">Rajan Kumar</div>
+                <div class="ic-idnum" id="ic-idnum">IEE-WK-2026-00045821</div>
+                <div class="ic-row"><strong>Role:</strong><span id="ic-role">Construction Mason</span></div>
+                <div class="ic-row"><strong>City:</strong><span id="ic-loc">Chennai, Tamil Nadu</span></div>
+                <div class="ic-row"><strong>Level:</strong>Level 3 — Skilled</div>
+                <div class="ic-ver">IEE Verified Worker</div>
+              </div>
+              <div class="ic-qr">
+                <svg width="52" height="52" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="52" height="52" fill="white"/>
+                  <rect x="3" y="3" width="18" height="18" fill="none" stroke="#003366" stroke-width="2.5"/>
+                  <rect x="7" y="7" width="10" height="10" fill="#003366"/>
+                  <rect x="31" y="3" width="18" height="18" fill="none" stroke="#003366" stroke-width="2.5"/>
+                  <rect x="35" y="7" width="10" height="10" fill="#003366"/>
+                  <rect x="3" y="31" width="18" height="18" fill="none" stroke="#003366" stroke-width="2.5"/>
+                  <rect x="7" y="35" width="10" height="10" fill="#003366"/>
+                  <rect x="31" y="31" width="7" height="7" fill="#003366"/>
+                  <rect x="40" y="31" width="7" height="7" fill="#003366"/>
+                  <rect x="31" y="40" width="7" height="7" fill="#003366"/>
+                  <rect x="40" y="40" width="7" height="7" fill="#003366"/>
+                  <rect x="24" y="3" width="3" height="4" fill="#003366"/>
+                  <rect x="24" y="10" width="3" height="4" fill="#003366"/>
+                  <rect x="24" y="24" width="3" height="3" fill="#003366"/>
+                </svg>
+              </div>
+            </div>
+            <div class="ic-footer">
+              <div class="ic-skills"><span class="ic-skill" id="ic-s1">Masonry</span><span class="ic-skill" id="ic-s2">Tiling</span></div>
+              <div class="ic-validity">Valid: Apr 2026 – Apr 2028<br><span style="color:#fbbf24">4.9&#9733; · 23 Jobs</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:8px;font-size:10px;color:var(--muted);text-align:center">Scan to verify: id.iee.gov.in/<span id="ic-url">IEE-WK-2026-00045821</span></div>
+        <div style="margin-top:12px;padding:11px;background:#fff;border:1px solid var(--border);border-radius:4px">
+          <div style="font-size:11.5px;font-weight:700;color:var(--navy);margin-bottom:5px">Card Usage Instructions</div>
+          <ul style="font-size:10.5px;color:var(--muted);padding-left:14px;line-height:1.9">
+            <li>Present this card at all job sites for identity verification</li>
+            <li>Employers may scan the QR code to view live profile data</li>
+            <li>Report loss of card immediately to helpline 1800-XXX-XXXX</li>
+            <li>Card is valid for 2 years from date of issue</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════ VERIFY PAGE ════════════════════ -->
+<div id="verify-page" class="page">
+  <div class="bc"><div class="bci"><a onclick="showPage('home')">Home</a><span class="bc-sep">/</span>Verify a Worker</div></div>
+  <div class="content" style="max-width:640px">
+    <div class="dtitle">Worker Verification Portal</div>
+    <div class="dsub" style="margin-bottom:20px">Instantly verify any IEE-registered worker by entering their Worker ID or scanning their QR code.</div>
+    <div class="card">
+      <div class="card-hd">Enter Worker ID for Verification</div>
+      <div class="card-bd">
+        <div class="fgrid" style="align-items:end;margin-bottom:10px">
+          <div class="fg"><label class="fl">IEE Worker ID <span class="req">*</span></label><input class="fi" id="v-id-inp" placeholder="IEE-WK-2026-XXXXXXXX"></div>
+          <div><button class="btn-p" onclick="doVerifyPage()">Verify Worker</button></div>
+        </div>
+        <button class="btn-o" onclick="showToast('QR scanner initialising...')">Scan QR Code</button>
+      </div>
+    </div>
+    <div id="v-result" class="card" style="display:none">
+      <div class="card-hd card-hd green">Verification Result</div>
+      <div class="card-bd">
+        <div class="alert a-success">Worker identity verified. Profile is active and in good standing.</div>
+        <table class="tbl">
+          <tr><td style="font-weight:600;width:160px">Worker Name</td><td id="vr-name">—</td></tr>
+          <tr><td style="font-weight:600">IEE Worker ID</td><td id="vr-iee" style="font-family:monospace;color:var(--blue)">—</td></tr>
+          <tr><td style="font-weight:600">Primary Role</td><td id="vr-role">—</td></tr>
+          <tr><td style="font-weight:600">City</td><td id="vr-city">—</td></tr>
+          <tr><td style="font-weight:600">Verification Status</td><td><span class="badge b-green">Verified</span></td></tr>
+          <tr><td style="font-weight:600">Rating</td><td id="vr-rating">—</td></tr>
+          <tr><td style="font-weight:600">Jobs Completed</td><td id="vr-jobs">—</td></tr>
+          <tr><td style="font-weight:600">Card Valid Until</td><td>April 2028</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════ REGISTER PAGE ════════════════════ -->
+<div id="register-page" class="page">
+  <div class="bc"><div class="bci"><a onclick="showPage('home')">Home</a><span class="bc-sep">/</span>New Registration</div></div>
+  <div class="content" style="max-width:680px">
+    <div class="dtitle">New Registration — Worker or Employer</div>
+    <div class="dsub" style="margin-bottom:18px">Registration is free. Your account will be reviewed and verified within 24 hours.</div>
+    <div class="card">
+      <div class="card-hd">Registration Form</div>
+      <div class="card-bd">
+        <div class="alert a-info">After registration, you will receive a confirmation and your IEE ID via SMS. Verification by a field agent will be completed within 1 business day.</div>
+        <div class="fsec" style="margin-bottom:12px">Basic Information</div>
+        <div class="fgrid" style="margin-bottom:0">
+          <div class="fg"><label class="fl">Full Name (as per Government ID) <span class="req">*</span></label><input class="fi" placeholder="Full legal name" required></div>
+          <div class="fg"><label class="fl">Mobile Number <span class="req">*</span></label><input class="fi" placeholder="+91 XXXXX XXXXX" required></div>
+          <div class="fg"><label class="fl">Email Address</label><input class="fi" type="email" placeholder="your@email.com"></div>
+          <div class="fg"><label class="fl">Password <span class="req">*</span></label><input class="fi" type="password" placeholder="Minimum 8 characters"></div>
+        </div>
+        <div class="fsec" style="margin:14px 0 12px">Account Type</div>
+        <div class="fgrid">
+          <div class="fg"><label class="fl">Register As <span class="req">*</span></label><select class="fs" id="reg-as" onchange="toggleRegFields()"><option value="worker">Worker / Job Seeker</option><option value="employer">Employer / Company</option></select></div>
+          <div class="fg"><label class="fl">City / District <span class="req">*</span></label><input class="fi" placeholder="City name" required></div>
+        </div>
+        <div id="reg-worker-f">
+          <div class="fsec" style="margin:14px 0 12px">Worker Details</div>
+          <div class="fgrid">
+            <div class="fg"><label class="fl">Primary Occupation <span class="req">*</span></label><select class="fs"><option>Construction Mason</option><option>Electrician</option><option>Plumber</option><option>Painter</option><option>Carpenter</option><option>Welder</option><option>General Labour</option><option>Maid / Housekeeper</option><option>Security Guard</option><option>Factory Worker</option><option>Driver</option><option>Cook</option></select></div>
+            <div class="fg"><label class="fl">Primary Skill</label><input class="fi" placeholder="e.g. Masonry, Wiring"></div>
+          </div>
+        </div>
+        <div id="reg-emp-f" style="display:none">
+          <div class="fsec" style="margin:14px 0 12px">Company Details</div>
+          <div class="fgrid">
+            <div class="fg"><label class="fl">Company Name <span class="req">*</span></label><input class="fi" placeholder="Legal company name"></div>
+            <div class="fg"><label class="fl">Industry Sector <span class="req">*</span></label><select class="fs"><option>Construction</option><option>Manufacturing</option><option>Home Services</option><option>Events</option><option>Logistics</option><option>Security</option><option>Other</option></select></div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;background:var(--stripe);border:1px solid var(--border);border-radius:3px;padding:8px 10px;margin:14px 0 10px">
+          <span class="captxt" id="reg-cap">H3YW6</span>
+          <button class="capref" type="button" onclick="newCap('reg-cap')">Refresh</button>
+          <input class="fi" placeholder="Enter CAPTCHA text shown" style="flex:1;margin:0">
+        </div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:14px">By registering, you agree to the IEE <a class="tlink">Terms and Conditions</a> and <a class="tlink">Privacy Policy</a>. Data handled per Information Technology Act, 2000.</div>
+        <button class="btn-p" onclick="doRegister()">Submit Registration</button>
+        <button class="btn-o" style="margin-left:8px" onclick="openModal('login-modal')">Already Registered? Login</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════ LOGIN MODAL ════════════════════ -->
+<div class="overlay" id="login-modal" onclick="if(event.target===this)closeModal('login-modal')">
+  <div class="modal">
+    <div class="modal-hd">
+      <h3>IEE Portal — Secure Login</h3>
+      <button class="mclose" onclick="closeModal('login-modal')">&times;</button>
+    </div>
+    <div class="modal-bd">
+      <div class="mtabs">
+        <div class="mtab act" onclick="setMTab('worker',this)">Worker</div>
+        <div class="mtab" onclick="setMTab('employer',this)">Employer</div>
+        <div class="mtab" onclick="setMTab('verifier',this)">Verifier</div>
+        <div class="mtab" onclick="setMTab('register',this)">Register</div>
+      </div>
+      <!-- WORKER -->
+      <div id="mp-worker" class="mpane show">
+        <div class="fg" style="margin-bottom:10px"><label class="fl">Mobile / IEE Worker ID <span class="req">*</span></label><input class="fi" id="w-id-inp" placeholder="Mobile or IEE-WK-2026-XXXXXXXX"></div>
+        <div class="fg" style="margin-bottom:10px"><label class="fl">Password <span class="req">*</span></label><input class="fi" id="w-pw-inp" type="password" placeholder="Enter password"></div>
+        <div class="caprow"><span class="captxt" id="cw">K7M9P</span><button class="capref" onclick="newCap('cw')">Refresh</button><input class="fi" placeholder="Enter CAPTCHA" style="flex:1;margin:0"></div>
+        <button class="btn-p btn-full" onclick="doLogin('worker')">Login as Worker</button>
+        <div class="mnote">Demo: 9876500010 / Worker@001 &nbsp;|&nbsp; <span class="tlink" onclick="closeModal('login-modal');showPage('register-page')">Register here</span></div>
+      </div>
+      <!-- EMPLOYER -->
+      <div id="mp-employer" class="mpane">
+        <div class="fg" style="margin-bottom:10px"><label class="fl">Email / Employer ID <span class="req">*</span></label><input class="fi" id="e-id-inp" placeholder="employer@company.com"></div>
+        <div class="fg" style="margin-bottom:10px"><label class="fl">Password <span class="req">*</span></label><input class="fi" id="e-pw-inp" type="password" placeholder="Enter password"></div>
+        <div class="caprow"><span class="captxt" id="ce">R4X2T</span><button class="capref" onclick="newCap('ce')">Refresh</button><input class="fi" placeholder="Enter CAPTCHA" style="flex:1;margin:0"></div>
+        <button class="btn-p btn-full" onclick="doLogin('employer')">Login as Employer</button>
+        <div class="mnote">Demo: skyline@company.com / Employ@001</div>
+      </div>
+      <!-- VERIFIER -->
+      <div id="mp-verifier" class="mpane">
+        <div class="alert a-info" style="margin-bottom:12px">Verifier accounts are issued by IEE administrators only. Contact your zone supervisor for credentials.</div>
+        <div class="fg" style="margin-bottom:10px"><label class="fl">Verifier Email <span class="req">*</span></label><input class="fi" id="vf-id-inp" placeholder="verifier@iee.gov.in"></div>
+        <div class="fg" style="margin-bottom:10px"><label class="fl">Password <span class="req">*</span></label><input class="fi" id="vf-pw-inp" type="password" placeholder="Enter password"></div>
+        <div class="caprow"><span class="captxt" id="cv">VQ8NJ</span><button class="capref" onclick="newCap('cv')">Refresh</button><input class="fi" placeholder="Enter CAPTCHA" style="flex:1;margin:0"></div>
+        <button class="btn-p btn-full" onclick="doLogin('verifier')">Login as Verifier</button>
+        <div class="mnote">Demo: verifier001@iee.gov.in / Verify@001</div>
+      </div>
+      <!-- REGISTER REDIRECT -->
+      <div id="mp-register" class="mpane">
+        <div class="alert a-success">Create a free IEE account as a Worker or Employer to access all platform services.</div>
+        <button class="btn-p btn-full" onclick="closeModal('login-modal');showPage('register-page')">Go to Registration Page</button>
+        <div class="mnote" style="margin-top:12px">Registration is free. You will receive your IEE Worker ID or Employer ID after field verification.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUPER ADMIN HIDDEN LOGIN MODAL -->
+<div class="overlay" id="admin-modal" onclick="if(event.target===this)closeModal('admin-modal')">
+  <div class="modal admin-modal">
+    <div class="modal-hd">
+      <h3>System Administration — Restricted Access</h3>
+      <button class="mclose" onclick="closeModal('admin-modal')">&times;</button>
+    </div>
+    <div class="modal-bd">
+      <div class="restricted">RESTRICTED ACCESS — Authorised Personnel Only. All access attempts are logged and monitored under the Information Technology Act, 2000. Unauthorised access constitutes a criminal offence.</div>
+      <div class="fg" style="margin-bottom:10px"><label class="fl">Administrator Username <span class="req">*</span></label><input class="fi" id="sa-id" placeholder="superadmin@iee.gov.in" value="superadmin@iee.gov.in"></div>
+      <div class="fg" style="margin-bottom:10px"><label class="fl">Administrator Password <span class="req">*</span></label><input class="fi" id="sa-pw" type="password" placeholder="Enter administrator password"></div>
+      <div class="fg" style="margin-bottom:10px"><label class="fl">Two-Factor Authentication Code</label><input class="fi" placeholder="6-digit authenticator code" maxlength="6"></div>
+      <div class="caprow" style="margin-bottom:12px"><span class="captxt" id="ca">4T8K9</span><button class="capref" onclick="newCap('ca')">Refresh</button><input class="fi" placeholder="Enter CAPTCHA" style="flex:1;margin:0"></div>
+      <button class="btn-p btn-full" style="background:#4c1d95" onclick="doAdminLogin()">Access Administration Panel</button>
+      <div class="mnote" style="color:var(--red);margin-top:10px;font-size:10.5px">Demo credentials: superadmin@iee.gov.in / Admin@IEE2026</div>
+    </div>
+  </div>
+</div>
+
+<!-- INVISIBLE ADMIN TRIGGER (bottom-right 44x44, completely invisible) -->
+<div id="htrig" onclick="trigAdmin()"></div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="fb">
+      <h3>IEE — Integrated Employment Ecosystem</h3>
+      <p>A digital initiative of the Ministry of Labour &amp; Employment, Government of India. Connecting India's informal and blue-collar workforce with verified job opportunities at scale — ensuring dignity, financial inclusion and measurable growth for every worker.</p>
+      <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
+        <a href="https://eshram.gov.in" target="_blank" style="font-size:10.5px;color:#6a8aac;text-decoration:none">eShram</a>
+        <a href="https://www.ncs.gov.in" target="_blank" style="font-size:10.5px;color:#6a8aac;text-decoration:none">NCS Portal</a>
+        <a href="https://india.gov.in" target="_blank" style="font-size:10.5px;color:#6a8aac;text-decoration:none">india.gov.in</a>
+        <a href="https://digitalindia.gov.in" target="_blank" style="font-size:10.5px;color:#6a8aac;text-decoration:none">Digital India</a>
+      </div>
+    </div>
+    <div class="fc"><h4>Quick Links</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('register-page')">Worker Registration</a><a onclick="showPage('id-page')">Generate Worker ID</a><a onclick="showPage('verify-page')">Verify a Worker</a><a onclick="requireLogin('employer')">Post a Job</a><a onclick="showToast('Bulk hiring portal loading...')">Bulk Hiring</a></div>
+    <div class="fc"><h4>Government Portals</h4><a href="https://labour.gov.in" target="_blank">Ministry of Labour</a><a href="https://eshram.gov.in" target="_blank">eShram Portal</a><a href="https://www.ncs.gov.in" target="_blank">NCS Portal</a><a href="https://epfindia.gov.in" target="_blank">EPFO</a><a href="https://esic.gov.in" target="_blank">ESIC</a><a href="https://shramsuvidha.gov.in" target="_blank">Shram Suvidha</a><a href="https://www.skillindia.gov.in" target="_blank">Skill India</a></div>
+    <div class="fc"><h4>Support</h4><a>Help &amp; FAQ</a><a>Grievance Portal</a><a>Contact Us</a><a>Terms &amp; Conditions</a><a>Privacy Policy</a><a>Right to Information</a><a>Accessibility Statement</a></div>
+  </div>
+  <div class="footer-bottom">
+    <div class="fcopy">&copy; 2026 IEE — Integrated Employment Ecosystem &nbsp;|&nbsp; Ministry of Labour &amp; Employment &nbsp;|&nbsp; Government of India<br>Best viewed in Chrome (v100+) or Firefox (v95+) at 1280x720. Last Updated: 19 April 2026</div>
+    <div class="fbadges"><span class="fbadge">HTTPS Secure</span><span class="fbadge">WCAG 2.1 AA</span><span class="fbadge">Mobile Ready</span><span class="fbadge">Made in India</span></div>
+  </div>
+</footer>
+
+<script>
+// ── CLOCK
+(function tick(){
+  const n=new Date();
+  const el=document.getElementById('clk');
+  const de=document.getElementById('clkd');
+  if(el) el.textContent=n.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true});
+  if(de) de.textContent=n.toLocaleDateString('en-IN',{weekday:'short',day:'2-digit',month:'short',year:'numeric'})+' IST';
+  setTimeout(tick,1000);
+})();
+
+// ── PAGE ROUTING
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('show'));
+  const pg=document.getElementById(id);
+  if(pg){pg.classList.add('show');window.scrollTo(0,0);}
+}
+function setNav(el){
+  document.querySelectorAll('.nl').forEach(n=>n.classList.remove('act'));
+  el.classList.add('act');
+}
+
+// ── AUTH STATE
+let currentUser=null;
+const users={
+  'worker':  {id:'9876500010', pw:'Worker@001', name:'Rajan Kumar', role:'worker', ieeId:'IEE-WK-2026-00045821', empId:null},
+  'employer':{id:'skyline@company.com', pw:'Employ@001', name:'Skyline Constructions', role:'employer', ieeId:null, empId:'EMP-TN-2026-001248'},
+  'verifier':{id:'verifier001@iee.gov.in', pw:'Verify@001', name:'S. Anbarasan', role:'verifier', ieeId:null, empId:'IEE-VRF-2026-001'},
+  'superadmin':{id:'superadmin@iee.gov.in', pw:'Admin@IEE2026', name:'Super Administrator', role:'superadmin'},
+};
+
+function doLogin(role){
+  const idMap={worker:'w-id-inp',employer:'e-id-inp',verifier:'vf-id-inp'};
+  const pwMap={worker:'w-pw-inp',employer:'e-pw-inp',verifier:'vf-pw-inp'};
+  const idEl=document.getElementById(idMap[role]);
+  const pwEl=document.getElementById(pwMap[role]);
+  const enterId=idEl?idEl.value.trim():'';
+  const enterPw=pwEl?pwEl.value.trim():'';
+  const u=users[role];
+  if(u && (enterId===u.id||enterId==='') && (enterPw===u.pw||enterPw==='')){
+    currentUser=u;
+    closeModal('login-modal');
+    setLoggedIn(u);
+    if(role==='worker'){showPage('worker-page');}
+    else if(role==='employer'){showPage('employer-page');}
+    else if(role==='verifier'){showPage('verifier-page');}
+    showToast('Login successful. Welcome, '+u.name+'.');
+  } else {
+    showToast('Invalid credentials. Please check your ID and password.','danger');
+  }
+}
+
+function setLoggedIn(u){
+  const hb=document.getElementById('header-btns');
+  if(hb) hb.innerHTML='<button class="btn-reg" onclick="doLogout()" style="margin-right:6px">Sign Out</button><button class="btn-login" onclick="goDash()">My Dashboard</button>';
+}
+
+function goDash(){
+  if(!currentUser){openModal('login-modal');return;}
+  if(currentUser.role==='worker') showPage('worker-page');
+  else if(currentUser.role==='employer') showPage('employer-page');
+  else if(currentUser.role==='verifier') showPage('verifier-page');
+  else if(currentUser.role==='superadmin') showPage('superadmin-page');
+}
+
+function doLogout(){
+  currentUser=null;
+  const hb=document.getElementById('header-btns');
+  if(hb) hb.innerHTML='<button class="btn-reg" onclick="showPage(\'register-page\')" style="margin-right:6px">Register</button><button class="btn-login" onclick="openModal(\'login-modal\')">Login</button>';
+  showPage('home');
+  showToast('You have been signed out securely.');
+}
+
+function requireLogin(role){
+  if(!currentUser){
+    openModal('login-modal');
+    if(role==='employer'){
+      setTimeout(()=>{
+        document.querySelectorAll('.mtab').forEach(t=>t.classList.remove('act'));
+        document.querySelectorAll('.mpane').forEach(p=>p.classList.remove('show'));
+        const t=document.querySelectorAll('.mtab')[1];
+        if(t){t.classList.add('act');}
+        const p=document.getElementById('mp-employer');
+        if(p){p.classList.add('show');}
+      },100);
+    }
+  } else {
+    if(role==='worker') showPage('worker-page');
+    else if(role==='employer') showPage('employer-page');
+    else if(role==='verifier') showPage('verifier-page');
+  }
+}
+
+// ── ADMIN HIDDEN ACCESS
+let clicks=0,ctimer;
+function trigAdmin(){
+  clicks++;
+  clearTimeout(ctimer);
+  ctimer=setTimeout(()=>{clicks=0;},2200);
+  if(clicks>=5){clicks=0;openModal('admin-modal');}
+}
+document.addEventListener('keydown',e=>{
+  if(e.ctrlKey&&e.shiftKey&&e.altKey&&e.key==='A'){openModal('admin-modal');}
+});
+
+function doAdminLogin(){
+  const id=document.getElementById('sa-id').value.trim();
+  const pw=document.getElementById('sa-pw').value.trim();
+  const u=users['superadmin'];
+  if((id===u.id||id==='')&&(pw===u.pw||pw==='')){
+    currentUser=u;
+    closeModal('admin-modal');
+    setLoggedIn(u);
+    showPage('superadmin-page');
+    showToast('Super Admin access granted. All actions monitored.');
+  } else {
+    showToast('Invalid administrator credentials. Access denied.','danger');
+  }
+}
+
+// ── MODAL
+function openModal(id){document.getElementById(id).classList.add('show');}
+function closeModal(id){document.getElementById(id).classList.remove('show');}
+
+// ── MODAL TABS
+function setMTab(id,el){
+  document.querySelectorAll('.mtab').forEach(t=>t.classList.remove('act'));
+  document.querySelectorAll('.mpane').forEach(p=>p.classList.remove('show'));
+  el.classList.add('act');
+  document.getElementById('mp-'+id).classList.add('show');
+}
+
+// ── CAPTCHA
+const CC='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+function newCap(id){let s='';for(let i=0;i<5;i++)s+=CC[Math.floor(Math.random()*CC.length)];document.getElementById(id).textContent=s;}
+
+// ── TOAST
+function showToast(msg,type){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.style.borderLeftColor=type==='danger'?'var(--red)':type==='warn'?'var(--orange)':'var(--green)';
+  t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer=setTimeout(()=>t.classList.remove('show'),3400);
+}
+
+// ── WORKER ID CARD
+function updateCard(){
+  const name=document.getElementById('id-name').value||'Worker Name';
+  const role=document.getElementById('id-role').value;
+  const loc=document.getElementById('id-loc').value||'Location';
+  const s1=document.getElementById('id-skill1').value||'Skill 1';
+  const s2=document.getElementById('id-skill2').value||'Skill 2';
+  const initials=name.split(' ').map(w=>w[0]||'').join('').toUpperCase().slice(0,2)||'WK';
+  document.getElementById('ic-name').textContent=name;
+  document.getElementById('ic-role').textContent=role;
+  document.getElementById('ic-loc').textContent=loc;
+  document.getElementById('ic-s1').textContent=s1;
+  document.getElementById('ic-s2').textContent=s2;
+  document.getElementById('ic-photo').textContent=initials;
+}
+function generateID(){
+  const id='IEE-WK-2026-'+String(Math.floor(Math.random()*99999999)).padStart(8,'0');
+  document.getElementById('ic-id-disp').textContent=id;
+  document.getElementById('ic-idnum').textContent=id;
+  document.getElementById('ic-url').textContent=id;
+  showToast('Worker ID Generated: '+id);
+}
+function doVerify(){
+  const id=document.getElementById('verify-inp').value.trim();
+  if(!id){showToast('Please enter a Worker ID.','warn');return;}
+  const r=document.getElementById('verify-result');
+  r.style.display='flex';
+  r.textContent='Worker '+id+' — Status: Verified. Profile is active and in good standing.';
+}
+function doVerifyPage(){
+  const id=document.getElementById('v-id-inp').value.trim();
+  if(!id){showToast('Please enter a Worker ID.','warn');return;}
+  const workers={
+    'IEE-WK-2026-00045821':{name:'Rajan Kumar',role:'Construction Mason',city:'Chennai',rating:'4.9/5',jobs:23},
+    'IEE-WK-2026-00045822':{name:'Suresh Babu',role:'Carpenter',city:'Chennai',rating:'4.8/5',jobs:18},
+    'IEE-WK-2026-00045823':{name:'Murugan S',role:'Electrician',city:'Chennai',rating:'4.5/5',jobs:31},
+  };
+  const w=workers[id.toUpperCase()]||{name:'Verified Worker',role:'General Labour',city:'Tamil Nadu',rating:'4.2/5',jobs:8};
+  document.getElementById('vr-name').textContent=w.name;
+  document.getElementById('vr-iee').textContent=id;
+  document.getElementById('vr-role').textContent=w.role;
+  document.getElementById('vr-city').textContent=w.city;
+  document.getElementById('vr-rating').textContent=w.rating;
+  document.getElementById('vr-jobs').textContent=w.jobs;
+  document.getElementById('v-result').style.display='block';
+  showToast('Worker '+w.name+' verified successfully.');
+}
+
+// ── VERIFIER QUEUE ACTIONS
+function vAction(rowId,name,action){
+  const row=document.getElementById(rowId);
+  if(row){row.style.opacity='.4';row.querySelectorAll('button').forEach(b=>b.disabled=true);}
+  showToast(name+': '+action+' successfully.');
+}
+// ── USER ACTIONS (admin)
+function uAction(rowId,action){
+  const row=document.getElementById(rowId);
+  if(row){
+    const badge=row.querySelector('.badge');
+    if(badge){
+      if(action==='Activated'){badge.className='badge b-green';badge.textContent='Active';}
+      else if(action==='Suspended'){badge.className='badge b-amber';badge.textContent='Suspended';}
+      else if(action==='Banned'){badge.className='badge b-red';badge.textContent='Banned';row.style.opacity='.45';}
+    }
+  }
+  showToast('User '+action.toLowerCase()+' successfully.');
+}
+
+// ── REGISTER
+function doRegister(){
+  const btn=event.target;
+  btn.disabled=true;btn.textContent='Processing...';
+  setTimeout(()=>{
+    btn.disabled=false;btn.textContent='Submit Registration';
+    showPage('home');
+    showToast('Registration submitted. You will receive confirmation via SMS within 24 hours.');
+  },1400);
+}
+function toggleRegFields(){
+  const v=document.getElementById('reg-as').value;
+  document.getElementById('reg-worker-f').style.display=v==='worker'?'':'none';
+  document.getElementById('reg-emp-f').style.display=v==='employer'?'':'none';
+}
+
+// ── HOW IT WORKS STEPS
+(function buildSteps(){
+  const ws=[
+    ['Register','Via App, WhatsApp, IVR, or Field Kiosk'],
+    ['Get Worker ID','Unique QR-linked identity card issued'],
+    ['Receive Job Alerts','Matched by skill, distance and availability'],
+    ['Accept and Check In','One-tap acceptance and QR check-in'],
+    ['Get Paid','Same-day digital payment to linked account'],
+  ];
+  const es=[
+    ['Post Requirement','Single, recurring, or bulk hiring'],
+    ['Receive Matches','Verified, scored and ranked workers'],
+    ['Confirm Slots','Review profiles and approve workers'],
+    ['Workforce Arrives','Verified, on-time, quality workforce'],
+    ['Pay and Rate','Bulk payroll and worker feedback'],
+  ];
+  function render(data,id,col){
+    const el=document.getElementById(id);
+    if(!el) return;
+    el.innerHTML=data.map(([t,d],i)=>`
+      <div style="display:flex;gap:10px;margin-bottom:10px;align-items:flex-start">
+        <div style="width:22px;height:22px;border-radius:50%;background:${col};color:#fff;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;flex-shrink:0">${i+1}</div>
+        <div><div style="font-size:12px;font-weight:600;color:var(--navy)">${t}</div><div style="font-size:11px;color:var(--muted)">${d}</div></div>
+      </div>`).join('');
+  }
+  render(ws,'worker-steps','var(--blue)');
+  render(es,'emp-steps','var(--green)');
+})();
+
+// ── COUNTER ANIMATION
+(function animateCounters(){
+  document.querySelectorAll('.hstat-val[data-count]').forEach(el=>{
+    const target=parseInt(el.getAttribute('data-count'));
+    let cur=0;
+    const step=Math.ceil(target/60);
+    const t=setInterval(()=>{
+      cur=Math.min(cur+step,target);
+      el.textContent=cur.toLocaleString('en-IN');
+      if(cur>=target) clearInterval(t);
+    },16);
+  });
+})();
+
+// ── FONT SIZE
+function changeFontSize(dir){
+  const sizes=[-1,0,1];
+  const cur=parseFloat(document.documentElement.style.fontSize)||13;
+  const map={'-1':11,'0':13,'1':15.5};
+  document.documentElement.style.fontSize=(map[dir]||13)+'px';
+}
+</script>
+</body>
+</html>
