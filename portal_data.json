@@ -1,0 +1,419 @@
+{
+  "meta": {
+    "next_worker_seq": 45824,
+    "next_employer_seq": 1249,
+    "next_verifier_seq": 2,
+    "next_job_seq": 5,
+    "next_bulk_seq": 1,
+    "next_notice_seq": 1,
+    "next_session_seq": 1
+  },
+  "users": [
+    {
+      "row_id": "ur-1",
+      "role": "worker",
+      "status": "Active",
+      "name": "Rajan Kumar",
+      "mobile": "9876500010",
+      "email": "",
+      "password": "Worker@001",
+      "login_id": "9876500010",
+      "iee_id": "IEE-WK-2026-00045821",
+      "occupation": "Construction Mason",
+      "city": "Chennai, Tamil Nadu",
+      "rating": "4.9/5",
+      "jobs_completed": 23,
+      "registered": "10 Apr 2026"
+    },
+    {
+      "row_id": "ur-2",
+      "role": "employer",
+      "status": "Active",
+      "name": "Skyline Constructions",
+      "mobile": "",
+      "email": "skyline@company.com",
+      "password": "Employ@001",
+      "login_id": "skyline@company.com",
+      "employer_id": "EMP-TN-2026-001248",
+      "sector": "Construction",
+      "city": "Chennai, Tamil Nadu",
+      "registered": "08 Apr 2026"
+    },
+    {
+      "row_id": "ur-3",
+      "role": "verifier",
+      "status": "Active",
+      "name": "S. Anbarasan",
+      "mobile": "+91 90210 45678",
+      "email": "verifier001@iee.gov.in",
+      "password": "Verify@001",
+      "login_id": "verifier001@iee.gov.in",
+      "verifier_id": "IEE-VRF-2026-001",
+      "zone": "Zone 3 - North Chennai",
+      "registered": "05 Apr 2026"
+    },
+    {
+      "row_id": "ur-4",
+      "role": "worker",
+      "status": "Active",
+      "name": "Priya Devi",
+      "mobile": "9876500020",
+      "email": "",
+      "password": "Worker@002",
+      "login_id": "9876500020",
+      "iee_id": "IEE-WK-2026-00091",
+      "occupation": "Maid / Housekeeper",
+      "city": "Chennai, Tamil Nadu",
+      "rating": "4.6/5",
+      "jobs_completed": 11,
+      "registered": "18 Apr 2026"
+    },
+    {
+      "row_id": "ur-5",
+      "role": "employer",
+      "status": "Flagged",
+      "name": "Ram Nivas Contractors",
+      "mobile": "",
+      "email": "ramnivas@firm.com",
+      "password": "Firm@001",
+      "login_id": "ramnivas@firm.com",
+      "employer_id": "EMP-TN-2026-009912",
+      "sector": "Construction",
+      "city": "Chennai, Tamil Nadu",
+      "registered": "12 Apr 2026"
+    },
+    {
+      "row_id": "ur-0",
+      "role": "superadmin",
+      "status": "Active",
+      "name": "Super Administrator",
+      "mobile": "",
+      "email": "superadmin@iee.gov.in",
+      "password": "Admin@IEE2026",
+      "login_id": "superadmin@iee.gov.in",
+      "registered": "01 Jan 2026"
+    }
+  ],
+  "workers": [
+    {
+      "name": "Rajan Kumar",
+      "iee_id": "IEE-WK-2026-00045821",
+      "mobile": "9876500010",
+      "occupation": "Construction Mason",
+      "city": "Chennai",
+      "rating": "4.9/5",
+      "jobs_completed": 23,
+      "status": "Verified",
+      "skills": [
+        "Masonry",
+        "Tiling"
+      ]
+    },
+    {
+      "name": "Suresh Babu",
+      "iee_id": "IEE-WK-2026-00045822",
+      "mobile": "9876500030",
+      "occupation": "Carpenter",
+      "city": "Chennai",
+      "rating": "4.8/5",
+      "jobs_completed": 18,
+      "status": "Verified",
+      "skills": [
+        "Woodwork",
+        "Framework"
+      ]
+    },
+    {
+      "name": "Murugan S",
+      "iee_id": "IEE-WK-2026-00045823",
+      "mobile": "9876500040",
+      "occupation": "Electrician",
+      "city": "Chennai",
+      "rating": "4.5/5",
+      "jobs_completed": 31,
+      "status": "Verified",
+      "skills": [
+        "Wiring",
+        "Safety"
+      ]
+    },
+    {
+      "name": "Vijay R",
+      "iee_id": "IEE-WK-2026-00045824",
+      "mobile": "9876500050",
+      "occupation": "Plumber",
+      "city": "Chennai",
+      "rating": "4.7/5",
+      "jobs_completed": 16,
+      "status": "Verified",
+      "skills": [
+        "Plumbing",
+        "Repair"
+      ]
+    }
+  ],
+  "verification_queue": [
+    {
+      "queue_id": "vr-1",
+      "name": "Ganesh Kumar",
+      "iee_id": "IEE-WK-2026-00091",
+      "mobile": "+91 99345 67890",
+      "role": "Mason",
+      "aadhaar": "Pending",
+      "priority": "HIGH",
+      "status": "Rejected"
+    },
+    {
+      "queue_id": "vr-2",
+      "name": "Priya Devi",
+      "iee_id": "IEE-WK-2026-00092",
+      "mobile": "+91 98765 43210",
+      "role": "Maid",
+      "aadhaar": "Provided",
+      "priority": "MED",
+      "status": "Approved"
+    },
+    {
+      "queue_id": "vr-3",
+      "name": "Mohammed Rafi",
+      "iee_id": "IEE-WK-2026-00093",
+      "mobile": "+91 87654 32109",
+      "role": "Electrician",
+      "aadhaar": "Pending",
+      "priority": "HIGH",
+      "status": "Approved"
+    },
+    {
+      "queue_id": "vr-4",
+      "name": "Lakshmi Bai",
+      "iee_id": "IEE-WK-2026-00094",
+      "mobile": "+91 76543 21098",
+      "role": "Cook",
+      "aadhaar": "Provided",
+      "priority": "LOW",
+      "status": "Approved"
+    }
+  ],
+  "jobs": [
+    {
+      "job_id": "job-1",
+      "title": "Brick Mason - Full Day",
+      "employer": "Skyline Constructions",
+      "distance": "1.2 km",
+      "wage": 850,
+      "type": "Urgent",
+      "applicants": [
+        "Rajan Kumar"
+      ]
+    },
+    {
+      "job_id": "job-2",
+      "title": "Plastering Work - 3 Days",
+      "employer": "Prestige Builders",
+      "distance": "2.8 km",
+      "wage": 750,
+      "type": "Daily",
+      "applicants": []
+    },
+    {
+      "job_id": "job-3",
+      "title": "Concrete Laying - 7 Days",
+      "employer": "Metro Works",
+      "distance": "4.1 km",
+      "wage": 900,
+      "type": "Bulk",
+      "applicants": []
+    },
+    {
+      "job_id": "job-4",
+      "title": "Foundation Work - 10 Days",
+      "employer": "CMRL Phase 2",
+      "distance": "5.2 km",
+      "wage": 950,
+      "type": "Bulk",
+      "applicants": []
+    }
+  ],
+  "bulk_requests": [],
+  "notices": [],
+  "audit_log": [
+    {
+      "time": "15:41",
+      "user": "verifier001@iee.gov.in",
+      "action": "LOGIN",
+      "ip": "127.0.0.1",
+      "status": "OK"
+    },
+    {
+      "time": "15:40",
+      "user": "skyline@company.com",
+      "action": "LOGIN",
+      "ip": "127.0.0.1",
+      "status": "OK"
+    },
+    {
+      "time": "15:39",
+      "user": "9876500010",
+      "action": "LOGIN",
+      "ip": "127.0.0.1",
+      "status": "OK"
+    },
+    {
+      "time": "15:38",
+      "user": "superadmin",
+      "action": "SUPERADMIN_LOGIN",
+      "ip": "127.0.0.1",
+      "status": "OK"
+    },
+    {
+      "time": "13:12",
+      "user": "verifier001@iee.gov.in",
+      "action": "VERIFY_REJECTED",
+      "ip": "127.0.0.1",
+      "status": "OK"
+    },
+    {
+      "time": "13:11",
+      "user": "verifier001@iee.gov.in",
+      "action": "LOGIN",
+      "ip": "127.0.0.1",
+      "status": "OK"
+    },
+    {
+      "time": "13:10",
+      "user": "skyline@company.com",
+      "action": "LOGIN",
+      "ip": "127.0.0.1",
+      "status": "OK"
+    },
+    {
+      "time": "12:43",
+      "user": "public",
+      "action": "ACTION_OPEN_IOS_LISTING",
+      "ip": "127.0.0.1",
+      "status": "OK"
+    },
+    {
+      "time": "12:43",
+      "user": "public",
+      "action": "ACTION_DOWNLOAD_ANDROID_APP",
+      "ip": "127.0.0.1",
+      "status": "OK"
+    },
+    {
+      "time": "12:28",
+      "user": "superadmin@iee.gov.in",
+      "action": "USER_ACTIVATED",
+      "ip": "127.0.0.1",
+      "status": "OK"
+    },
+    {
+      "time": "12:28",
+      "user": "superadmin",
+      "action": "SUPERADMIN_LOGIN",
+      "ip": "127.0.0.1",
+      "status": "OK"
+    },
+    {
+      "time": "12:27",
+      "user": "9876500010",
+      "action": "LOGIN",
+      "ip": "127.0.0.1",
+      "status": "OK"
+    },
+    {
+      "time": "12:26",
+      "user": "verifier001@iee.gov.in",
+      "action": "VERIFY_APPROVED",
+      "ip": "127.0.0.1",
+      "status": "OK"
+    },
+    {
+      "time": "12:26",
+      "user": "verifier001@iee.gov.in",
+      "action": "VERIFY_APPROVED",
+      "ip": "127.0.0.1",
+      "status": "OK"
+    },
+    {
+      "time": "12:26",
+      "user": "verifier001@iee.gov.in",
+      "action": "VERIFY_APPROVED",
+      "ip": "127.0.0.1",
+      "status": "OK"
+    },
+    {
+      "time": "12:26",
+      "user": "verifier001@iee.gov.in",
+      "action": "VERIFY_APPROVED",
+      "ip": "127.0.0.1",
+      "status": "OK"
+    },
+    {
+      "time": "12:25",
+      "user": "verifier001@iee.gov.in",
+      "action": "LOGIN",
+      "ip": "127.0.0.1",
+      "status": "OK"
+    },
+    {
+      "time": "12:24",
+      "user": "skyline@company.com",
+      "action": "LOGIN",
+      "ip": "127.0.0.1",
+      "status": "OK"
+    },
+    {
+      "time": "12:23",
+      "user": "9876500010",
+      "action": "ACTION_START_COURSE",
+      "ip": "127.0.0.1",
+      "status": "OK"
+    },
+    {
+      "time": "12:23",
+      "user": "9876500010",
+      "action": "ACTION_CONTINUE_COURSE",
+      "ip": "127.0.0.1",
+      "status": "OK"
+    }
+  ],
+  "sessions": {
+    "cbeb0669774dc56f5812430a8dd85ff7": {
+      "login_id": "skyline@company.com",
+      "role": "employer"
+    },
+    "0281a5e9952f08a4e9b1457063ee6a14": {
+      "login_id": "skyline@company.com",
+      "role": "employer"
+    },
+    "594a4267bef063b640cd67ec10367c53": {
+      "login_id": "9876500010",
+      "role": "worker"
+    },
+    "e48ffb54ea2c2a7d0e3ad006ff3ed714": {
+      "login_id": "skyline@company.com",
+      "role": "employer"
+    },
+    "2e1f585d70a22a95f81897bf077cb4e6": {
+      "login_id": "verifier001@iee.gov.in",
+      "role": "verifier"
+    },
+    "fc19757ed117bbf47531886ce777524f": {
+      "login_id": "9876500010",
+      "role": "worker"
+    },
+    "d1721e639d2197d90938bf2f73c14b7b": {
+      "login_id": "skyline@company.com",
+      "role": "employer"
+    },
+    "ddae85bca34e23074f4e7af35062fedf": {
+      "login_id": "skyline@company.com",
+      "role": "employer"
+    },
+    "d6ff6219a0b799407046bff209dea14c": {
+      "login_id": "verifier001@iee.gov.in",
+      "role": "verifier"
+    }
+  }
+}
