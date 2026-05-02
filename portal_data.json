@@ -3,10 +3,12 @@
     "next_worker_seq": 45824,
     "next_employer_seq": 1249,
     "next_verifier_seq": 2,
-    "next_job_seq": 5,
-    "next_bulk_seq": 1,
+    "next_job_seq": 6,
+    "next_bulk_seq": 2,
     "next_notice_seq": 1,
-    "next_session_seq": 1
+    "next_session_seq": 1,
+    "next_live_service_seq": 27,
+    "next_service_entity_seq": 22
   },
   "users": [
     {
@@ -203,6 +205,7 @@
       "wage": 850,
       "type": "Urgent",
       "applicants": [
+        "Rajan Kumar",
         "Rajan Kumar"
       ]
     },
@@ -232,148 +235,167 @@
       "wage": 950,
       "type": "Bulk",
       "applicants": []
+    },
+    {
+      "job_id": "job-5",
+      "title": "electrician",
+      "employer": "Skyline Constructions",
+      "distance": "New listing",
+      "wage": 100,
+      "type": "1 Month",
+      "applicants": []
     }
   ],
-  "bulk_requests": [],
+  "bulk_requests": [
+    {
+      "request_id": "bulk-1",
+      "category": "Construction Mason",
+      "workers_required": 50,
+      "location": "chennai",
+      "wage": "850",
+      "duration": "1 Week",
+      "skill_level": "Any \u2014 Unskilled"
+    }
+  ],
   "notices": [],
   "audit_log": [
     {
-      "time": "15:41",
-      "user": "verifier001@iee.gov.in",
-      "action": "LOGIN",
+      "time": "13:27",
+      "user": "public",
+      "action": "LIVE_SERVICE_JOB-ALERTS",
       "ip": "127.0.0.1",
-      "status": "OK"
+      "status": "Alerts Sent"
     },
     {
-      "time": "15:40",
-      "user": "skyline@company.com",
-      "action": "LOGIN",
+      "time": "13:27",
+      "user": "public",
+      "action": "LIVE_SERVICE_JOB-ALERTS",
       "ip": "127.0.0.1",
-      "status": "OK"
+      "status": "Alerts Sent"
     },
     {
-      "time": "15:39",
-      "user": "9876500010",
-      "action": "LOGIN",
-      "ip": "127.0.0.1",
-      "status": "OK"
-    },
-    {
-      "time": "15:38",
+      "time": "21:05",
       "user": "superadmin",
       "action": "SUPERADMIN_LOGIN",
       "ip": "127.0.0.1",
       "status": "OK"
     },
     {
-      "time": "13:12",
+      "time": "21:04",
       "user": "verifier001@iee.gov.in",
-      "action": "VERIFY_REJECTED",
+      "action": "LIVE_SERVICE_BLOCKCHAIN-CREDENTIAL",
       "ip": "127.0.0.1",
-      "status": "OK"
+      "status": "Verified"
     },
     {
-      "time": "13:11",
+      "time": "21:04",
       "user": "verifier001@iee.gov.in",
       "action": "LOGIN",
       "ip": "127.0.0.1",
       "status": "OK"
     },
     {
-      "time": "13:10",
+      "time": "21:03",
       "user": "skyline@company.com",
       "action": "LOGIN",
       "ip": "127.0.0.1",
       "status": "OK"
     },
     {
-      "time": "12:43",
-      "user": "public",
-      "action": "ACTION_OPEN_IOS_LISTING",
+      "time": "21:02",
+      "user": "skyline@company.com",
+      "action": "LIVE_SERVICE_API-MARKETPLACE",
       "ip": "127.0.0.1",
-      "status": "OK"
+      "status": "Sandbox Active"
     },
     {
-      "time": "12:43",
-      "user": "public",
-      "action": "ACTION_DOWNLOAD_ANDROID_APP",
+      "time": "21:02",
+      "user": "skyline@company.com",
+      "action": "LIVE_SERVICE_GST-EINVOICE",
       "ip": "127.0.0.1",
-      "status": "OK"
+      "status": "Invoice Ready"
     },
     {
-      "time": "12:28",
-      "user": "superadmin@iee.gov.in",
-      "action": "USER_ACTIVATED",
+      "time": "21:00",
+      "user": "skyline@company.com",
+      "action": "LIVE_SERVICE_AI-INTERVIEW",
       "ip": "127.0.0.1",
-      "status": "OK"
+      "status": "Shortlisted"
     },
     {
-      "time": "12:28",
-      "user": "superadmin",
-      "action": "SUPERADMIN_LOGIN",
+      "time": "21:00",
+      "user": "skyline@company.com",
+      "action": "LIVE_SERVICE_API-MARKETPLACE",
       "ip": "127.0.0.1",
-      "status": "OK"
+      "status": "Sandbox Active"
     },
     {
-      "time": "12:27",
-      "user": "9876500010",
-      "action": "LOGIN",
+      "time": "20:59",
+      "user": "skyline@company.com",
+      "action": "LIVE_SERVICE_AI-INTERVIEW",
       "ip": "127.0.0.1",
-      "status": "OK"
+      "status": "Shortlisted"
     },
     {
-      "time": "12:26",
-      "user": "verifier001@iee.gov.in",
-      "action": "VERIFY_APPROVED",
-      "ip": "127.0.0.1",
-      "status": "OK"
-    },
-    {
-      "time": "12:26",
-      "user": "verifier001@iee.gov.in",
-      "action": "VERIFY_APPROVED",
-      "ip": "127.0.0.1",
-      "status": "OK"
-    },
-    {
-      "time": "12:26",
-      "user": "verifier001@iee.gov.in",
-      "action": "VERIFY_APPROVED",
-      "ip": "127.0.0.1",
-      "status": "OK"
-    },
-    {
-      "time": "12:26",
-      "user": "verifier001@iee.gov.in",
-      "action": "VERIFY_APPROVED",
-      "ip": "127.0.0.1",
-      "status": "OK"
-    },
-    {
-      "time": "12:25",
-      "user": "verifier001@iee.gov.in",
-      "action": "LOGIN",
-      "ip": "127.0.0.1",
-      "status": "OK"
-    },
-    {
-      "time": "12:24",
+      "time": "20:59",
       "user": "skyline@company.com",
       "action": "LOGIN",
       "ip": "127.0.0.1",
       "status": "OK"
     },
     {
-      "time": "12:23",
-      "user": "9876500010",
-      "action": "ACTION_START_COURSE",
-      "ip": "127.0.0.1",
-      "status": "OK"
-    },
-    {
-      "time": "12:23",
+      "time": "20:57",
       "user": "9876500010",
       "action": "ACTION_CONTINUE_COURSE",
+      "ip": "127.0.0.1",
+      "status": "OK"
+    },
+    {
+      "time": "20:57",
+      "user": "9876500010",
+      "action": "APPLY_JOB",
+      "ip": "127.0.0.1",
+      "status": "OK"
+    },
+    {
+      "time": "20:56",
+      "user": "9876500010",
+      "action": "LIVE_SERVICE_DISPUTE-CHATBOT",
+      "ip": "127.0.0.1",
+      "status": "Case Open"
+    },
+    {
+      "time": "20:55",
+      "user": "9876500010",
+      "action": "LIVE_SERVICE_BENEFITS-PORTABILITY",
+      "ip": "127.0.0.1",
+      "status": "Portable"
+    },
+    {
+      "time": "20:55",
+      "user": "9876500010",
+      "action": "LIVE_SERVICE_NPS-LITE",
+      "ip": "127.0.0.1",
+      "status": "Enrolled"
+    },
+    {
+      "time": "20:54",
+      "user": "9876500010",
+      "action": "LIVE_SERVICE_JOB-ALERTS",
+      "ip": "127.0.0.1",
+      "status": "Alerts Sent"
+    },
+    {
+      "time": "20:54",
+      "user": "9876500010",
+      "action": "LOGIN",
+      "ip": "127.0.0.1",
+      "status": "OK"
+    },
+    {
+      "time": "20:03",
+      "user": "skyline@company.com",
+      "action": "DIRECT_HIRE",
       "ip": "127.0.0.1",
       "status": "OK"
     }
@@ -414,6 +436,2386 @@
     "d6ff6219a0b799407046bff209dea14c": {
       "login_id": "verifier001@iee.gov.in",
       "role": "verifier"
+    },
+    "193cda3ecfae9f4ab06a7752294b19bb": {
+      "login_id": "superadmin@iee.gov.in",
+      "role": "superadmin"
+    },
+    "706b5e43ca8cb517eeb9f9f29dfde46c": {
+      "login_id": "superadmin@iee.gov.in",
+      "role": "superadmin"
+    },
+    "9bf1ed0e6fec4fd4412f1b7adad82c6a": {
+      "login_id": "superadmin@iee.gov.in",
+      "role": "superadmin"
+    },
+    "01772669030d527cdbb4ebd3ed5dab25": {
+      "login_id": "9876500010",
+      "role": "worker"
+    },
+    "6c77581fe7a453c8945b7d9390e282ca": {
+      "login_id": "skyline@company.com",
+      "role": "employer"
+    },
+    "c6b115f145f5b7b5dceb258408277a93": {
+      "login_id": "9876500010",
+      "role": "worker"
+    },
+    "da0cd8cd6c37edd396265c6f0f1aa7e5": {
+      "login_id": "9876500010",
+      "role": "worker"
+    },
+    "6af93e5053bb649aec61ed649c1ff13e": {
+      "login_id": "9876500010",
+      "role": "worker"
+    },
+    "11e5a055580603f07a993da763e44fe8": {
+      "login_id": "skyline@company.com",
+      "role": "employer"
+    },
+    "cd7215ebcc2c1c031fed7f2525cff353": {
+      "login_id": "skyline@company.com",
+      "role": "employer"
+    },
+    "636c4893bc4b9190aa0986ca7034697e": {
+      "login_id": "verifier001@iee.gov.in",
+      "role": "verifier"
+    }
+  },
+  "advanced": {
+    "metrics": {
+      "total_workers": 5421,
+      "verified_profiles": 4087,
+      "active_employers": 312,
+      "live_job_postings": 142,
+      "total_placements": 23480,
+      "wages_disbursed": 42000000,
+      "micro_loans_live": 94000000,
+      "contract_net_value": 84000000,
+      "kyc_pending": 38,
+      "ai_high_risk_flags": 3,
+      "gst_defaults": 14,
+      "avg_time_to_fill_hours": 1.8,
+      "live_contracts": 142,
+      "workers_deployed": 4087,
+      "avg_daily_rate": 1240,
+      "wage_diversion_per_day": 14400,
+      "unread_alerts": 12
+    },
+    "health": [
+      {
+        "label": "Worker Verification Rate",
+        "value": 75.4,
+        "tone": "pg2"
+      },
+      {
+        "label": "Job Fill Rate",
+        "value": 94.0,
+        "tone": "pi"
+      },
+      {
+        "label": "EPFO Compliance (Employers)",
+        "value": 95.5,
+        "tone": "pg2"
+      },
+      {
+        "label": "GST Filing Rate",
+        "value": 97.4,
+        "tone": "pb2"
+      },
+      {
+        "label": "Salary On-Time Rate",
+        "value": 98.8,
+        "tone": "pg2"
+      },
+      {
+        "label": "Contract Compliance",
+        "value": 88.0,
+        "tone": "pa"
+      },
+      {
+        "label": "eShram UAN Link Rate",
+        "value": 67.3,
+        "tone": "pb2"
+      },
+      {
+        "label": "AI Anomaly Resolution",
+        "value": 82.0,
+        "tone": "ppu"
+      }
+    ],
+    "alerts": [
+      {
+        "title": "AI ALERT \u2014 Contract Fraud Pattern Detected",
+        "body": "IEE-CTR-2026-0044 \u2014 Annur Infra showing worker count mismatch vs GST turnover. AI confidence: 94%",
+        "time": "1 min",
+        "unread": true
+      },
+      {
+        "title": "EPFO ECR Default \u2014 Ram Nivas Contractors",
+        "body": "March 2026 ECR not filed \u2014 34 workers affected \u2014 principal employer liability triggered",
+        "time": "8 min",
+        "unread": true
+      },
+      {
+        "title": "Micro-Loan Disbursement Ready",
+        "body": "Rs 14.2L approved across 48 workers \u2014 NBFC IDFC First \u2014 awaiting SA authorisation",
+        "time": "22 min",
+        "unread": true
+      },
+      {
+        "title": "eShram UAN Link \u2014 412 New Workers",
+        "body": "412 workers linked eShram UAN to IEE Worker ID this week \u2014 NDUW sync complete",
+        "time": "1 hr",
+        "unread": true
+      },
+      {
+        "title": "KYC Queue \u2014 38 Pending",
+        "body": "Zone 3 North Chennai \u2014 verifier capacity exceeded \u2014 recommend overflow assignment",
+        "time": "2 hr",
+        "unread": true
+      },
+      {
+        "title": "GST Non-Filing \u2014 8 Employers",
+        "body": "GST-3B not filed for March 2026 \u2014 automated notice issued to 8 employers",
+        "time": "3 hr",
+        "unread": true
+      },
+      {
+        "title": "Salary Batch Rs 1.84Cr \u2014 Pending Auth",
+        "body": "April 2026 payroll ready \u2014 4,064 workers \u2014 DBT channel",
+        "time": "4 hr",
+        "unread": false
+      },
+      {
+        "title": "PM-SAYSAM Scheme \u2014 4,087 Enrolled",
+        "body": "97.2% delivery \u2014 Rs 2.04 Crore benefit value launched",
+        "time": "Yesterday",
+        "unread": false
+      }
+    ],
+    "live_feed": [
+      {
+        "tone": "g",
+        "title": "<strong>Rajan Kumar</strong> placement confirmed \u2014 Skyline Constructions, Mason L3, Rs 850/day \u2014 eShram UAN linked",
+        "meta": "Just now \u2014 Chennai"
+      },
+      {
+        "tone": "r",
+        "title": "<strong>AI Flag:</strong> Annur Infra GST turnover (Rs 1.2Cr) vs 55 workers deployed \u2014 expected GST minimum Rs 2.4Cr \u2014 mismatch Rs 1.2Cr \u2014 fraud risk: HIGH",
+        "meta": "2 min ago \u2014 AI Engine"
+      },
+      {
+        "tone": "b",
+        "title": "<strong>Micro-loan approved:</strong> Mohammed Rafi \u2014 Rs 18,000 at 12% via IDFC First NBFC \u2014 3-month repayment \u2014 IEE income verified",
+        "meta": "5 min ago \u2014 Finance Engine"
+      },
+      {
+        "tone": "a",
+        "title": "<strong>EPFO ECR filed:</strong> Skyline Constructions \u2014 148 workers \u2014 TRRN: EPFO2026041200148 \u2014 Rs 1.78L PF deposited",
+        "meta": "12 min ago \u2014 EPFO Sync"
+      },
+      {
+        "tone": "r",
+        "title": "<strong>Ram Nivas Contractors</strong> EPFO ECR default \u2014 March 2026 \u2014 34 workers unprotected \u2014 principal employer notice triggered",
+        "meta": "18 min ago \u2014 Compliance Engine"
+      },
+      {
+        "tone": "p",
+        "title": "<strong>PMKVY Sync:</strong> 61 new certifications from Nihar Skills mapped to IEE Worker IDs \u2014 Skill India Digital Hub confirmed",
+        "meta": "1 hr ago \u2014 NSDC Sync"
+      }
+    ],
+    "worker_registry": [
+      {
+        "worker_id": "IEE-WK-2026-00094",
+        "name": "Lakshmi Bai",
+        "role": "Cook",
+        "level": "L1 Unskilled",
+        "city": "Tamil Nadu",
+        "eshram_uan": "",
+        "epfo_uan": "",
+        "esic_status": "Pending",
+        "risk_score": 27,
+        "jobs_completed": 0,
+        "earnings": 0,
+        "status": "Approved",
+        "aadhaar_last4": "",
+        "bank_account": "",
+        "ytd_earnings": 0,
+        "active_loan": 0,
+        "pf_balance": 0,
+        "flags": [
+          "Approved"
+        ],
+        "rating": "New"
+      },
+      {
+        "worker_id": "IEE-WK-2026-00093",
+        "name": "Mohammed Rafi",
+        "role": "Electrician",
+        "level": "L1 Unskilled",
+        "city": "Tamil Nadu",
+        "eshram_uan": "",
+        "epfo_uan": "",
+        "esic_status": "Pending",
+        "risk_score": 41,
+        "jobs_completed": 0,
+        "earnings": 0,
+        "status": "Approved",
+        "aadhaar_last4": "",
+        "bank_account": "",
+        "ytd_earnings": 0,
+        "active_loan": 0,
+        "pf_balance": 0,
+        "flags": [
+          "Approved"
+        ],
+        "rating": "New"
+      },
+      {
+        "worker_id": "IEE-WK-2026-00092",
+        "name": "Priya Devi",
+        "role": "Maid",
+        "level": "L1 Unskilled",
+        "city": "Tamil Nadu",
+        "eshram_uan": "",
+        "epfo_uan": "",
+        "esic_status": "Pending",
+        "risk_score": 27,
+        "jobs_completed": 0,
+        "earnings": 0,
+        "status": "Approved",
+        "aadhaar_last4": "",
+        "bank_account": "",
+        "ytd_earnings": 0,
+        "active_loan": 0,
+        "pf_balance": 0,
+        "flags": [
+          "Approved"
+        ],
+        "rating": "New"
+      },
+      {
+        "worker_id": "IEE-WK-2026-00091",
+        "name": "Priya Devi",
+        "role": "Maid / Housekeeper",
+        "level": "L2 Semi-Skilled",
+        "city": "Chennai",
+        "eshram_uan": "",
+        "epfo_uan": "",
+        "esic_status": "Active",
+        "risk_score": 8,
+        "jobs_completed": 11,
+        "earnings": 26400,
+        "status": "Verified",
+        "aadhaar_last4": "",
+        "bank_account": "",
+        "ytd_earnings": 176000,
+        "active_loan": 0,
+        "pf_balance": 30800,
+        "flags": [
+          "Verified"
+        ],
+        "rating": "4.6/5"
+      },
+      {
+        "worker_id": "IEE-WK-2026-00045821",
+        "name": "Rajan Kumar",
+        "role": "Construction Mason",
+        "level": "L2 Semi-Skilled",
+        "city": "Chennai",
+        "eshram_uan": "",
+        "epfo_uan": "",
+        "esic_status": "Active",
+        "risk_score": 8,
+        "jobs_completed": 23,
+        "earnings": 55200,
+        "status": "Verified",
+        "aadhaar_last4": "",
+        "bank_account": "",
+        "ytd_earnings": 368000,
+        "active_loan": 0,
+        "pf_balance": 64400,
+        "flags": [
+          "Verified"
+        ],
+        "rating": "4.9/5"
+      },
+      {
+        "worker_id": "IEE-WK-00094",
+        "name": "Lakshmi Bai",
+        "role": "Cook",
+        "level": "L2 Semi-Skilled",
+        "city": "Madurai",
+        "eshram_uan": "WB-TN-2819000094",
+        "epfo_uan": "100000000094",
+        "esic_status": "Active",
+        "risk_score": 9,
+        "jobs_completed": 8,
+        "earnings": 18400,
+        "status": "Verified",
+        "aadhaar_last4": "0094",
+        "bank_account": "Canara Bank \u2014 XXXX 0094",
+        "ytd_earnings": 108600,
+        "active_loan": 0,
+        "pf_balance": 14820,
+        "flags": [
+          "Verified",
+          "eShram Linked",
+          "ESIC Covered"
+        ]
+      },
+      {
+        "worker_id": "IEE-WK-00091",
+        "name": "Ganesh Kumar",
+        "role": "Mason",
+        "level": "L1 Unskilled",
+        "city": "Chennai",
+        "eshram_uan": "",
+        "epfo_uan": "",
+        "esic_status": "Pending",
+        "risk_score": 41,
+        "jobs_completed": 0,
+        "earnings": 0,
+        "status": "KYC Pending",
+        "aadhaar_last4": "",
+        "bank_account": "",
+        "ytd_earnings": 0,
+        "active_loan": 0,
+        "pf_balance": 0,
+        "flags": [
+          "KYC Pending"
+        ]
+      },
+      {
+        "worker_id": "IEE-WK-00047201",
+        "name": "Murugan S",
+        "role": "Electrician",
+        "level": "L3 Skilled",
+        "city": "Coimbatore",
+        "eshram_uan": "WB-TN-2819047201",
+        "epfo_uan": "100000047201",
+        "esic_status": "Active",
+        "risk_score": 6,
+        "jobs_completed": 31,
+        "earnings": 55200,
+        "status": "Verified",
+        "aadhaar_last4": "7201",
+        "bank_account": "Indian Bank \u2014 XXXX 7201",
+        "ytd_earnings": 468400,
+        "active_loan": 25000,
+        "pf_balance": 58220,
+        "flags": [
+          "Verified",
+          "eShram Linked",
+          "EPFO Active",
+          "ESIC Covered"
+        ]
+      },
+      {
+        "worker_id": "IEE-WK-00045821",
+        "name": "Rajan Kumar",
+        "role": "Construction Mason",
+        "level": "L3 Skilled",
+        "city": "Chennai",
+        "eshram_uan": "WB-TN-2819043821",
+        "epfo_uan": "100000004821",
+        "esic_status": "Active",
+        "risk_score": 4,
+        "jobs_completed": 23,
+        "earnings": 42800,
+        "status": "Verified",
+        "aadhaar_last4": "4821",
+        "bank_account": "SBI \u2014 XXXX 4821",
+        "ytd_earnings": 394200,
+        "active_loan": 18000,
+        "pf_balance": 47240,
+        "flags": [
+          "Verified",
+          "eShram Linked",
+          "EPFO Active",
+          "ESIC Covered"
+        ]
+      }
+    ],
+    "employer_registry": [
+      {
+        "employer_id": "EMP-TN-2026-009912",
+        "company": "Ram Nivas Contractors",
+        "gstin": "",
+        "epfo_code": "",
+        "esic_code": "",
+        "workers": 0,
+        "contracts": 1,
+        "risk_score": 91,
+        "compliance_pct": 41.0,
+        "sector": "Construction",
+        "city": "Chennai, Tamil Nadu",
+        "contact_person": "Ram Nivas Contractors",
+        "contact_mobile": ""
+      },
+      {
+        "employer_id": "EMP-TN-2026-001248",
+        "company": "Skyline Constructions",
+        "gstin": "",
+        "epfo_code": "",
+        "esic_code": "",
+        "workers": 12,
+        "contracts": 1,
+        "risk_score": 18,
+        "compliance_pct": 96.0,
+        "sector": "Construction",
+        "city": "Chennai, Tamil Nadu",
+        "contact_person": "Skyline Constructions",
+        "contact_mobile": ""
+      },
+      {
+        "employer_id": "EMP-TN-009912",
+        "company": "Ram Nivas Contractors",
+        "gstin": "33AAFRN4421C1Z2",
+        "epfo_code": "TN/CHN/009912",
+        "esic_code": "33-00-009912",
+        "workers": 34,
+        "contracts": 1,
+        "risk_score": 91,
+        "compliance_pct": 41.0,
+        "sector": "Construction",
+        "city": "Chennai",
+        "contact_person": "R. Nivas",
+        "contact_mobile": "+91 98710 99120"
+      },
+      {
+        "employer_id": "EMP-TN-004499",
+        "company": "Metro Works (CMRL)",
+        "gstin": "33AABCM2200H1Z4",
+        "epfo_code": "TN/CHN/004499",
+        "esic_code": "33-00-004499",
+        "workers": 220,
+        "contracts": 2,
+        "risk_score": 8,
+        "compliance_pct": 98.6,
+        "sector": "Construction",
+        "city": "Chennai",
+        "contact_person": "R. Krishnamurthy",
+        "contact_mobile": "+91 98110 44990"
+      },
+      {
+        "employer_id": "EMP-TN-003380",
+        "company": "Annur Infra",
+        "gstin": "33AACIA9988B1Z9",
+        "epfo_code": "TN/CBE/003380",
+        "esic_code": "33-00-003380",
+        "workers": 55,
+        "contracts": 1,
+        "risk_score": 94,
+        "compliance_pct": 0.0,
+        "sector": "Infrastructure",
+        "city": "Coimbatore",
+        "contact_person": "K. Sundaram",
+        "contact_mobile": "+91 98650 33800"
+      },
+      {
+        "employer_id": "EMP-TN-001248",
+        "company": "Skyline Constructions",
+        "gstin": "33AABCS1234Z1Z5",
+        "epfo_code": "TN/CHN/001248",
+        "esic_code": "33-00-001248",
+        "workers": 148,
+        "contracts": 3,
+        "risk_score": 12,
+        "compliance_pct": 100.0,
+        "sector": "Construction",
+        "city": "Chennai",
+        "contact_person": "M. Suresh",
+        "contact_mobile": "+91 98840 11248"
+      }
+    ],
+    "contracts": [
+      {
+        "contract_id": "IEE-CTR-2026-0092",
+        "title": "CMRL Phase 2 \u2014 Foundation and Concrete Work",
+        "principal_employer": "Chennai Metro Rail Ltd",
+        "contractor": "Metro Works Pvt Ltd",
+        "handler": "R. Krishnamurthy, PM",
+        "contract_value": 20900000,
+        "workers_deployed": 220,
+        "epfo_workers": 220,
+        "worker_rate": 950,
+        "client_rate": 1045,
+        "start_date": "01 Mar 2026",
+        "end_date": "31 Aug 2026",
+        "license_no": "TN-2026-0044",
+        "compliance_pct": 98.6,
+        "rating": 4.8,
+        "april_payment": 2090000,
+        "ai_flags": 0,
+        "risk_score": 8,
+        "wage_diversion_per_day": 0,
+        "estimated_misuse": 0,
+        "status_label": "Live",
+        "status_tone": "bg",
+        "secondary_badge": ""
+      },
+      {
+        "contract_id": "IEE-CTR-2026-0067",
+        "title": "Prestige Builders \u2014 Residential Complex, Mumbai",
+        "principal_employer": "Prestige Projects Pvt Ltd",
+        "contractor": "Prestige Builders",
+        "handler": "P. Menon, Site Director",
+        "contract_value": 7200000,
+        "workers_deployed": 72,
+        "epfo_workers": 72,
+        "worker_rate": 650,
+        "client_rate": 850,
+        "start_date": "01 Feb 2026",
+        "end_date": "31 Jul 2026",
+        "license_no": "MH-2026-0021",
+        "compliance_pct": 76.0,
+        "rating": 4.2,
+        "april_payment": 576000,
+        "ai_flags": 1,
+        "risk_score": 87,
+        "wage_diversion_per_day": 14400,
+        "estimated_misuse": 864000,
+        "status_label": "Under Review",
+        "status_tone": "ba",
+        "secondary_badge": ""
+      },
+      {
+        "contract_id": "IEE-CTR-2026-0044",
+        "title": "Annur Infra \u2014 Electrical and Civil Work, Coimbatore",
+        "principal_employer": "Annur Municipal Corp",
+        "contractor": "Annur Infra",
+        "handler": "K. Sundaram, Director",
+        "contract_value": 4800000,
+        "workers_deployed": 55,
+        "epfo_workers": 21,
+        "worker_rate": 900,
+        "client_rate": 1100,
+        "start_date": "15 Jan 2026",
+        "end_date": "15 Jul 2026",
+        "license_no": "Not Filed",
+        "compliance_pct": 0.0,
+        "rating": 0.0,
+        "april_payment": 0,
+        "ai_flags": 2,
+        "risk_score": 94,
+        "wage_diversion_per_day": 14400,
+        "estimated_misuse": 1296000,
+        "status_label": "AI Flagged",
+        "status_tone": "br",
+        "secondary_badge": "Fraud Risk"
+      }
+    ],
+    "broadcast_history": [
+      {
+        "title": "PM-SAYSAM Scheme Launch",
+        "recipients": 5421,
+        "delivery_pct": 97.2,
+        "date": "18 Apr 2026",
+        "status": "Sent"
+      },
+      {
+        "title": "eShram-IEE Integration Live",
+        "recipients": 5421,
+        "delivery_pct": 95.8,
+        "date": "15 Apr 2026",
+        "status": "Sent"
+      },
+      {
+        "title": "EPFO Default Notice \u2014 Workers",
+        "recipients": 34,
+        "delivery_pct": 100.0,
+        "date": "12 Apr 2026",
+        "status": "Sent"
+      },
+      {
+        "title": "IEE App \u2014 Download Now",
+        "recipients": 5421,
+        "delivery_pct": 98.4,
+        "date": "01 Apr 2026",
+        "status": "Sent"
+      }
+    ],
+    "salary_batch": {
+      "batch_id": "SAL-APR-2026-01",
+      "amount": 18400000,
+      "workers": 4064,
+      "status": "Pending Auth",
+      "last_processed": ""
+    },
+    "journeys": {
+      "IEE-WK-00045821": {
+        "worker_id": "IEE-WK-00045821",
+        "name": "Rajan Kumar",
+        "avatar": "RK",
+        "role": "Construction Mason",
+        "level": "L3 Skilled",
+        "city": "Chennai, Tamil Nadu",
+        "eshram_uan": "WB-TN-2819043821",
+        "aadhaar_last4": "4821",
+        "epfo_uan": "100000004821",
+        "esic_ip": "31-00-046821-000",
+        "bank_account": "SBI \u2014 XXXX 4821",
+        "risk_score": 4,
+        "risk_label": "Low",
+        "flags": [
+          "Verified",
+          "eShram Linked",
+          "EPFO Active",
+          "ESIC Covered"
+        ],
+        "financials": {
+          "month": 42800,
+          "ytd": 394200,
+          "loan": 18000,
+          "pf_balance": 47240,
+          "gross": 42800,
+          "pf_deduction": 2880,
+          "esic_deduction": 321,
+          "loan_emi": 6200,
+          "take_home": 33399
+        },
+        "timeline": [
+          {
+            "tone": "grn",
+            "step": "1",
+            "title": "Registration on IEE Platform",
+            "description": "Registered via CSC MeeSeva, Chennai. Documents submitted: Aadhaar, Voter ID. eShram UAN linked: WB-TN-2819043821.",
+            "meta": [
+              "10 Apr 2026",
+              "Via CSC Centre, Ambattur",
+              "IP: 103.38.50.201"
+            ],
+            "tags": []
+          },
+          {
+            "tone": "acc",
+            "step": "2",
+            "title": "KYC Verification \u2014 Field Approved",
+            "description": "Field verifier S. Anbarasan (Zone 3) verified physical presence. Aadhaar biometric confirmed. NDUW eShram DB cross-referenced \u2014 no duplicates.",
+            "meta": [
+              "11 Apr 2026",
+              "Verifier: IEE-VRF-2026-001"
+            ],
+            "tags": []
+          },
+          {
+            "tone": "blu",
+            "step": "3",
+            "title": "Worker ID Issued \u2014 Level 3 Skilled",
+            "description": "IEE Worker ID Card generated with QR code. Skill level set to L3 based on PMKVY Advanced Masonry certificate from Nihar Skills Education.",
+            "meta": [
+              "11 Apr 2026",
+              "Cert: NSDC-TN-PMKVY-2024-09821"
+            ],
+            "tags": [
+              "PMKVY Certified",
+              "Nihar Skills",
+              "L3 Skilled"
+            ]
+          },
+          {
+            "tone": "pur",
+            "step": "4",
+            "title": "Job Matching \u2014 AI Engine Assigned",
+            "description": "System matched to 5 jobs within 3 km. Notification sent via App + WhatsApp. Brick Mason \u2014 Skyline Constructions, 1.2 km, Rs 850/day \u2014 accepted in 4 minutes.",
+            "meta": [
+              "12 Apr 2026",
+              "Match score: 94%",
+              "Accepted in 4 min"
+            ],
+            "tags": []
+          },
+          {
+            "tone": "grn",
+            "step": "5",
+            "title": "Placement Confirmed \u2014 Skyline Constructions",
+            "description": "Contract IEE-CTR-2026-0088: 3-day assignment. GPS check-in enabled. Daily wage Rs 850 confirmed on IEE platform.",
+            "meta": [
+              "13 Apr 2026",
+              "Rs 2,550 expected",
+              "CLRA compliant"
+            ],
+            "tags": []
+          },
+          {
+            "tone": "grn",
+            "step": "6",
+            "title": "EPFO Enrolment \u2014 PF UAN Issued",
+            "description": "Auto-enrolled on first placement. PF UAN: 100000004821. ECR filed by Skyline for this worker.",
+            "meta": [
+              "13 Apr 2026",
+              "EPFO Code: TN/CHN/001248"
+            ],
+            "tags": []
+          },
+          {
+            "tone": "tel",
+            "step": "7",
+            "title": "ESIC Coverage Activated",
+            "description": "Auto-enrolled under ESIC with active medical coverage for the assignment period.",
+            "meta": [
+              "13 Apr 2026",
+              "ESIC Sub-Code: TN-CHN-014"
+            ],
+            "tags": []
+          },
+          {
+            "tone": "grn",
+            "step": "8",
+            "title": "Assignment Completed + Rated",
+            "description": "3-day assignment complete. 4.9/5 by employer. Earnings Rs 2,550 disbursed via DBT.",
+            "meta": [
+              "16 Apr 2026",
+              "Rating: 4.9/5",
+              "DBT: Rs 2,550"
+            ],
+            "tags": []
+          },
+          {
+            "tone": "blu",
+            "step": "9",
+            "title": "Micro-Loan Pre-Approved",
+            "description": "Based on consistent income and completed assignments, a micro-loan of Rs 18,000 was pre-approved via IEE finance partners.",
+            "meta": [
+              "18 Apr 2026",
+              "NBFC: IDFC First",
+              "Tenure: 3 months"
+            ],
+            "tags": []
+          },
+          {
+            "tone": "pur",
+            "step": "10",
+            "title": "eShram Welfare Benefits Activated",
+            "description": "PMSBY and PM-SYM checks completed with IEE-linked eligibility assistance.",
+            "meta": [
+              "19 Apr 2026",
+              "PMSBY: Active",
+              "PM-SYM: Active"
+            ],
+            "tags": []
+          }
+        ]
+      },
+      "IEE-WK-00047201": {
+        "worker_id": "IEE-WK-00047201",
+        "name": "Murugan S",
+        "avatar": "MS",
+        "role": "Electrician",
+        "level": "L3 Skilled",
+        "city": "Coimbatore, Tamil Nadu",
+        "eshram_uan": "WB-TN-2819047201",
+        "aadhaar_last4": "7201",
+        "epfo_uan": "100000047201",
+        "esic_ip": "31-00-047201-000",
+        "bank_account": "Indian Bank \u2014 XXXX 7201",
+        "risk_score": 6,
+        "risk_label": "Low",
+        "flags": [
+          "Verified",
+          "eShram Linked",
+          "EPFO Active",
+          "ESIC Covered"
+        ],
+        "financials": {
+          "month": 55200,
+          "ytd": 468400,
+          "loan": 25000,
+          "pf_balance": 58220,
+          "gross": 55200,
+          "pf_deduction": 3640,
+          "esic_deduction": 414,
+          "loan_emi": 8500,
+          "take_home": 42646
+        },
+        "timeline": [
+          {
+            "tone": "grn",
+            "step": "1",
+            "title": "Registration on IEE Platform",
+            "description": "Registered via field induction camp in Coimbatore with Aadhaar and bank proof.",
+            "meta": [
+              "02 Apr 2026",
+              "Via Field Camp, Coimbatore"
+            ],
+            "tags": []
+          },
+          {
+            "tone": "acc",
+            "step": "2",
+            "title": "KYC Verification Approved",
+            "description": "Verifier confirmed identity and address. eShram link established successfully.",
+            "meta": [
+              "03 Apr 2026",
+              "Verifier: IEE-VRF-2026-001"
+            ],
+            "tags": []
+          },
+          {
+            "tone": "blu",
+            "step": "3",
+            "title": "Electrical Safety Certification Mapped",
+            "description": "NSDC certificate mapped to IEE profile and level updated to L3 Skilled.",
+            "meta": [
+              "04 Apr 2026",
+              "Cert mapped"
+            ],
+            "tags": [
+              "NSDC",
+              "Electrical",
+              "L3 Skilled"
+            ]
+          },
+          {
+            "tone": "grn",
+            "step": "4",
+            "title": "Metro Works Placement Confirmed",
+            "description": "Assigned to a multi-week site role with verified wages and shift roster.",
+            "meta": [
+              "06 Apr 2026",
+              "Rs 920/day"
+            ],
+            "tags": []
+          },
+          {
+            "tone": "grn",
+            "step": "5",
+            "title": "Payroll and Benefits Active",
+            "description": "PF, ESIC, and DBT payment rails activated with salary history now visible in IEE.",
+            "meta": [
+              "11 Apr 2026",
+              "Payroll active"
+            ],
+            "tags": []
+          }
+        ]
+      },
+      "IEE-WK-00091": {
+        "worker_id": "IEE-WK-00091",
+        "name": "Ganesh Kumar",
+        "avatar": "GK",
+        "role": "Mason",
+        "level": "L1 Unskilled",
+        "city": "Chennai, Tamil Nadu",
+        "eshram_uan": "",
+        "aadhaar_last4": "",
+        "epfo_uan": "",
+        "esic_ip": "",
+        "bank_account": "",
+        "risk_score": 41,
+        "risk_label": "Medium",
+        "flags": [
+          "KYC Pending"
+        ],
+        "financials": {
+          "month": 0,
+          "ytd": 0,
+          "loan": 0,
+          "pf_balance": 0,
+          "gross": 0,
+          "pf_deduction": 0,
+          "esic_deduction": 0,
+          "loan_emi": 0,
+          "take_home": 0
+        },
+        "timeline": [
+          {
+            "tone": "acc",
+            "step": "1",
+            "title": "Registration Captured",
+            "description": "Worker profile created and submitted for verification from a local registration drive.",
+            "meta": [
+              "18 Apr 2026",
+              "Pending KYC"
+            ],
+            "tags": []
+          },
+          {
+            "tone": "red",
+            "step": "2",
+            "title": "Verification Pending",
+            "description": "Aadhaar proof and bank details still pending. Verifier queue action required before activation.",
+            "meta": [
+              "Awaiting verifier",
+              "Zone 3 queue"
+            ],
+            "tags": [
+              "KYC Pending"
+            ]
+          }
+        ]
+      },
+      "IEE-WK-2026-00045821": {
+        "worker_id": "IEE-WK-2026-00045821",
+        "name": "Rajan Kumar",
+        "avatar": "RK",
+        "role": "Construction Mason",
+        "level": "L2 Semi-Skilled",
+        "city": "Chennai",
+        "eshram_uan": "",
+        "aadhaar_last4": "",
+        "epfo_uan": "",
+        "esic_ip": "",
+        "bank_account": "",
+        "risk_score": 8,
+        "risk_label": "Low",
+        "flags": [
+          "Verified"
+        ],
+        "financials": {
+          "month": 55200,
+          "ytd": 368000,
+          "loan": 0,
+          "pf_balance": 64400,
+          "gross": 55200,
+          "pf_deduction": 0,
+          "esic_deduction": 0,
+          "loan_emi": 0,
+          "take_home": 55200
+        },
+        "timeline": [
+          {
+            "tone": "acc",
+            "step": "1",
+            "title": "Profile Created in IEE",
+            "description": "Worker was registered on the platform and is awaiting the next operational step.",
+            "meta": [
+              "24 Apr 2026",
+              "Created from live admin console"
+            ],
+            "tags": [
+              "Verified"
+            ]
+          }
+        ]
+      },
+      "IEE-WK-2026-00091": {
+        "worker_id": "IEE-WK-2026-00091",
+        "name": "Priya Devi",
+        "avatar": "PD",
+        "role": "Maid / Housekeeper",
+        "level": "L2 Semi-Skilled",
+        "city": "Chennai",
+        "eshram_uan": "",
+        "aadhaar_last4": "",
+        "epfo_uan": "",
+        "esic_ip": "",
+        "bank_account": "",
+        "risk_score": 8,
+        "risk_label": "Low",
+        "flags": [
+          "Verified"
+        ],
+        "financials": {
+          "month": 26400,
+          "ytd": 176000,
+          "loan": 0,
+          "pf_balance": 30800,
+          "gross": 26400,
+          "pf_deduction": 0,
+          "esic_deduction": 0,
+          "loan_emi": 0,
+          "take_home": 26400
+        },
+        "timeline": [
+          {
+            "tone": "acc",
+            "step": "1",
+            "title": "Profile Created in IEE",
+            "description": "Worker was registered on the platform and is awaiting the next operational step.",
+            "meta": [
+              "24 Apr 2026",
+              "Created from live admin console"
+            ],
+            "tags": [
+              "Verified"
+            ]
+          }
+        ]
+      },
+      "IEE-WK-2026-00092": {
+        "worker_id": "IEE-WK-2026-00092",
+        "name": "Priya Devi",
+        "avatar": "PD",
+        "role": "Maid",
+        "level": "L1 Unskilled",
+        "city": "Tamil Nadu",
+        "eshram_uan": "",
+        "aadhaar_last4": "",
+        "epfo_uan": "",
+        "esic_ip": "",
+        "bank_account": "",
+        "risk_score": 27,
+        "risk_label": "Medium",
+        "flags": [
+          "Approved"
+        ],
+        "financials": {
+          "month": 0,
+          "ytd": 0,
+          "loan": 0,
+          "pf_balance": 0,
+          "gross": 0,
+          "pf_deduction": 0,
+          "esic_deduction": 0,
+          "loan_emi": 0,
+          "take_home": 0
+        },
+        "timeline": [
+          {
+            "tone": "acc",
+            "step": "1",
+            "title": "Profile Created in IEE",
+            "description": "Worker was registered on the platform and is awaiting the next operational step.",
+            "meta": [
+              "24 Apr 2026",
+              "Created from live admin console"
+            ],
+            "tags": [
+              "Approved"
+            ]
+          }
+        ]
+      },
+      "IEE-WK-2026-00093": {
+        "worker_id": "IEE-WK-2026-00093",
+        "name": "Mohammed Rafi",
+        "avatar": "MR",
+        "role": "Electrician",
+        "level": "L1 Unskilled",
+        "city": "Tamil Nadu",
+        "eshram_uan": "",
+        "aadhaar_last4": "",
+        "epfo_uan": "",
+        "esic_ip": "",
+        "bank_account": "",
+        "risk_score": 41,
+        "risk_label": "Medium",
+        "flags": [
+          "Approved"
+        ],
+        "financials": {
+          "month": 0,
+          "ytd": 0,
+          "loan": 0,
+          "pf_balance": 0,
+          "gross": 0,
+          "pf_deduction": 0,
+          "esic_deduction": 0,
+          "loan_emi": 0,
+          "take_home": 0
+        },
+        "timeline": [
+          {
+            "tone": "acc",
+            "step": "1",
+            "title": "Profile Created in IEE",
+            "description": "Worker was registered on the platform and is awaiting the next operational step.",
+            "meta": [
+              "24 Apr 2026",
+              "Created from live admin console"
+            ],
+            "tags": [
+              "Approved"
+            ]
+          }
+        ]
+      },
+      "IEE-WK-2026-00094": {
+        "worker_id": "IEE-WK-2026-00094",
+        "name": "Lakshmi Bai",
+        "avatar": "LB",
+        "role": "Cook",
+        "level": "L1 Unskilled",
+        "city": "Tamil Nadu",
+        "eshram_uan": "",
+        "aadhaar_last4": "",
+        "epfo_uan": "",
+        "esic_ip": "",
+        "bank_account": "",
+        "risk_score": 27,
+        "risk_label": "Medium",
+        "flags": [
+          "Approved"
+        ],
+        "financials": {
+          "month": 0,
+          "ytd": 0,
+          "loan": 0,
+          "pf_balance": 0,
+          "gross": 0,
+          "pf_deduction": 0,
+          "esic_deduction": 0,
+          "loan_emi": 0,
+          "take_home": 0
+        },
+        "timeline": [
+          {
+            "tone": "acc",
+            "step": "1",
+            "title": "Profile Created in IEE",
+            "description": "Worker was registered on the platform and is awaiting the next operational step.",
+            "meta": [
+              "24 Apr 2026",
+              "Created from live admin console"
+            ],
+            "tags": [
+              "Approved"
+            ]
+          }
+        ]
+      }
+    },
+    "selected_scheme": "PM-SAYSAM \u2014 Wage Insurance"
+  },
+  "live_services": {
+    "records": [
+      {
+        "runId": "LS-000026",
+        "entityId": "PER-000021",
+        "serviceId": "job-alerts",
+        "title": "Job Alert Personalisation Engine",
+        "domain": "personalised_alerts",
+        "category": "worker",
+        "status": "Alerts Sent",
+        "actor": "public",
+        "time": "13:27",
+        "date": "01 May 2026",
+        "inputs": {
+          "Role": "Mason",
+          "Max Distance KM": "5",
+          "Minimum Wage": "800",
+          "Availability": "Today"
+        },
+        "result": {
+          "headline": "Personalised alerts generated",
+          "message": "5 jobs ranked for Mason within 5 km above Rs.800/day.",
+          "items": [
+            "Metro Works - 96% match - Rs.950/day",
+            "Skyline Site - 91% match - Rs.875/day",
+            "Prestige Builders - 84% match - Rs.825/day"
+          ],
+          "status": "Alerts Sent",
+          "actor": "Public user"
+        }
+      },
+      {
+        "runId": "LS-000025",
+        "entityId": "PER-000020",
+        "serviceId": "job-alerts",
+        "title": "Job Alert Personalisation Engine",
+        "domain": "personalised_alerts",
+        "category": "worker",
+        "status": "Alerts Sent",
+        "actor": "public",
+        "time": "13:27",
+        "date": "01 May 2026",
+        "inputs": {
+          "Role": "Mason",
+          "Max Distance KM": "5",
+          "Minimum Wage": "800",
+          "Availability": "Today"
+        },
+        "result": {
+          "headline": "Personalised alerts generated",
+          "message": "5 jobs ranked for Mason within 5 km above Rs.800/day.",
+          "items": [
+            "Metro Works - 96% match - Rs.950/day",
+            "Skyline Site - 91% match - Rs.875/day",
+            "Prestige Builders - 84% match - Rs.825/day"
+          ],
+          "status": "Alerts Sent",
+          "actor": "Public user"
+        }
+      },
+      {
+        "runId": "LS-000024",
+        "entityId": "CRE-000019",
+        "serviceId": "blockchain-credential",
+        "title": "Blockchain Credential Verification",
+        "domain": "credential_proofs",
+        "category": "platform",
+        "status": "Verified",
+        "actor": "verifier001@iee.gov.in",
+        "time": "21:04",
+        "date": "30 Apr 2026",
+        "inputs": {
+          "Certificate ID": "PMKVY-TN-2026-7782",
+          "Issuer": "PMKVY",
+          "Worker ID": "IEE-WK-2026-00045821"
+        },
+        "result": {
+          "headline": "Credential verified",
+          "message": "PMKVY-TN-2026-7782 from PMKVY anchored with proof hash 0xadb662a0abeb. Verification time: 2.4 seconds.",
+          "items": [
+            "QR verification event logged.",
+            "Credential issuer and worker ID match the registry record."
+          ],
+          "status": "Verified",
+          "actor": "S. Anbarasan"
+        }
+      },
+      {
+        "runId": "LS-000023",
+        "entityId": "API-000018",
+        "serviceId": "api-marketplace",
+        "title": "API Marketplace for HRMS Integration",
+        "domain": "api_clients",
+        "category": "platform",
+        "status": "Sandbox Active",
+        "actor": "skyline@company.com",
+        "time": "21:02",
+        "date": "30 Apr 2026",
+        "inputs": {
+          "HRMS": "GreytHR",
+          "Scope": "Payroll sync",
+          "Callback URL": "https://hrms.example.com/iee/webhook"
+        },
+        "result": {
+          "headline": "API sandbox issued",
+          "message": "Key API-9A0491 for GreytHR with scope Payroll sync. Webhook subscribed at https://hrms.example.com/iee/webhook.",
+          "items": [
+            "OAuth client and rate limit policy created.",
+            "Swagger-style endpoint pack is ready for HRMS testing."
+          ],
+          "status": "Sandbox Active",
+          "actor": "Skyline Constructions"
+        }
+      },
+      {
+        "runId": "LS-000022",
+        "entityId": "GST-000017",
+        "serviceId": "gst-einvoice",
+        "title": "GST E-Invoice Auto-Generation",
+        "domain": "gst_invoices",
+        "category": "compliance",
+        "status": "Invoice Ready",
+        "actor": "skyline@company.com",
+        "time": "21:02",
+        "date": "30 Apr 2026",
+        "inputs": {
+          "Employer GSTIN": "33AABCS1234Z1Z5",
+          "Taxable Amount": "85000",
+          "Supply Type": "B2B",
+          "GST Rate": "5"
+        },
+        "result": {
+          "headline": "GST e-invoice generated",
+          "message": "Invoice INV-8397A2, IRN IRN-B5C0E9. Taxable value Rs.85,000, GST @ 5% = Rs.4,250. Supply type: B2B.",
+          "items": [
+            "PDF and JSON invoice payload stored for employer download.",
+            "Audit trail linked to GSTIN 33AABCS1234Z1Z5"
+          ],
+          "status": "Invoice Ready",
+          "actor": "Skyline Constructions"
+        }
+      },
+      {
+        "runId": "LS-000021",
+        "entityId": "INT-000016",
+        "serviceId": "ai-interview",
+        "title": "AI Interview Screening Bot",
+        "domain": "interview_screenings",
+        "category": "platform",
+        "status": "Shortlisted",
+        "actor": "skyline@company.com",
+        "time": "21:00",
+        "date": "30 Apr 2026",
+        "inputs": {
+          "Role": "Mason",
+          "Language": "Hindi",
+          "Worker ID": "IEE-WK-2026-00045821",
+          "Availability": "Today"
+        },
+        "result": {
+          "headline": "Screening complete",
+          "message": "IEE-WK-2026-00045821 scored 87/100 for Mason. Shortlisted for employer review with Hindi interview notes and availability marked Today.",
+          "items": [
+            "Suggested questions: safety practice, wage expectation, previous site experience.",
+            "Employer action: auto-shortlist and schedule 8 minute call."
+          ],
+          "status": "Shortlisted",
+          "actor": "Skyline Constructions"
+        }
+      },
+      {
+        "runId": "LS-000020",
+        "entityId": "API-000015",
+        "serviceId": "api-marketplace",
+        "title": "API Marketplace for HRMS Integration",
+        "domain": "api_clients",
+        "category": "platform",
+        "status": "Sandbox Active",
+        "actor": "skyline@company.com",
+        "time": "21:00",
+        "date": "30 Apr 2026",
+        "inputs": {
+          "HRMS": "SAP SuccessFactors",
+          "Scope": "Worker verification",
+          "Callback URL": "https://hrms.example.com/iee/webhook"
+        },
+        "result": {
+          "headline": "API sandbox issued",
+          "message": "Key API-A3A5C7 for SAP SuccessFactors with scope Worker verification. Webhook subscribed at https://hrms.example.com/iee/webhook.",
+          "items": [
+            "OAuth client and rate limit policy created.",
+            "Swagger-style endpoint pack is ready for HRMS testing."
+          ],
+          "status": "Sandbox Active",
+          "actor": "Skyline Constructions"
+        }
+      },
+      {
+        "runId": "LS-000019",
+        "entityId": "INT-000014",
+        "serviceId": "ai-interview",
+        "title": "AI Interview Screening Bot",
+        "domain": "interview_screenings",
+        "category": "platform",
+        "status": "Shortlisted",
+        "actor": "skyline@company.com",
+        "time": "20:59",
+        "date": "30 Apr 2026",
+        "inputs": {
+          "Role": "Mason",
+          "Language": "Hindi",
+          "Worker ID": "IEE-WK-2026-00045821",
+          "Availability": "Today"
+        },
+        "result": {
+          "headline": "Screening complete",
+          "message": "IEE-WK-2026-00045821 scored 87/100 for Mason. Shortlisted for employer review with Hindi interview notes and availability marked Today.",
+          "items": [
+            "Suggested questions: safety practice, wage expectation, previous site experience.",
+            "Employer action: auto-shortlist and schedule 8 minute call."
+          ],
+          "status": "Shortlisted",
+          "actor": "Skyline Constructions"
+        }
+      },
+      {
+        "runId": "LS-000018",
+        "entityId": "DIS-000013",
+        "serviceId": "dispute-chatbot",
+        "title": "Dispute Resolution Chatbot",
+        "domain": "dispute_cases",
+        "category": "safety",
+        "status": "Case Open",
+        "actor": "9876500010",
+        "time": "20:56",
+        "date": "30 Apr 2026",
+        "inputs": {
+          "Dispute Type": "Payment delay",
+          "Language": "English",
+          "Message": "Employer has not released payment for three days of masonry work."
+        },
+        "result": {
+          "headline": "Dispute case CASE-DA1B46 opened",
+          "message": "Type Payment delay classified for English response. Bot reply: payment evidence requested; SLA clock started.",
+          "items": [
+            "Tier-1 chatbot collected the complaint summary.",
+            "Labour inspector escalation will trigger if not resolved within SLA."
+          ],
+          "status": "Case Open",
+          "actor": "Rajan Kumar"
+        }
+      },
+      {
+        "runId": "LS-000017",
+        "entityId": "BEN-000012",
+        "serviceId": "benefits-portability",
+        "title": "Cross-State Benefits Portability",
+        "domain": "benefit_portability",
+        "category": "worker",
+        "status": "Portable",
+        "actor": "9876500010",
+        "time": "20:55",
+        "date": "30 Apr 2026",
+        "inputs": {
+          "Worker ID": "IEE-WK-2026-00045821",
+          "From State": "Tamil Nadu",
+          "To State": "Karnataka",
+          "Benefit": "Ration"
+        },
+        "result": {
+          "headline": "Benefits portability checked",
+          "message": "IEE-WK-2026-00045821 moving from Tamil Nadu to Karnataka. Ration routing status: portable.",
+          "items": [
+            "Ration, insurance, and BOCW eligibility mapped to destination state.",
+            "District helpdesk contact added to worker notification."
+          ],
+          "status": "Portable",
+          "actor": "Rajan Kumar"
+        }
+      },
+      {
+        "runId": "LS-000016",
+        "entityId": "PEN-000011",
+        "serviceId": "nps-lite",
+        "title": "Worker Pension NPS-Lite Auto-Enrolment",
+        "domain": "pension_enrolments",
+        "category": "worker",
+        "status": "Enrolled",
+        "actor": "9876500010",
+        "time": "20:55",
+        "date": "30 Apr 2026",
+        "inputs": {
+          "Worker ID": "IEE-WK-2026-00045821",
+          "Contribution per Payment": "50",
+          "Employer Match": "25% match",
+          "Consent": "Enrol now"
+        },
+        "result": {
+          "headline": "NPS-Lite workflow updated",
+          "message": "PRAN PRAN-11C718 generated. Contribution per payment: Rs.50. Employer match: 25% match.",
+          "items": [
+            "Worker can view projected corpus in welfare dashboard.",
+            "Consent event stored with timestamp and actor."
+          ],
+          "status": "Enrolled",
+          "actor": "Rajan Kumar"
+        }
+      },
+      {
+        "runId": "LS-000015",
+        "entityId": "PER-000010",
+        "serviceId": "job-alerts",
+        "title": "Job Alert Personalisation Engine",
+        "domain": "personalised_alerts",
+        "category": "worker",
+        "status": "Alerts Sent",
+        "actor": "9876500010",
+        "time": "20:54",
+        "date": "30 Apr 2026",
+        "inputs": {
+          "Role": "Mason",
+          "Max Distance KM": "5",
+          "Minimum Wage": "800",
+          "Availability": "Today"
+        },
+        "result": {
+          "headline": "Personalised alerts generated",
+          "message": "5 jobs ranked for Mason within 5 km above Rs.800/day.",
+          "items": [
+            "Metro Works - 96% match - Rs.950/day",
+            "Skyline Site - 91% match - Rs.875/day",
+            "Prestige Builders - 84% match - Rs.825/day"
+          ],
+          "status": "Alerts Sent",
+          "actor": "Rajan Kumar"
+        }
+      },
+      {
+        "runId": "LS-000014",
+        "entityId": "INT-000009",
+        "serviceId": "ai-interview",
+        "title": "AI Interview Screening Bot",
+        "domain": "interview_screenings",
+        "category": "platform",
+        "status": "Shortlisted",
+        "actor": "skyline@company.com",
+        "time": "22:29",
+        "date": "29 Apr 2026",
+        "inputs": {
+          "Role": "Mason",
+          "Language": "Hindi",
+          "Worker ID": "IEE-WK-2026-00045821",
+          "Availability": "Today"
+        },
+        "result": {
+          "headline": "Screening complete",
+          "message": "IEE-WK-2026-00045821 scored 87/100 for Mason. Shortlisted for employer review with Hindi interview notes and availability marked Today.",
+          "items": [
+            "Suggested questions: safety practice, wage expectation, previous site experience.",
+            "Employer action: auto-shortlist and schedule 8 minute call."
+          ],
+          "status": "Shortlisted",
+          "actor": "Skyline Constructions"
+        }
+      },
+      {
+        "runId": "LS-000013",
+        "entityId": "INT-000008",
+        "serviceId": "ai-interview",
+        "title": "AI Interview Screening Bot",
+        "domain": "interview_screenings",
+        "category": "platform",
+        "status": "Shortlisted",
+        "actor": "skyline@company.com",
+        "time": "22:26",
+        "date": "29 Apr 2026",
+        "inputs": {
+          "Role": "Mason",
+          "Language": "Hindi",
+          "Worker ID": "IEE-WK-2026-00045821",
+          "Availability": "Today"
+        },
+        "result": {
+          "headline": "Screening complete",
+          "message": "IEE-WK-2026-00045821 scored 87/100 for Mason. Shortlisted for employer review with Hindi interview notes and availability marked Today.",
+          "items": [
+            "Suggested questions: safety practice, wage expectation, previous site experience.",
+            "Employer action: auto-shortlist and schedule 8 minute call."
+          ],
+          "status": "Shortlisted",
+          "actor": "Skyline Constructions"
+        }
+      },
+      {
+        "runId": "LS-000012",
+        "entityId": "PER-000007",
+        "serviceId": "job-alerts",
+        "title": "Job Alert Personalisation Engine",
+        "domain": "personalised_alerts",
+        "category": "worker",
+        "status": "Alerts Sent",
+        "actor": "9876500010",
+        "time": "22:19",
+        "date": "29 Apr 2026",
+        "inputs": {
+          "Role": "Mason",
+          "Max Distance KM": "5",
+          "Minimum Wage": "800",
+          "Availability": "Today"
+        },
+        "result": {
+          "headline": "Personalised alerts generated",
+          "message": "5 jobs ranked for Mason within 5 km above Rs.800/day.",
+          "items": [
+            "Metro Works - 96% match - Rs.950/day",
+            "Skyline Site - 91% match - Rs.875/day",
+            "Prestige Builders - 84% match - Rs.825/day"
+          ],
+          "status": "Alerts Sent",
+          "actor": "Rajan Kumar"
+        }
+      },
+      {
+        "runId": "LS-000011",
+        "entityId": "API-000006",
+        "serviceId": "api-marketplace",
+        "title": "API Marketplace for HRMS Integration",
+        "domain": "api_clients",
+        "category": "platform",
+        "status": "Sandbox Active",
+        "actor": "9876500010",
+        "time": "21:57",
+        "date": "29 Apr 2026",
+        "inputs": {
+          "HRMS": "SAP SuccessFactors",
+          "Scope": "Worker verification",
+          "Callback URL": "https://hrms.example.com/iee/webhook"
+        },
+        "result": {
+          "headline": "API sandbox issued",
+          "message": "Key API-71B68D for SAP SuccessFactors with scope Worker verification. Webhook subscribed at https://hrms.example.com/iee/webhook.",
+          "items": [
+            "OAuth client and rate limit policy created.",
+            "Swagger-style endpoint pack is ready for HRMS testing."
+          ],
+          "status": "Sandbox Active",
+          "actor": "Rajan Kumar"
+        }
+      },
+      {
+        "runId": "LS-000010",
+        "entityId": "INT-000005",
+        "serviceId": "ai-interview",
+        "title": "AI Interview Screening Bot",
+        "domain": "interview_screenings",
+        "category": "platform",
+        "status": "Shortlisted",
+        "actor": "9876500010",
+        "time": "21:57",
+        "date": "29 Apr 2026",
+        "inputs": {
+          "Role": "Mason",
+          "Language": "Hindi",
+          "Worker ID": "IEE-WK-2026-00045821",
+          "Availability": "Today"
+        },
+        "result": {
+          "headline": "Screening complete",
+          "message": "IEE-WK-2026-00045821 scored 87/100 for Mason. Shortlisted for employer review with Hindi interview notes and availability marked Today.",
+          "items": [
+            "Suggested questions: safety practice, wage expectation, previous site experience.",
+            "Employer action: auto-shortlist and schedule 8 minute call."
+          ],
+          "status": "Shortlisted",
+          "actor": "Rajan Kumar"
+        }
+      },
+      {
+        "runId": "LS-000009",
+        "entityId": "INT-000004",
+        "serviceId": "ai-interview",
+        "title": "AI Interview Screening Bot",
+        "domain": "interview_screenings",
+        "category": "platform",
+        "status": "Shortlisted",
+        "actor": "skyline@company.com",
+        "time": "21:49",
+        "date": "29 Apr 2026",
+        "inputs": {
+          "Role": "Mason",
+          "Language": "Hindi",
+          "Worker ID": "IEE-WK-2026-00045821",
+          "Availability": "Today"
+        },
+        "result": {
+          "headline": "Screening complete",
+          "message": "IEE-WK-2026-00045821 scored 87/100 for Mason. Shortlisted for employer review with Hindi interview notes and availability marked Today.",
+          "items": [
+            "Suggested questions: safety practice, wage expectation, previous site experience.",
+            "Employer action: auto-shortlist and schedule 8 minute call."
+          ],
+          "status": "Shortlisted",
+          "actor": "Skyline Constructions"
+        }
+      },
+      {
+        "runId": "LS-000008",
+        "entityId": "SAF-000003",
+        "serviceId": "safety-incident",
+        "title": "Construction Safety Incident Reporting",
+        "domain": "safety_incidents",
+        "category": "safety",
+        "status": "Logged",
+        "actor": "skyline@company.com",
+        "time": "21:49",
+        "date": "29 Apr 2026",
+        "inputs": {
+          "Site Name": "OMR Metro Site",
+          "Severity": "Low",
+          "Incident Type": "Near miss",
+          "Details": "Worker slipped near scaffolding zone."
+        },
+        "result": {
+          "headline": "Incident ticket SAFE-2FF109 created",
+          "message": "Severity Low at OMR Metro Site routed to employer safety officer.",
+          "items": [
+            "Inspector escalation timer started for high and critical issues.",
+            "Evidence pack and witness notes are attached to the case."
+          ],
+          "status": "Logged",
+          "actor": "Skyline Constructions"
+        }
+      },
+      {
+        "runId": "LS-000007",
+        "entityId": "INT-000002",
+        "serviceId": "ai-interview",
+        "title": "AI Interview Screening Bot",
+        "domain": "interview_screenings",
+        "category": "platform",
+        "status": "Shortlisted",
+        "actor": "public",
+        "time": "21:48",
+        "date": "29 Apr 2026",
+        "inputs": {
+          "Role": "Mason",
+          "Language": "Hindi",
+          "Worker ID": "IEE-WK-2026-00045821",
+          "Availability": "Today"
+        },
+        "result": {
+          "headline": "Screening complete",
+          "message": "IEE-WK-2026-00045821 scored 87/100 for Mason. Shortlisted for employer review with Hindi interview notes and availability marked Today.",
+          "items": [
+            "Suggested questions: safety practice, wage expectation, previous site experience.",
+            "Employer action: auto-shortlist and schedule 8 minute call."
+          ],
+          "status": "Shortlisted",
+          "actor": "Public user"
+        }
+      },
+      {
+        "runId": "LS-000006",
+        "entityId": "STA-000001",
+        "serviceId": "epfo-esic-filing",
+        "title": "Automated EPFO / ESIC Filing (Employer)",
+        "domain": "statutory_filings",
+        "category": "compliance",
+        "status": "Filing Ready",
+        "actor": "public",
+        "time": "21:47",
+        "date": "29 Apr 2026",
+        "inputs": {
+          "Scheme": "EPFO + ESIC",
+          "Month": "April 2026",
+          "Employer ID": "EMP-TN-2026-001248",
+          "Workers in Filing": "148"
+        },
+        "result": {
+          "headline": "Statutory filing prepared",
+          "message": "148 workers included for April 2026. ECR ECR-846820 and challan CHLN-800B39 ready for EPFO + ESIC.",
+          "items": [
+            "UAN generation queue refreshed for new workers.",
+            "Compliance certificate will unlock after employer confirmation."
+          ],
+          "status": "Filing Ready",
+          "actor": "Public user"
+        }
+      },
+      {
+        "runId": "LS-000005",
+        "serviceId": "ai-interview",
+        "title": "AI Interview Screening Bot",
+        "category": "platform",
+        "status": "Shortlisted",
+        "actor": "public",
+        "time": "21:25",
+        "date": "29 Apr 2026",
+        "inputs": {
+          "Role": "Mason",
+          "Language": "Hindi",
+          "Worker ID": "IEE-WK-2026-00045821",
+          "Availability": "Today"
+        },
+        "result": {
+          "headline": "Screening complete",
+          "message": "IEE-WK-2026-00045821 scored 87/100 for Mason. Shortlisted for employer review with Hindi interview notes and availability marked Today.",
+          "items": [
+            "Suggested questions: safety practice, wage expectation, previous site experience.",
+            "Employer action: auto-shortlist and schedule 8 minute call."
+          ],
+          "status": "Shortlisted",
+          "actor": "Public user"
+        }
+      },
+      {
+        "runId": "LS-000004",
+        "serviceId": "ai-interview",
+        "title": "AI Interview Screening Bot",
+        "category": "platform",
+        "status": "Shortlisted",
+        "actor": "public",
+        "time": "21:22",
+        "date": "29 Apr 2026",
+        "inputs": {
+          "Role": "Mason",
+          "Language": "Hindi",
+          "Worker ID": "IEE-WK-2026-00045821",
+          "Availability": "Today"
+        },
+        "result": {
+          "headline": "Screening complete",
+          "message": "IEE-WK-2026-00045821 scored 87/100 for Mason. Shortlisted for employer review with Hindi interview notes and availability marked Today.",
+          "items": [
+            "Suggested questions: safety practice, wage expectation, previous site experience.",
+            "Employer action: auto-shortlist and schedule 8 minute call."
+          ],
+          "status": "Shortlisted",
+          "actor": "Public user"
+        }
+      },
+      {
+        "runId": "LS-000003",
+        "serviceId": "ai-interview",
+        "title": "AI Interview Screening Bot",
+        "category": "platform",
+        "status": "Shortlisted",
+        "actor": "public",
+        "time": "21:22",
+        "date": "29 Apr 2026",
+        "inputs": {
+          "Role": "Mason",
+          "Language": "Hindi",
+          "Worker ID": "IEE-WK-2026-00045821",
+          "Availability": "Today"
+        },
+        "result": {
+          "headline": "Screening complete",
+          "message": "IEE-WK-2026-00045821 scored 87/100 for Mason. Shortlisted for employer review with Hindi interview notes and availability marked Today.",
+          "items": [
+            "Suggested questions: safety practice, wage expectation, previous site experience.",
+            "Employer action: auto-shortlist and schedule 8 minute call."
+          ],
+          "status": "Shortlisted",
+          "actor": "Public user"
+        }
+      },
+      {
+        "runId": "LS-000002",
+        "serviceId": "ai-interview",
+        "title": "AI Interview Screening Bot",
+        "category": "platform",
+        "status": "Shortlisted",
+        "actor": "public",
+        "time": "21:21",
+        "date": "29 Apr 2026",
+        "inputs": {
+          "Role": "Mason",
+          "Language": "Hindi",
+          "Worker ID": "IEE-WK-2026-00045821",
+          "Availability": "Today"
+        },
+        "result": {
+          "headline": "Screening complete",
+          "message": "IEE-WK-2026-00045821 scored 87/100 for Mason. Shortlisted for employer review with Hindi interview notes and availability marked Today.",
+          "items": [
+            "Suggested questions: safety practice, wage expectation, previous site experience.",
+            "Employer action: auto-shortlist and schedule 8 minute call."
+          ],
+          "status": "Shortlisted",
+          "actor": "Public user"
+        }
+      },
+      {
+        "runId": "LS-000001",
+        "serviceId": "gst-einvoice",
+        "title": "GST E-Invoice Auto-Generation",
+        "category": "compliance",
+        "status": "Invoice Ready",
+        "actor": "public",
+        "time": "21:21",
+        "date": "29 Apr 2026",
+        "inputs": {
+          "Taxable Amount": "85000",
+          "GST Rate": "18",
+          "Employer GSTIN": "33AABCS1234Z1Z5",
+          "Supply Type": "B2B"
+        },
+        "result": {
+          "headline": "GST e-invoice generated",
+          "message": "Invoice INV-E5F9FA, IRN IRN-7C8D17. Taxable value Rs.85,000, GST @ 18% = Rs.15,300. Supply type: B2B.",
+          "items": [
+            "PDF and JSON invoice payload stored for employer download.",
+            "Audit trail linked to GSTIN 33AABCS1234Z1Z5"
+          ],
+          "status": "Invoice Ready",
+          "actor": "Public user"
+        }
+      }
+    ],
+    "stats": {
+      "total_runs": 26,
+      "automations_completed": 26,
+      "compliance_documents": 3,
+      "worker_welfare_actions": 6
+    },
+    "domains": {
+      "interview_screenings": [
+        {
+          "entityId": "INT-000016",
+          "serviceId": "ai-interview",
+          "service": "AI Interview Screening Bot",
+          "domain": "interview_screenings",
+          "category": "platform",
+          "status": "Shortlisted",
+          "headline": "Screening complete",
+          "createdAt": "2026-04-30T21:00:31",
+          "date": "30 Apr 2026",
+          "time": "21:00",
+          "inputs": {
+            "Role": "Mason",
+            "Language": "Hindi",
+            "Worker ID": "IEE-WK-2026-00045821",
+            "Availability": "Today"
+          },
+          "summary": "IEE-WK-2026-00045821 scored 87/100 for Mason. Shortlisted for employer review with Hindi interview notes and availability marked Today.",
+          "workerId": "IEE-WK-2026-00045821",
+          "role": "Mason",
+          "language": "Hindi",
+          "score": 87,
+          "runId": "LS-000021"
+        },
+        {
+          "entityId": "INT-000014",
+          "serviceId": "ai-interview",
+          "service": "AI Interview Screening Bot",
+          "domain": "interview_screenings",
+          "category": "platform",
+          "status": "Shortlisted",
+          "headline": "Screening complete",
+          "createdAt": "2026-04-30T20:59:57",
+          "date": "30 Apr 2026",
+          "time": "20:59",
+          "inputs": {
+            "Role": "Mason",
+            "Language": "Hindi",
+            "Worker ID": "IEE-WK-2026-00045821",
+            "Availability": "Today"
+          },
+          "summary": "IEE-WK-2026-00045821 scored 87/100 for Mason. Shortlisted for employer review with Hindi interview notes and availability marked Today.",
+          "workerId": "IEE-WK-2026-00045821",
+          "role": "Mason",
+          "language": "Hindi",
+          "score": 87,
+          "runId": "LS-000019"
+        },
+        {
+          "entityId": "INT-000009",
+          "serviceId": "ai-interview",
+          "service": "AI Interview Screening Bot",
+          "domain": "interview_screenings",
+          "category": "platform",
+          "status": "Shortlisted",
+          "headline": "Screening complete",
+          "createdAt": "2026-04-29T22:29:19",
+          "date": "29 Apr 2026",
+          "time": "22:29",
+          "inputs": {
+            "Role": "Mason",
+            "Language": "Hindi",
+            "Worker ID": "IEE-WK-2026-00045821",
+            "Availability": "Today"
+          },
+          "summary": "IEE-WK-2026-00045821 scored 87/100 for Mason. Shortlisted for employer review with Hindi interview notes and availability marked Today.",
+          "workerId": "IEE-WK-2026-00045821",
+          "role": "Mason",
+          "language": "Hindi",
+          "score": 87,
+          "runId": "LS-000014"
+        },
+        {
+          "entityId": "INT-000008",
+          "serviceId": "ai-interview",
+          "service": "AI Interview Screening Bot",
+          "domain": "interview_screenings",
+          "category": "platform",
+          "status": "Shortlisted",
+          "headline": "Screening complete",
+          "createdAt": "2026-04-29T22:26:22",
+          "date": "29 Apr 2026",
+          "time": "22:26",
+          "inputs": {
+            "Role": "Mason",
+            "Language": "Hindi",
+            "Worker ID": "IEE-WK-2026-00045821",
+            "Availability": "Today"
+          },
+          "summary": "IEE-WK-2026-00045821 scored 87/100 for Mason. Shortlisted for employer review with Hindi interview notes and availability marked Today.",
+          "workerId": "IEE-WK-2026-00045821",
+          "role": "Mason",
+          "language": "Hindi",
+          "score": 87,
+          "runId": "LS-000013"
+        },
+        {
+          "entityId": "INT-000005",
+          "serviceId": "ai-interview",
+          "service": "AI Interview Screening Bot",
+          "domain": "interview_screenings",
+          "category": "platform",
+          "status": "Shortlisted",
+          "headline": "Screening complete",
+          "createdAt": "2026-04-29T21:57:09",
+          "date": "29 Apr 2026",
+          "time": "21:57",
+          "inputs": {
+            "Role": "Mason",
+            "Language": "Hindi",
+            "Worker ID": "IEE-WK-2026-00045821",
+            "Availability": "Today"
+          },
+          "summary": "IEE-WK-2026-00045821 scored 87/100 for Mason. Shortlisted for employer review with Hindi interview notes and availability marked Today.",
+          "workerId": "IEE-WK-2026-00045821",
+          "role": "Mason",
+          "language": "Hindi",
+          "score": 87,
+          "runId": "LS-000010"
+        },
+        {
+          "entityId": "INT-000004",
+          "serviceId": "ai-interview",
+          "service": "AI Interview Screening Bot",
+          "domain": "interview_screenings",
+          "category": "platform",
+          "status": "Shortlisted",
+          "headline": "Screening complete",
+          "createdAt": "2026-04-29T21:49:55",
+          "date": "29 Apr 2026",
+          "time": "21:49",
+          "inputs": {
+            "Role": "Mason",
+            "Language": "Hindi",
+            "Worker ID": "IEE-WK-2026-00045821",
+            "Availability": "Today"
+          },
+          "summary": "IEE-WK-2026-00045821 scored 87/100 for Mason. Shortlisted for employer review with Hindi interview notes and availability marked Today.",
+          "workerId": "IEE-WK-2026-00045821",
+          "role": "Mason",
+          "language": "Hindi",
+          "score": 87,
+          "runId": "LS-000009"
+        },
+        {
+          "entityId": "INT-000002",
+          "serviceId": "ai-interview",
+          "service": "AI Interview Screening Bot",
+          "domain": "interview_screenings",
+          "category": "platform",
+          "status": "Shortlisted",
+          "headline": "Screening complete",
+          "createdAt": "2026-04-29T21:48:26",
+          "date": "29 Apr 2026",
+          "time": "21:48",
+          "inputs": {
+            "Role": "Mason",
+            "Language": "Hindi",
+            "Worker ID": "IEE-WK-2026-00045821",
+            "Availability": "Today"
+          },
+          "summary": "IEE-WK-2026-00045821 scored 87/100 for Mason. Shortlisted for employer review with Hindi interview notes and availability marked Today.",
+          "workerId": "IEE-WK-2026-00045821",
+          "role": "Mason",
+          "language": "Hindi",
+          "score": 87,
+          "runId": "LS-000007"
+        }
+      ],
+      "learning_paths": [],
+      "safety_incidents": [
+        {
+          "entityId": "SAF-000003",
+          "serviceId": "safety-incident",
+          "service": "Construction Safety Incident Reporting",
+          "domain": "safety_incidents",
+          "category": "safety",
+          "status": "Logged",
+          "headline": "Incident ticket SAFE-2FF109 created",
+          "createdAt": "2026-04-29T21:49:22",
+          "date": "29 Apr 2026",
+          "time": "21:49",
+          "inputs": {
+            "Site Name": "OMR Metro Site",
+            "Severity": "Low",
+            "Incident Type": "Near miss",
+            "Details": "Worker slipped near scaffolding zone."
+          },
+          "summary": "Severity Low at OMR Metro Site routed to employer safety officer.",
+          "site": "OMR Metro Site",
+          "severity": "Low",
+          "incidentType": "Near miss",
+          "runId": "LS-000008"
+        }
+      ],
+      "surge_plans": [],
+      "gst_invoices": [
+        {
+          "entityId": "GST-000017",
+          "serviceId": "gst-einvoice",
+          "service": "GST E-Invoice Auto-Generation",
+          "domain": "gst_invoices",
+          "category": "compliance",
+          "status": "Invoice Ready",
+          "headline": "GST e-invoice generated",
+          "createdAt": "2026-04-30T21:02:16",
+          "date": "30 Apr 2026",
+          "time": "21:02",
+          "inputs": {
+            "Employer GSTIN": "33AABCS1234Z1Z5",
+            "Taxable Amount": "85000",
+            "Supply Type": "B2B",
+            "GST Rate": "5"
+          },
+          "summary": "Invoice INV-8397A2, IRN IRN-B5C0E9. Taxable value Rs.85,000, GST @ 5% = Rs.4,250. Supply type: B2B.",
+          "documentType": "GST_E_INVOICE",
+          "gstin": "33AABCS1234Z1Z5",
+          "taxableAmount": 85000.0,
+          "gstRate": 5.0,
+          "runId": "LS-000022"
+        }
+      ],
+      "msme_onboarding": [],
+      "pension_enrolments": [
+        {
+          "entityId": "PEN-000011",
+          "serviceId": "nps-lite",
+          "service": "Worker Pension NPS-Lite Auto-Enrolment",
+          "domain": "pension_enrolments",
+          "category": "worker",
+          "status": "Enrolled",
+          "headline": "NPS-Lite workflow updated",
+          "createdAt": "2026-04-30T20:55:08",
+          "date": "30 Apr 2026",
+          "time": "20:55",
+          "inputs": {
+            "Worker ID": "IEE-WK-2026-00045821",
+            "Contribution per Payment": "50",
+            "Employer Match": "25% match",
+            "Consent": "Enrol now"
+          },
+          "summary": "PRAN PRAN-11C718 generated. Contribution per payment: Rs.50. Employer match: 25% match.",
+          "workerId": "IEE-WK-2026-00045821",
+          "contribution": 50.0,
+          "consent": "Enrol now",
+          "runId": "LS-000016"
+        }
+      ],
+      "benefit_portability": [
+        {
+          "entityId": "BEN-000012",
+          "serviceId": "benefits-portability",
+          "service": "Cross-State Benefits Portability",
+          "domain": "benefit_portability",
+          "category": "worker",
+          "status": "Portable",
+          "headline": "Benefits portability checked",
+          "createdAt": "2026-04-30T20:55:51",
+          "date": "30 Apr 2026",
+          "time": "20:55",
+          "inputs": {
+            "Worker ID": "IEE-WK-2026-00045821",
+            "From State": "Tamil Nadu",
+            "To State": "Karnataka",
+            "Benefit": "Ration"
+          },
+          "summary": "IEE-WK-2026-00045821 moving from Tamil Nadu to Karnataka. Ration routing status: portable.",
+          "workerId": "IEE-WK-2026-00045821",
+          "fromState": "Tamil Nadu",
+          "toState": "Karnataka",
+          "benefit": "Ration",
+          "runId": "LS-000017"
+        }
+      ],
+      "api_clients": [
+        {
+          "entityId": "API-000018",
+          "serviceId": "api-marketplace",
+          "service": "API Marketplace for HRMS Integration",
+          "domain": "api_clients",
+          "category": "platform",
+          "status": "Sandbox Active",
+          "headline": "API sandbox issued",
+          "createdAt": "2026-04-30T21:02:44",
+          "date": "30 Apr 2026",
+          "time": "21:02",
+          "inputs": {
+            "HRMS": "GreytHR",
+            "Scope": "Payroll sync",
+            "Callback URL": "https://hrms.example.com/iee/webhook"
+          },
+          "summary": "Key API-9A0491 for GreytHR with scope Payroll sync. Webhook subscribed at https://hrms.example.com/iee/webhook.",
+          "hrms": "GreytHR",
+          "scope": "Payroll sync",
+          "callbackUrl": "https://hrms.example.com/iee/webhook",
+          "runId": "LS-000023"
+        },
+        {
+          "entityId": "API-000015",
+          "serviceId": "api-marketplace",
+          "service": "API Marketplace for HRMS Integration",
+          "domain": "api_clients",
+          "category": "platform",
+          "status": "Sandbox Active",
+          "headline": "API sandbox issued",
+          "createdAt": "2026-04-30T21:00:16",
+          "date": "30 Apr 2026",
+          "time": "21:00",
+          "inputs": {
+            "HRMS": "SAP SuccessFactors",
+            "Scope": "Worker verification",
+            "Callback URL": "https://hrms.example.com/iee/webhook"
+          },
+          "summary": "Key API-A3A5C7 for SAP SuccessFactors with scope Worker verification. Webhook subscribed at https://hrms.example.com/iee/webhook.",
+          "hrms": "SAP SuccessFactors",
+          "scope": "Worker verification",
+          "callbackUrl": "https://hrms.example.com/iee/webhook",
+          "runId": "LS-000020"
+        },
+        {
+          "entityId": "API-000006",
+          "serviceId": "api-marketplace",
+          "service": "API Marketplace for HRMS Integration",
+          "domain": "api_clients",
+          "category": "platform",
+          "status": "Sandbox Active",
+          "headline": "API sandbox issued",
+          "createdAt": "2026-04-29T21:57:22",
+          "date": "29 Apr 2026",
+          "time": "21:57",
+          "inputs": {
+            "HRMS": "SAP SuccessFactors",
+            "Scope": "Worker verification",
+            "Callback URL": "https://hrms.example.com/iee/webhook"
+          },
+          "summary": "Key API-71B68D for SAP SuccessFactors with scope Worker verification. Webhook subscribed at https://hrms.example.com/iee/webhook.",
+          "hrms": "SAP SuccessFactors",
+          "scope": "Worker verification",
+          "callbackUrl": "https://hrms.example.com/iee/webhook",
+          "runId": "LS-000011"
+        }
+      ],
+      "employer_referrals": [],
+      "accessibility_profiles": [],
+      "women_safety_checks": [],
+      "credential_proofs": [
+        {
+          "entityId": "CRE-000019",
+          "serviceId": "blockchain-credential",
+          "service": "Blockchain Credential Verification",
+          "domain": "credential_proofs",
+          "category": "platform",
+          "status": "Verified",
+          "headline": "Credential verified",
+          "createdAt": "2026-04-30T21:04:24",
+          "date": "30 Apr 2026",
+          "time": "21:04",
+          "inputs": {
+            "Certificate ID": "PMKVY-TN-2026-7782",
+            "Issuer": "PMKVY",
+            "Worker ID": "IEE-WK-2026-00045821"
+          },
+          "summary": "PMKVY-TN-2026-7782 from PMKVY anchored with proof hash 0xadb662a0abeb. Verification time: 2.4 seconds.",
+          "certificateId": "PMKVY-TN-2026-7782",
+          "issuer": "PMKVY",
+          "workerId": "IEE-WK-2026-00045821",
+          "runId": "LS-000024"
+        }
+      ],
+      "dispute_cases": [
+        {
+          "entityId": "DIS-000013",
+          "serviceId": "dispute-chatbot",
+          "service": "Dispute Resolution Chatbot",
+          "domain": "dispute_cases",
+          "category": "safety",
+          "status": "Case Open",
+          "headline": "Dispute case CASE-DA1B46 opened",
+          "createdAt": "2026-04-30T20:56:53",
+          "date": "30 Apr 2026",
+          "time": "20:56",
+          "inputs": {
+            "Dispute Type": "Payment delay",
+            "Language": "English",
+            "Message": "Employer has not released payment for three days of masonry work."
+          },
+          "summary": "Type Payment delay classified for English response. Bot reply: payment evidence requested; SLA clock started.",
+          "caseType": "Payment delay",
+          "language": "English",
+          "sla": "24 hours",
+          "runId": "LS-000018"
+        }
+      ],
+      "privacy_actions": [],
+      "tds_forms": [],
+      "statutory_filings": [
+        {
+          "entityId": "STA-000001",
+          "serviceId": "epfo-esic-filing",
+          "service": "Automated EPFO / ESIC Filing (Employer)",
+          "domain": "statutory_filings",
+          "category": "compliance",
+          "status": "Filing Ready",
+          "headline": "Statutory filing prepared",
+          "createdAt": "2026-04-29T21:47:51",
+          "date": "29 Apr 2026",
+          "time": "21:47",
+          "inputs": {
+            "Scheme": "EPFO + ESIC",
+            "Month": "April 2026",
+            "Employer ID": "EMP-TN-2026-001248",
+            "Workers in Filing": "148"
+          },
+          "summary": "148 workers included for April 2026. ECR ECR-846820 and challan CHLN-800B39 ready for EPFO + ESIC.",
+          "documentType": "STATUTORY_FILING",
+          "employerId": "EMP-TN-2026-001248",
+          "workers": 148,
+          "scheme": "EPFO + ESIC",
+          "runId": "LS-000006"
+        }
+      ],
+      "personalised_alerts": [
+        {
+          "entityId": "PER-000021",
+          "serviceId": "job-alerts",
+          "service": "Job Alert Personalisation Engine",
+          "domain": "personalised_alerts",
+          "category": "worker",
+          "status": "Alerts Sent",
+          "headline": "Personalised alerts generated",
+          "createdAt": "2026-05-01T13:27:17",
+          "date": "01 May 2026",
+          "time": "13:27",
+          "inputs": {
+            "Role": "Mason",
+            "Max Distance KM": "5",
+            "Minimum Wage": "800",
+            "Availability": "Today"
+          },
+          "summary": "5 jobs ranked for Mason within 5 km above Rs.800/day.",
+          "role": "Mason",
+          "maxDistanceKm": 5.0,
+          "minimumWage": 800.0,
+          "runId": "LS-000026"
+        },
+        {
+          "entityId": "PER-000020",
+          "serviceId": "job-alerts",
+          "service": "Job Alert Personalisation Engine",
+          "domain": "personalised_alerts",
+          "category": "worker",
+          "status": "Alerts Sent",
+          "headline": "Personalised alerts generated",
+          "createdAt": "2026-05-01T13:27:12",
+          "date": "01 May 2026",
+          "time": "13:27",
+          "inputs": {
+            "Role": "Mason",
+            "Max Distance KM": "5",
+            "Minimum Wage": "800",
+            "Availability": "Today"
+          },
+          "summary": "5 jobs ranked for Mason within 5 km above Rs.800/day.",
+          "role": "Mason",
+          "maxDistanceKm": 5.0,
+          "minimumWage": 800.0,
+          "runId": "LS-000025"
+        },
+        {
+          "entityId": "PER-000010",
+          "serviceId": "job-alerts",
+          "service": "Job Alert Personalisation Engine",
+          "domain": "personalised_alerts",
+          "category": "worker",
+          "status": "Alerts Sent",
+          "headline": "Personalised alerts generated",
+          "createdAt": "2026-04-30T20:54:46",
+          "date": "30 Apr 2026",
+          "time": "20:54",
+          "inputs": {
+            "Role": "Mason",
+            "Max Distance KM": "5",
+            "Minimum Wage": "800",
+            "Availability": "Today"
+          },
+          "summary": "5 jobs ranked for Mason within 5 km above Rs.800/day.",
+          "role": "Mason",
+          "maxDistanceKm": 5.0,
+          "minimumWage": 800.0,
+          "runId": "LS-000015"
+        },
+        {
+          "entityId": "PER-000007",
+          "serviceId": "job-alerts",
+          "service": "Job Alert Personalisation Engine",
+          "domain": "personalised_alerts",
+          "category": "worker",
+          "status": "Alerts Sent",
+          "headline": "Personalised alerts generated",
+          "createdAt": "2026-04-29T22:19:30",
+          "date": "29 Apr 2026",
+          "time": "22:19",
+          "inputs": {
+            "Role": "Mason",
+            "Max Distance KM": "5",
+            "Minimum Wage": "800",
+            "Availability": "Today"
+          },
+          "summary": "5 jobs ranked for Mason within 5 km above Rs.800/day.",
+          "role": "Mason",
+          "maxDistanceKm": 5.0,
+          "minimumWage": 800.0,
+          "runId": "LS-000012"
+        }
+      ],
+      "wellbeing_checks": [],
+      "carbon_credit_projects": []
     }
   }
 }

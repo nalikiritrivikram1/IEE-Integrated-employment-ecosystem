@@ -17,7 +17,12 @@ This project currently runs as a local backend server, so the preview link works
 - `app.py`: Python backend server that injects backend-powered behavior into the portal
 - `iee_government_portal.html`: original portal frontend kept in the repo
 - `portal_data.json`: seeded local backend data store
+- `docs/iee-comprehensive-audit-roadmap.md`: decision-ready audit, benchmark matrix, and implementation roadmap
 - `.gitignore`: ignores runtime-only files
+
+## Audit and Roadmap
+
+- See `docs/iee-comprehensive-audit-roadmap.md` for the current product audit, production blockers, benchmark review, phased roadmap, and target API/domain model.
 
 ## Backend Features Added
 

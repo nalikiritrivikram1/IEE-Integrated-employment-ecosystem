@@ -1,5 +1,8 @@
 __pycache__/
 *.pyc
 server.pid
+server.jobid
 runtime.log
 runtime.err.log
+runtime-live*.log
+runtime-smoke*.log

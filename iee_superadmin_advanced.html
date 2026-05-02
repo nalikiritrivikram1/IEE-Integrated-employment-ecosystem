@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IEE — National Employment Intelligence Platform | Superintendent Administration</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+:root {
+  --ink:#0c1a28;--ink2:#1b3150;--ink3:#2d4f72;--ink4:#4a6e90;
+  --r:#e6edf5;--rl:#f2f5f9;--s:#f7f9fc;
+  --w:#fff;
+  --acc:#b07000;--acc2:#8a5500;--accbg:#fdf5e6;
+  --grn:#145c32;--grnbg:#e6f4ec;
+  --red:#8b1515;--redbg:#fbeaea;
+  --blu:#0e4585;--blubg:#e6effc;
+  --tel:#0a5a5a;--telbg:#e5f3f3;
+  --pur:#4a1578;--purbg:#f0e8fc;
+  --ora:#8b3a00;--orabg:#fdf0e6;
+  --f:'IBM Plex Sans',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:12.5px;scroll-behavior:smooth}
+body{font-family:var(--f);background:var(--s);color:var(--ink);line-height:1.55;overflow-x:hidden}
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--r);border-radius:3px}
+
+/* TICKER */
+#tk{background:var(--ink);color:#7a9ec0;font-size:10.5px;padding:4px 0;overflow:hidden;white-space:nowrap;border-bottom:2px solid var(--acc)}
+#tkt{display:inline-block;animation:tk 70s linear infinite}
+@keyframes tk{0%{transform:translateX(100vw)}100%{transform:translateX(-100%)}}
+
+/* HEADER */
+#hdr{background:var(--ink);display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:58px;position:sticky;top:0;z-index:300;border-bottom:1px solid var(--ink3)}
+.hbrand{display:flex;align-items:center;gap:12px}
+.hseal{width:38px;height:38px;border-radius:50%;border:1.5px solid rgba(176,112,0,0.5);background:rgba(176,112,0,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.htitle h1{color:var(--w);font-size:12.5px;font-weight:700;letter-spacing:0.2px}
+.htitle p{color:#5a80a8;font-size:10px;margin-top:1px}
+.hright{display:flex;align-items:center;gap:10px}
+.hclock{font-family:var(--mono);color:var(--acc);font-size:12px;letter-spacing:0.5px}
+.ai-live{display:flex;align-items:center;gap:5px;background:rgba(20,92,50,0.3);border:1px solid rgba(20,92,50,0.5);border-radius:3px;padding:3px 8px;font-size:10px;color:#5de89a}
+.ai-dot{width:5px;height:5px;border-radius:50%;background:#5de89a;animation:blink 1.8s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.hbtn{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:3px;padding:5px 9px;color:#9bb8d4;cursor:pointer;font-size:10.5px;font-family:var(--f);transition:background 0.15s;position:relative}
+.hbtn:hover{background:rgba(255,255,255,0.12)}
+.hbdot{position:absolute;top:3px;right:3px;width:5px;height:5px;border-radius:50%;background:#c44;border:1px solid var(--ink);animation:blink 2.5s infinite}
+.restricted{background:#2d0a0a;border:1px solid var(--red);color:#e8a8a8;font-size:9.5px;font-weight:700;letter-spacing:1px;padding:3px 8px;border-radius:2px;text-transform:uppercase}
+
+/* NAV */
+#nav{background:var(--ink2);border-bottom:1px solid var(--ink3);display:flex;overflow-x:auto;scrollbar-width:none;position:sticky;top:58px;z-index:200}
+#nav::-webkit-scrollbar{display:none}
+.nt{padding:9px 14px;color:#6a90b4;font-size:11px;font-weight:500;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;border-top:2px solid transparent;transition:all 0.15s;letter-spacing:0.2px;display:flex;align-items:center;gap:4px}
+.nt:hover{color:#b8d0e8;background:rgba(255,255,255,0.04)}
+.nt.on{color:var(--w);border-bottom-color:var(--acc);background:rgba(255,255,255,0.05)}
+.nc{background:var(--red);color:#fdd;font-size:9px;font-weight:700;padding:1px 5px;border-radius:10px;margin-left:2px}
+.nc.a{background:var(--acc2);color:#ffe8b0}
+.nc.g{background:var(--grn);color:#b0f0c8}
+
+/* LAYOUT */
+#layout{display:flex;min-height:calc(100vh - 88px)}
+
+/* SIDEBAR */
+#sb{width:200px;flex-shrink:0;background:var(--w);border-right:1px solid var(--r);position:sticky;top:88px;height:calc(100vh - 88px);overflow-y:auto;padding:10px 0}
+.sbl{padding:9px 13px 3px;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--ink4)}
+.si{padding:7px 13px;display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(--ink4);cursor:pointer;border-left:3px solid transparent;transition:all 0.12s}
+.si:hover{background:var(--s);color:var(--ink2)}
+.si.on{background:var(--blubg);color:var(--blu);border-left-color:var(--blu);font-weight:600}
+.si svg{width:12px;height:12px;flex-shrink:0}
+.sbg{margin-left:auto;font-size:9px;font-weight:700;padding:1px 5px;border-radius:10px}
+.sbg.r{background:var(--redbg);color:var(--red)}
+.sbg.g{background:var(--grnbg);color:var(--grn)}
+.sbg.a{background:var(--accbg);color:var(--acc2)}
+
+/* CONTENT */
+#main{flex:1;padding:18px;min-width:0;overflow-x:hidden}
+
+/* PAGES */
+.pg{display:none}
+.pg.on{display:block;animation:fi 0.22s ease}
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+
+/* PAGE TITLE */
+.ptb{background:var(--ink);color:var(--w);border-radius:4px;padding:13px 16px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
+.ptb h2{font-size:13.5px;font-weight:700}
+.ptb p{font-size:10.5px;color:#6a90b4;margin-top:2px}
+.ptb-r{display:flex;gap:6px}
+
+/* AI INSIGHT BANNER */
+.ai-banner{background:linear-gradient(135deg,var(--ink) 0%,var(--ink2) 100%);border:1px solid var(--ink3);border-radius:4px;padding:12px 16px;margin-bottom:14px;display:flex;align-items:center;gap:12px}
+.ai-pulse{width:32px;height:32px;border-radius:50%;background:rgba(93,232,154,0.12);border:1.5px solid rgba(93,232,154,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;animation:pulse-a 3s infinite}
+@keyframes pulse-a{0%,100%{box-shadow:0 0 0 0 rgba(93,232,154,0.3)}50%{box-shadow:0 0 0 6px rgba(93,232,154,0)}}
+.ai-banner h4{font-size:11.5px;font-weight:700;color:var(--w);margin-bottom:2px}
+.ai-banner p{font-size:10.5px;color:#7a9ec0;line-height:1.4}
+.ai-tag{font-size:9px;font-weight:700;color:#5de89a;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:4px}
+
+/* ALERTS */
+.al{padding:9px 13px;border-radius:3px;font-size:11px;border-left:3px solid;display:flex;gap:9px;align-items:flex-start;margin-bottom:11px}
+.al a{color:inherit;font-weight:700}
+.al-w{background:var(--accbg);border-color:var(--acc);color:var(--acc2)}
+.al-g{background:var(--grnbg);border-color:var(--grn);color:var(--grn)}
+.al-i{background:var(--blubg);border-color:var(--blu);color:var(--blu)}
+.al-e{background:var(--redbg);border-color:var(--red);color:var(--red)}
+.al-p{background:var(--purbg);border-color:var(--pur);color:var(--pur)}
+
+/* BUTTONS */
+.btn{padding:6px 12px;border-radius:3px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid transparent;transition:all 0.15s;font-family:var(--f);display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+.btn-p{background:var(--acc);color:var(--w);border-color:var(--acc2)}
+.btn-p:hover{background:var(--acc2)}
+.btn-d{background:var(--ink);color:var(--w);border-color:var(--ink3)}
+.btn-d:hover{background:var(--ink2)}
+.btn-g{background:var(--grn);color:var(--w)}
+.btn-g:hover{filter:brightness(1.1)}
+.btn-r{background:var(--red);color:var(--w)}
+.btn-r:hover{filter:brightness(1.1)}
+.btn-o{background:transparent;color:var(--ink4);border-color:var(--r)}
+.btn-o:hover{background:var(--s);color:var(--ink);border-color:var(--r)}
+.btn-b{background:var(--blu);color:var(--w)}
+.btn-sm{padding:4px 9px;font-size:10.5px}
+.btn-xs{padding:3px 7px;font-size:10px}
+
+/* KPI */
+.kg{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:9px;margin-bottom:14px}
+.kpi{background:var(--w);border:1px solid var(--r);border-radius:4px;padding:12px 13px;position:relative;overflow:hidden;transition:box-shadow 0.2s}
+.kpi:hover{box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.kpi::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%}
+.kpi.c-ink::before{background:var(--ink)}
+.kpi.c-grn::before{background:var(--grn)}
+.kpi.c-acc::before{background:var(--acc)}
+.kpi.c-red::before{background:var(--red)}
+.kpi.c-blu::before{background:var(--blu)}
+.kpi.c-tel::before{background:var(--tel)}
+.kpi.c-pur::before{background:var(--pur)}
+.kpi.c-ora::before{background:var(--ora)}
+.kv{font-size:20px;font-weight:700;color:var(--ink);line-height:1.1}
+.kl{font-size:9.5px;color:var(--ink4);text-transform:uppercase;letter-spacing:0.6px;margin-top:3px}
+.kd{font-size:10px;margin-top:3px;font-weight:600}
+.kd.u{color:var(--grn)}.kd.d{color:var(--red)}.kd.n{color:var(--ink4)}
+
+/* CARD */
+.card{background:var(--w);border:1px solid var(--r);border-radius:4px;margin-bottom:12px}
+.chd{padding:11px 15px;border-bottom:1px solid var(--rl);display:flex;align-items:center;justify-content:space-between}
+.chd h3{font-size:12px;font-weight:700;color:var(--ink)}
+.chd p{font-size:10.5px;color:var(--ink4);margin-top:1px}
+.cbd{padding:14px}
+.cbd0{padding:0}
+
+/* TABLE */
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+thead tr{background:var(--ink)}
+th{padding:7px 10px;text-align:left;font-size:9.5px;font-weight:700;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.7px;white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--rl);font-size:11.5px;color:var(--ink4);vertical-align:middle}
+tr:hover td{background:var(--s)}
+tr:last-child td{border-bottom:none}
+td strong{color:var(--ink);font-weight:600}
+code{font-family:var(--mono);font-size:10px;color:var(--ink3);background:var(--s);padding:1px 4px;border-radius:2px}
+
+/* BADGE */
+.b{display:inline-block;padding:2px 6px;border-radius:2px;font-size:9px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase}
+.bg{background:var(--grnbg);color:var(--grn)}
+.br{background:var(--redbg);color:var(--red)}
+.ba{background:var(--accbg);color:var(--acc2)}
+.bb{background:var(--blubg);color:var(--blu)}
+.bt{background:var(--telbg);color:var(--tel)}
+.bp{background:var(--purbg);color:var(--pur)}
+.bk{background:#e3e9f0;color:var(--ink2)}
+.bz{background:var(--s);color:var(--ink4)}
+.bo{background:var(--orabg);color:var(--ora)}
+
+/* FORM */
+.fg{display:flex;flex-direction:column;gap:4px}
+.fg label{font-size:10px;font-weight:700;color:var(--ink2);text-transform:uppercase;letter-spacing:0.5px}
+.fg input,.fg select,.fg textarea{padding:7px 9px;border:1px solid var(--r);border-radius:3px;font-size:11.5px;font-family:var(--f);color:var(--ink);background:var(--w);transition:border-color 0.15s}
+.fg input:focus,.fg select:focus,.fg textarea:focus{outline:none;border-color:var(--blu);box-shadow:0 0 0 2px rgba(14,69,133,0.1)}
+.fg textarea{resize:vertical;min-height:68px}
+.fgg{display:grid;gap:10px}
+.f2{grid-template-columns:1fr 1fr}.f3{grid-template-columns:1fr 1fr 1fr}.f4{grid-template-columns:repeat(4,1fr)}
+
+/* TOGGLE */
+.tr-row{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--rl)}
+.tr-row:last-child{border-bottom:none}
+.tr-lbl{font-size:11.5px;color:var(--ink);flex:1}
+.tr-sub{font-size:10px;color:var(--ink4)}
+.tgl{position:relative;width:36px;height:19px;flex-shrink:0}
+.tgl input{display:none}
+.tgltr{position:absolute;inset:0;background:var(--r);border-radius:20px;cursor:pointer;transition:0.25s}
+.tgltr::before{content:'';position:absolute;width:13px;height:13px;left:3px;top:3px;background:var(--w);border-radius:50%;transition:0.25s}
+.tgl input:checked~.tgltr{background:var(--grn)}
+.tgl input:checked~.tgltr::before{transform:translateX(17px)}
+
+/* PROGRESS */
+.pb{height:5px;background:var(--rl);border-radius:3px;overflow:hidden}
+.pbf{height:100%;border-radius:3px;transition:width 1.2s ease}
+.pi{background:var(--ink)}.pg2{background:var(--grn)}.pa{background:var(--acc)}.pr2{background:var(--red)}.pb2{background:var(--blu)}.ppu{background:var(--pur)}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+@media(max-width:1000px){.g2,.g3,.g4{grid-template-columns:1fr}#sb{display:none}}
+
+/* MODAL */
+.mbk{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:600;align-items:center;justify-content:center}
+.mbk.on{display:flex}
+.mdl{background:var(--w);border-radius:4px;width:640px;max-width:96vw;max-height:90vh;overflow-y:auto;border:1px solid var(--r);box-shadow:0 20px 60px rgba(0,0,0,0.35);animation:fi 0.2s ease}
+.mhd{padding:13px 17px;background:var(--ink);color:var(--w);border-radius:4px 4px 0 0;display:flex;align-items:center;justify-content:space-between}
+.mhd h3{font-size:13px;font-weight:700}
+.mclose{background:none;border:none;color:rgba(255,255,255,0.5);font-size:17px;cursor:pointer;line-height:1;padding:0}
+.mclose:hover{color:var(--w)}
+.mbd{padding:17px}
+.mft{padding:11px 17px;border-top:1px solid var(--r);display:flex;justify-content:flex-end;gap:7px}
+
+/* TOAST */
+#tw{position:fixed;bottom:18px;right:18px;z-index:9999;display:flex;flex-direction:column;gap:6px;pointer-events:none}
+.toast{padding:9px 14px;border-radius:3px;font-size:11.5px;font-weight:600;color:var(--w);display:flex;align-items:center;gap:7px;box-shadow:0 4px 16px rgba(0,0,0,0.25);animation:tst 0.3s ease;min-width:230px;pointer-events:auto}
+@keyframes tst{from{transform:translateX(50px);opacity:0}to{transform:translateX(0);opacity:1}}
+.tok{background:var(--grn)}.twa{background:var(--acc)}.ter{background:var(--red)}.tin{background:var(--blu)}.tpu{background:var(--pur)}
+
+/* NOTIF PANEL */
+#np{display:none;position:fixed;top:62px;right:14px;width:340px;background:var(--w);border:1px solid var(--r);border-radius:4px;box-shadow:0 8px 32px rgba(0,0,0,0.18);z-index:500;flex-direction:column;max-height:75vh;overflow:hidden}
+#np.on{display:flex}
+.nphd{padding:11px 14px;background:var(--ink);color:var(--w);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:space-between}
+.npl{overflow-y:auto}
+.npi{padding:10px 13px;border-bottom:1px solid var(--rl);cursor:pointer;transition:background 0.12s}
+.npi:hover{background:var(--s)}
+.npi.u{border-left:3px solid var(--acc)}
+.npi h4{font-size:11.5px;font-weight:600;color:var(--ink)}
+.npi p{font-size:10.5px;color:var(--ink4);margin-top:1px}
+.npt{font-size:10px;color:var(--ink4)}
+
+/* JOURNEY TIMELINE */
+.jtl{display:flex;flex-direction:column;gap:0}
+.jte{display:flex;gap:12px;position:relative;padding-bottom:14px}
+.jte::before{content:'';position:absolute;left:14px;top:28px;bottom:0;width:1px;background:var(--r)}
+.jte:last-child::before{display:none}
+.jt-dot{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--w);z-index:1}
+.jt-dot.grn{background:var(--grn)}.jt-dot.acc{background:var(--acc)}.jt-dot.blu{background:var(--blu)}.jt-dot.pur{background:var(--pur)}.jt-dot.red{background:var(--red)}.jt-dot.tel{background:var(--tel)}
+.jt-body{flex:1;padding-top:4px}
+.jt-body h4{font-size:11.5px;font-weight:700;color:var(--ink)}
+.jt-body p{font-size:10.5px;color:var(--ink4);line-height:1.4}
+.jt-body .jt-meta{font-size:10px;color:var(--ink4);margin-top:3px;display:flex;gap:10px;flex-wrap:wrap}
+.jt-tag{display:inline-block;font-size:9.5px;background:var(--s);border:1px solid var(--r);border-radius:2px;padding:1px 5px;color:var(--ink4);margin-top:3px}
+
+/* BROADCAST PANEL */
+.bpnl{background:var(--ink);border-radius:4px;padding:14px;color:var(--w);display:none;margin-top:12px}
+.bpnl.on{display:block}
+.bpr{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.bptit{font-size:10.5px;color:#6a90b4}
+.bpcnt{font-size:18px;font-weight:700;color:var(--acc)}
+.bpbar{background:rgba(255,255,255,0.1);border-radius:3px;height:7px;overflow:hidden;margin-bottom:10px}
+.bpfill{background:var(--acc);height:100%;border-radius:3px;transition:width 0.22s}
+.bpst{display:flex;gap:16px}
+.bpst strong{display:block;font-size:14px;color:var(--w)}
+.bpst span{font-size:10px;color:#6a90b4}
+
+/* HLBOX */
+.hlb{background:var(--ink);border-radius:4px;padding:15px;color:var(--w)}
+.hlb h3{font-size:12.5px;font-weight:700;margin-bottom:3px}
+.hlb p{font-size:10.5px;color:#6a90b4;margin-bottom:11px}
+.hlg{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.hli{background:rgba(255,255,255,0.07);border-radius:3px;padding:9px;text-align:center}
+.hli .v{font-size:18px;font-weight:700;color:var(--acc)}
+.hli .l{font-size:9.5px;color:#6a90b4;margin-top:2px}
+
+/* ACTIVITY FEED */
+.af{display:flex;gap:9px;padding:8px 0;border-bottom:1px solid var(--rl)}
+.af:last-child{border-bottom:none}
+.afd{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.afd.g{background:var(--grn)}.afd.a{background:var(--acc)}.afd.r{background:var(--red)}.afd.b{background:var(--blu)}.afd.p{background:var(--pur)}
+.aft{font-size:11px;color:var(--ink4);line-height:1.45}
+.aft strong{color:var(--ink)}
+.afm{font-size:10px;color:var(--ink4);margin-top:1px}
+
+/* CONTRACT CARD */
+.ctc{background:var(--w);border:1px solid var(--r);border-radius:4px;padding:13px;border-top:3px solid;margin-bottom:8px;transition:box-shadow 0.15s}
+.ctc:hover{box-shadow:0 3px 10px rgba(0,0,0,0.08)}
+.ctc.live{border-top-color:var(--grn)}.ctc.review{border-top-color:var(--acc)}.ctc.dispute{border-top-color:var(--red)}.ctc.closed{border-top-color:var(--ink4)}
+.ctc-hd{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
+.ctc-id{font-family:var(--mono);font-size:10px;color:var(--ink4)}
+.ctc h4{font-size:12px;font-weight:700;color:var(--ink);margin-bottom:2px}
+.ctc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:9px}
+.ctcf{font-size:9.5px;color:var(--ink4)}.ctcf strong{display:block;font-size:11px;color:var(--ink);font-weight:700;margin-top:1px}
+
+/* AI SCORE RING */
+.score-ring{display:flex;align-items:center;gap:10px}
+.ring{width:48px;height:48px;border-radius:50%;background:conic-gradient(var(--grn) 0%,var(--grn) calc(var(--pct)*1%),var(--rl) 0%);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative}
+.ring::before{content:'';position:absolute;inset:6px;background:var(--w);border-radius:50%}
+.ring-val{position:relative;z-index:1;font-size:11px;font-weight:700;color:var(--ink)}
+
+/* WORKER PROFILE CARD */
+.wpcard{background:var(--ink);color:var(--w);border-radius:4px;padding:14px}
+.wpc-top{display:flex;gap:12px;margin-bottom:12px}
+.wpc-av{width:42px;height:42px;border-radius:6px;background:rgba(176,112,0,0.3);border:1.5px solid rgba(176,112,0,0.4);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--acc);flex-shrink:0}
+.wpc-name{font-size:13.5px;font-weight:700}
+.wpc-id{font-family:var(--mono);font-size:10px;color:#6a90b4;margin-top:2px}
+.wpc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.wpcf{background:rgba(255,255,255,0.06);border-radius:3px;padding:8px}
+.wpcf label{font-size:9px;text-transform:uppercase;letter-spacing:0.6px;color:#6a90b4;display:block;margin-bottom:2px}
+.wpcf span{font-size:11px;font-weight:600;color:var(--w)}
+
+/* TABS */
+.itabs{display:flex;border-bottom:1px solid var(--r);margin-bottom:13px;gap:0;overflow-x:auto}
+.itab{padding:8px 13px;font-size:11.5px;font-weight:600;color:var(--ink4);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.12s;white-space:nowrap}
+.itab:hover{color:var(--ink)}
+.itab.on{color:var(--ink);border-bottom-color:var(--ink)}
+
+/* LOAN CARD */
+.lncard{background:var(--w);border:1px solid var(--r);border-radius:4px;padding:12px;display:flex;gap:12px;align-items:flex-start;margin-bottom:8px}
+.ln-ic{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.ln-info{flex:1}
+.ln-info h4{font-size:11.5px;font-weight:700;color:var(--ink)}
+.ln-info p{font-size:10.5px;color:var(--ink4);margin-top:1px}
+.ln-status{text-align:right}
+.ln-amt{font-size:13px;font-weight:700;color:var(--grn)}
+
+/* COMPLIANCE MATRIX */
+.cm-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--rl)}
+.cm-item:last-child{border-bottom:none}
+.cm-check{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
+.cm-ok{background:var(--grnbg);color:var(--grn)}
+.cm-no{background:var(--redbg);color:var(--red)}
+.cm-wa{background:var(--accbg);color:var(--acc2)}
+.cm-info{flex:1}
+.cm-info h4{font-size:11.5px;font-weight:600;color:var(--ink)}
+.cm-info p{font-size:10px;color:var(--ink4)}
+
+/* RISK LEVEL */
+.risk-high{color:var(--red);font-weight:700;font-size:11px}
+.risk-med{color:var(--acc);font-weight:700;font-size:11px}
+.risk-low{color:var(--grn);font-weight:700;font-size:11px}
+
+/* MINI STATS ROW */
+.msr{display:flex;gap:0;border-top:1px solid var(--rl);flex-wrap:wrap}
+.msi{flex:1;min-width:80px;padding:8px 12px;text-align:center;border-right:1px solid var(--rl)}
+.msi:last-child{border-right:none}
+.msi .v{font-size:13px;font-weight:700;color:var(--ink)}
+.msi .l{font-size:9.5px;color:var(--ink4);margin-top:2px;text-transform:uppercase;letter-spacing:0.4px}
+
+/* SCHEME CARDS */
+.sc{background:var(--w);border:1.5px solid var(--r);border-radius:4px;padding:12px;cursor:pointer;transition:all 0.15s;position:relative;margin-bottom:8px}
+.sc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:4px 4px 0 0}
+.sc.sg::before{background:var(--grn)}.sc.sb::before{background:var(--blu)}.sc.sa::before{background:var(--acc)}.sc.st::before{background:var(--tel)}.sc.sp::before{background:var(--pur)}
+.sc:hover{border-color:var(--ink3);box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.sc.sel{border-color:var(--acc);box-shadow:0 0 0 2px rgba(176,112,0,0.25)}
+.sc h4{font-size:11.5px;font-weight:700;color:var(--ink);margin-bottom:2px}
+.sc p{font-size:10.5px;color:var(--ink4);line-height:1.4}
+.sc-tags{margin-top:7px;display:flex;gap:4px;flex-wrap:wrap}
+
+/* REGION TILES */
+.rgg{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:5px}
+.rt{padding:6px 9px;border:1px solid var(--r);border-radius:3px;text-align:center;cursor:pointer;font-size:10.5px;font-weight:500;color:var(--ink4);transition:all 0.12s}
+.rt:hover{border-color:var(--ink3);color:var(--ink);background:var(--s)}
+.rt.sel{background:var(--ink);color:var(--w);border-color:var(--ink)}
+
+/* AI ANOMALY */
+.anomaly{display:flex;align-items:flex-start;gap:10px;padding:9px;background:var(--redbg);border:1px solid rgba(139,21,21,0.2);border-radius:3px;margin-bottom:8px}
+.anomaly-dot{width:8px;height:8px;border-radius:50%;background:var(--red);flex-shrink:0;margin-top:3px}
+.anomaly h4{font-size:11px;font-weight:700;color:var(--red)}
+.anomaly p{font-size:10.5px;color:var(--ink4);margin-top:1px}
+
+/* BANK CARD */
+.bkcard{background:linear-gradient(135deg,var(--ink) 0%,var(--ink2) 100%);border-radius:6px;padding:14px;color:var(--w);position:relative;overflow:hidden}
+.bkcard::after{content:'';position:absolute;right:-20px;bottom:-20px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.04)}
+.bkcard-type{font-size:9.5px;text-transform:uppercase;letter-spacing:1px;color:#6a90b4;margin-bottom:8px}
+.bkcard-num{font-family:var(--mono);font-size:12px;color:rgba(255,255,255,0.7);margin-bottom:8px}
+.bkcard-name{font-size:11px;font-weight:700}
+.bkcard-bal{font-size:20px;font-weight:700;color:var(--acc);margin-top:8px}
+.bkcard-sub{font-size:10px;color:#6a90b4}
+
+/* WIZARD */
+.wz{display:flex;margin-bottom:16px}
+.wst{flex:1;text-align:center;position:relative}
+.wst::after{content:'';position:absolute;top:12px;left:50%;width:100%;height:1px;background:var(--r);z-index:0}
+.wst:last-child::after{display:none}
+.wsn{width:24px;height:24px;border-radius:50%;background:var(--r);color:var(--ink4);font-size:10.5px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 4px;position:relative;z-index:1;transition:all 0.3s}
+.wsn.done{background:var(--grn);color:var(--w)}
+.wsn.now{background:var(--ink);color:var(--w)}
+.wsl{font-size:9.5px;color:var(--ink4);text-transform:uppercase;letter-spacing:0.5px}
+.wst.now .wsl{color:var(--ink);font-weight:700}
+
+/* HR */
+hr{border:none;border-top:1px solid var(--rl);margin:11px 0}
+
+</style>
+</head>
+<body>
+
+<!-- LIVE TICKER -->
+<div id="tk">
+  <span id="tkt">&nbsp;&nbsp;&nbsp;&nbsp;NATIONAL EMPLOYMENT INTELLIGENCE PLATFORM — LIVE &nbsp;|&nbsp; AI Engine: ACTIVE &nbsp;|&nbsp; 5,421 Workers Tracked &nbsp;|&nbsp; 38 Anomalies Flagged by AI &nbsp;|&nbsp; 312 Employers — GST/EPFO/ESIC Monitored &nbsp;|&nbsp; 142 Active Contracts — Rs 8.4 Crore Net Value &nbsp;|&nbsp; April 2026 Payroll: Rs 1.84 Crore Pending Auth &nbsp;|&nbsp; eShram: 30.95 Crore NDUW — IEE Sync Active &nbsp;|&nbsp; PMKVY Certifications: 1,204 Mapped &nbsp;|&nbsp; EPFO ECR Filed: 298/312 Employers &nbsp;|&nbsp; ESIC Challan: 291/312 Compliant &nbsp;|&nbsp; GST-3B Filed: 304/312 Employers &nbsp;|&nbsp; Micro-Loans Disbursed: Rs 9.4 Crore — NBFCs Active &nbsp;|&nbsp; AI Risk Score: 3 HIGH-RISK Contracts Detected &nbsp;|&nbsp; IT Act 2000 — All Sessions Logged &nbsp;&nbsp;&nbsp;&nbsp;</span>
+</div>
+
+<!-- HEADER -->
+<div id="hdr">
+  <div class="hbrand">
+    <div class="hseal">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <circle cx="11" cy="11" r="10" stroke="rgba(176,112,0,0.6)" stroke-width="1.2"/>
+        <circle cx="11" cy="11" r="6.5" stroke="rgba(176,112,0,0.35)" stroke-width="0.8"/>
+        <circle cx="11" cy="11" r="2" fill="rgba(176,112,0,0.8)"/>
+        <path d="M11 3.5L11.8 7H11L10.2 7Z" fill="rgba(176,112,0,0.6)"/>
+        <path d="M18.5 11L15 11.8V11L15 10.2Z" fill="rgba(176,112,0,0.6)"/>
+        <path d="M11 18.5L10.2 15H11L11.8 15Z" fill="rgba(176,112,0,0.6)"/>
+        <path d="M3.5 11L7 10.2V11V11.8Z" fill="rgba(176,112,0,0.6)"/>
+      </svg>
+    </div>
+    <div class="htitle">
+      <h1>IEE — National Employment Intelligence Platform</h1>
+      <p>Ministry of Labour &amp; Employment, Government of India &nbsp;|&nbsp; Superintendent Administration &nbsp;|&nbsp; AI-Governed Employment Ecosystem</p>
+    </div>
+  </div>
+  <div class="hright">
+    <div class="ai-live"><div class="ai-dot"></div><span>AI Engine Live</span></div>
+    <div class="hclock" id="clk">--:--:--</div>
+    <button class="hbtn" id="alerts-btn" onclick="toggleNP()">Alerts <span id="alerts-btn-count" style="font-family:var(--mono);font-size:9px;background:var(--red);border-radius:10px;padding:1px 5px;margin-left:2px;">12</span><span class="hbdot"></span></button>
+    <div class="restricted">Restricted — SA</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div id="nav">
+  <div class="nt on" onclick="nav('dash',this)">Overview</div>
+  <div class="nt" onclick="nav('ai',this)">AI Governance <span class="nc a">AI</span></div>
+  <div class="nt" onclick="nav('journey',this)">Worker Journey</div>
+  <div class="nt" onclick="nav('contracts',this)">Contract Intelligence <span class="nc a">3</span></div>
+  <div class="nt" onclick="nav('finance',this)">Finance &amp; Banks</div>
+  <div class="nt" onclick="nav('gst',this)">GST / EPFO / ESIC <span class="nc">14</span></div>
+  <div class="nt" onclick="nav('eshram',this)">eShram Integration</div>
+  <div class="nt" onclick="nav('schemes',this)">Scheme Launcher</div>
+  <div class="nt" onclick="nav('payroll',this)">Payroll</div>
+  <div class="nt" onclick="nav('workers',this)">Workers <span class="nc">38</span></div>
+  <div class="nt" onclick="nav('employers',this)">Employers</div>
+  <div class="nt" onclick="nav('skills',this)">Skills</div>
+  <div class="nt" onclick="nav('welfare',this)">Welfare</div>
+  <div class="nt" onclick="nav('broadcast',this)">Broadcast</div>
+  <div class="nt" onclick="nav('system',this)">System</div>
+</div>
+
+<!-- NOTIF PANEL -->
+<div id="np">
+  <div class="nphd"><span id="alerts-panel-title">System Alerts — 12 Unread</span><button style="background:none;border:none;color:#9bb8d4;cursor:pointer;font-size:15px;" onclick="toggleNP()">&#x2715;</button></div>
+  <div class="npl">
+    <div class="npi u"><div style="display:flex;justify-content:space-between;align-items:flex-start;"><h4>AI ALERT — Contract Fraud Pattern Detected</h4><span class="npt">1 min</span></div><p>IEE-CTR-2026-0044 — Annur Infra showing worker count mismatch vs GST turnover. AI confidence: 94%</p></div>
+    <div class="npi u"><div style="display:flex;justify-content:space-between;align-items:flex-start;"><h4>EPFO ECR Default — Ram Nivas Contractors</h4><span class="npt">8 min</span></div><p>March 2026 ECR not filed — 34 workers affected — principal employer liability triggered</p></div>
+    <div class="npi u"><div style="display:flex;justify-content:space-between;align-items:flex-start;"><h4>Micro-Loan Disbursement Ready</h4><span class="npt">22 min</span></div><p>Rs 14.2L approved across 48 workers — NBFC IDFC First — awaiting SA authorisation</p></div>
+    <div class="npi u"><div style="display:flex;justify-content:space-between;align-items:flex-start;"><h4>eShram UAN Link — 412 New Workers</h4><span class="npt">1 hr</span></div><p>412 workers linked eShram UAN to IEE Worker ID this week — NDUW sync complete</p></div>
+    <div class="npi u"><div style="display:flex;justify-content:space-between;align-items:flex-start;"><h4>KYC Queue — 38 Pending</h4><span class="npt">2 hr</span></div><p>Zone 3 North Chennai — verifier capacity exceeded — recommend overflow assignment</p></div>
+    <div class="npi u"><div style="display:flex;justify-content:space-between;align-items:flex-start;"><h4>GST Non-Filing — 8 Employers</h4><span class="npt">3 hr</span></div><p>GST-3B not filed for March 2026 — automated notice issued to 8 employers</p></div>
+    <div class="npi"><div style="display:flex;justify-content:space-between;align-items:flex-start;"><h4>Salary Batch Rs 1.84Cr — Pending Auth</h4><span class="npt">4 hr</span></div><p>April 2026 payroll ready — 4,064 workers — DBT channel</p></div>
+    <div class="npi"><div style="display:flex;justify-content:space-between;align-items:flex-start;"><h4>PM-SAYSAM Scheme — 4,087 Enrolled</h4><span class="npt">Yesterday</span></div><p>97.2% delivery — Rs 2.04 Crore benefit value launched</p></div>
+  </div>
+</div>
+
+<!-- LAYOUT -->
+<div id="layout">
+<div id="sb">
+  <div class="sbl">Intelligence</div>
+  <div class="si on" onclick="nav('dash',null);sia(this)"><svg viewBox="0 0 12 12" fill="currentColor"><rect x="0.5" y="0.5" width="4.5" height="4.5" rx="0.5"/><rect x="7" y="0.5" width="4.5" height="4.5" rx="0.5"/><rect x="0.5" y="7" width="4.5" height="4.5" rx="0.5"/><rect x="7" y="7" width="4.5" height="4.5" rx="0.5"/></svg>Overview Dashboard</div>
+  <div class="si" onclick="nav('ai',null);sia(this)"><svg viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="5.5" fill="none" stroke="currentColor" stroke-width="1"/><path d="M4 6h4M6 4v4"/></svg>AI Governance <span class="sbg a">NEW</span></div>
+  <div class="si" onclick="nav('journey',null);sia(this)"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M2 10C2 10 3 6 6 4 9 2 10 2 10 2"/></svg>Worker Journey</div>
+  <div class="si" onclick="nav('contracts',null);sia(this)"><svg viewBox="0 0 12 12" fill="currentColor"><rect x="1" y="1" width="10" height="10" rx="1"/><path d="M3 4h6M3 6h6M3 8h4" stroke="var(--w)" stroke-width="0.8" fill="none"/></svg>Contract Intelligence <span class="sbg r">3</span></div>
+  <div class="si" onclick="nav('finance',null);sia(this)"><svg viewBox="0 0 12 12" fill="currentColor"><rect x="1" y="3" width="10" height="7" rx="1"/><path d="M4 3V2a2 2 0 014 0v1"/></svg>Finance &amp; Banks</div>
+  <div class="si" onclick="nav('gst',null);sia(this)"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M6 1L10.5 3.5V8.5L6 11L1.5 8.5V3.5Z"/></svg>GST / EPFO / ESIC <span class="sbg r">14</span></div>
+  <div class="si" onclick="nav('eshram',null);sia(this)"><svg viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="4" r="2.5"/><path d="M1 11c0-2.8 2.2-5 5-5s5 2.2 5 5"/></svg>eShram Integration</div>
+  <div class="sbl">Operations</div>
+  <div class="si" onclick="nav('schemes',null);sia(this)"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M6 1l1.5 3.8H11L8.2 7l1 3.8L6 9l-3.2 1.8 1-3.8L1 4.8h3.5Z"/></svg>Scheme Launcher</div>
+  <div class="si" onclick="nav('payroll',null);sia(this)"><svg viewBox="0 0 12 12" fill="currentColor"><rect x="1" y="2" width="10" height="8" rx="1"/><path d="M4 6h4M6 4v4" stroke="var(--s)" stroke-width="0.8" fill="none"/></svg>Payroll &amp; Salary</div>
+  <div class="si" onclick="nav('workers',null);sia(this)"><svg viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="4" r="2.5"/><path d="M1 11c0-2.8 2.2-5 5-5s5 2.2 5 5"/></svg>Workers <span class="sbg r">38</span></div>
+  <div class="si" onclick="nav('employers',null);sia(this)"><svg viewBox="0 0 12 12" fill="currentColor"><rect x="2" y="4.5" width="8" height="6" rx="0.5"/><path d="M4 4.5V3a2 2 0 014 0v1.5"/></svg>Employers <span class="sbg g">312</span></div>
+  <div class="si" onclick="nav('skills',null);sia(this)"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M6 1l1.5 4H11L8 7.5l1 4L6 9.5l-3 2 1-4L1 5h3.5Z" fill="none" stroke="currentColor" stroke-width="1"/></svg>Skills &amp; Training</div>
+  <div class="si" onclick="nav('welfare',null);sia(this)"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M6 10C6 10 1.5 7 1.5 3.5A2.5 2.5 0 016 2a2.5 2.5 0 014.5 1.5C10.5 7 6 10 6 10z"/></svg>Welfare &amp; Benefits</div>
+  <div class="sbl">System</div>
+  <div class="si" onclick="nav('broadcast',null);sia(this)"><svg viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="1.5"/><path d="M3 6a3 3 0 016 0M1.5 6a4.5 4.5 0 019 0" fill="none" stroke="currentColor" stroke-width="1"/></svg>Broadcast</div>
+  <div class="si" onclick="nav('system',null);sia(this)"><svg viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="2"/></svg>System &amp; Audit</div>
+</div>
+
+<div id="main">
+
+<!-- ======================= DASHBOARD ======================= -->
+<div class="pg on" id="pg-dash">
+  <div class="ai-banner">
+    <div class="ai-pulse"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v2M8 12v2M2 8H4M12 8h2M4 4l1.4 1.4M10.6 10.6L12 12M4 12l1.4-1.4M10.6 5.4L12 4" stroke="#5de89a" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="8" r="2.5" stroke="#5de89a" stroke-width="1.2"/></svg></div>
+    <div>
+      <div class="ai-tag" id="dashboard-ai-tag">AI Intelligence Summary — 22 April 2026, 09:42 IST</div>
+      <h4 id="dashboard-ai-summary">3 high-risk contracts flagged. Ram Nivas Contractors EPFO default — principal employer liability active. Annur Infra GST turnover vs worker count mismatch detected. 38 KYC pending — Zone 3 at capacity.</h4>
+      <p id="dashboard-ai-detail">AI Engine processed 84,210 data points in last 6 hours across contracts, payments, GST filings, EPFO ECRs, ESIC challans, and eShram UAN mappings. Next scheduled scan: 10:00 IST.</p>
+    </div>
+    <button class="btn btn-g btn-sm" style="flex-shrink:0;" onclick="nav('ai',null)">View AI Report</button>
+  </div>
+
+  <div class="kg" id="overview-kpis">
+    <div class="kpi c-ink"><div class="kv">5,421</div><div class="kl">Total Workers</div><div class="kd u">+124 this week</div></div>
+    <div class="kpi c-grn"><div class="kv">4,087</div><div class="kl">Verified Profiles</div><div class="kd u">75.4% rate</div></div>
+    <div class="kpi c-acc"><div class="kv">312</div><div class="kl">Active Employers</div><div class="kd u">+18 this month</div></div>
+    <div class="kpi c-blu"><div class="kv">142</div><div class="kl">Live Job Postings</div><div class="kd n">94% fill rate</div></div>
+    <div class="kpi c-grn"><div class="kv">23,480</div><div class="kl">Total Placements</div><div class="kd u">+2,341 April</div></div>
+    <div class="kpi c-tel"><div class="kv">Rs 4.2Cr</div><div class="kl">Wages Disbursed</div><div class="kd u">April 2026</div></div>
+    <div class="kpi c-pur"><div class="kv">Rs 9.4Cr</div><div class="kl">Micro-Loans Live</div><div class="kd u">1,892 workers</div></div>
+    <div class="kpi c-ora"><div class="kv">Rs 8.4Cr</div><div class="kl">Contract Net Value</div><div class="kd n">142 contracts</div></div>
+    <div class="kpi c-red"><div class="kv">38</div><div class="kl">KYC Pending</div><div class="kd d">Needs attention</div></div>
+    <div class="kpi c-red"><div class="kv">3</div><div class="kl">AI High-Risk Flags</div><div class="kd d">Immediate review</div></div>
+    <div class="kpi c-ink"><div class="kv">14</div><div class="kl">GST/Comp Defaults</div><div class="kd d">Active notices</div></div>
+    <div class="kpi c-grn"><div class="kv">1.8h</div><div class="kl">Avg Time-to-Fill</div><div class="kd u">National best</div></div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="chd"><div><h3>Live Activity Feed</h3><p>Real-time platform events — AI monitored</p></div><span class="b bg">Live</span></div>
+      <div class="cbd" id="aff" style="max-height:200px;overflow-y:auto;padding-top:2px;">
+        <div class="af"><div class="afd g"></div><div><div class="aft"><strong>Rajan Kumar</strong> (IEE-WK-00045821) placement confirmed — Skyline Constructions, Mason L3, Rs 850/day — eShram UAN linked</div><div class="afm">Just now — Chennai</div></div></div>
+        <div class="af"><div class="afd r"></div><div><div class="aft"><strong>AI Flag:</strong> Annur Infra GST turnover (Rs 1.2Cr) vs 55 workers deployed — expected GST minimum Rs 2.4Cr — mismatch Rs 1.2Cr — fraud risk: HIGH</div><div class="afm">2 min ago — AI Engine</div></div></div>
+        <div class="af"><div class="afd b"></div><div><div class="aft"><strong>Micro-loan approved:</strong> Mohammed Rafi — Rs 18,000 at 12% via IDFC First NBFC — 3-month repayment — IEE income verified</div><div class="afm">5 min ago — Finance Engine</div></div></div>
+        <div class="af"><div class="afd a"></div><div><div class="aft"><strong>EPFO ECR filed:</strong> Skyline Constructions — 148 workers — TRRN: EPFO2026041200148 — Rs 1.78L PF deposited</div><div class="afm">12 min ago — EPFO Sync</div></div></div>
+        <div class="af"><div class="afd r"></div><div><div class="aft"><strong>Ram Nivas Contractors</strong> EPFO ECR default — March 2026 — 34 workers unprotected — principal employer notice triggered</div><div class="afm">18 min ago — Compliance Engine</div></div></div>
+        <div class="af"><div class="afd p"></div><div><div class="aft"><strong>PMKVY Sync:</strong> 61 new certifications from Nihar Skills mapped to IEE Worker IDs — Skill India Digital Hub confirmed</div><div class="afm">1 hr ago — NSDC Sync</div></div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="chd"><h3>Platform Health</h3></div>
+      <div class="cbd" style="display:flex;flex-direction:column;gap:10px;">
+        <div><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:10.5px;">Worker Verification Rate</span><strong style="font-size:10.5px;">75.4%</strong></div><div class="pb"><div class="pbf pg2" style="width:75.4%"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:10.5px;">Job Fill Rate</span><strong style="font-size:10.5px;">94.0%</strong></div><div class="pb"><div class="pbf pi" style="width:94%"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:10.5px;">EPFO Compliance (Employers)</span><strong style="font-size:10.5px;">95.5%</strong></div><div class="pb"><div class="pbf pg2" style="width:95.5%"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:10.5px;">GST Filing Rate</span><strong style="font-size:10.5px;">97.4%</strong></div><div class="pb"><div class="pbf pb2" style="width:97.4%"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:10.5px;">Salary On-Time Rate</span><strong style="font-size:10.5px;">98.8%</strong></div><div class="pb"><div class="pbf pg2" style="width:98.8%"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:10.5px;">Contract Compliance</span><strong style="font-size:10.5px;">88.0%</strong></div><div class="pb"><div class="pbf pa" style="width:88%"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:10.5px;">eShram UAN Link Rate</span><strong style="font-size:10.5px;">67.3%</strong></div><div class="pb"><div class="pbf pb2" style="width:67.3%"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:10.5px;">AI Anomaly Resolution</span><strong style="font-size:10.5px;">82.0%</strong></div><div class="pb"><div class="pbf ppu" style="width:82%"></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="chd"><h3>Quick Actions</h3></div>
+    <div class="cbd" style="display:flex;gap:7px;flex-wrap:wrap;">
+      <button class="btn btn-p btn-sm" onclick="nav('schemes',null)">Launch Scheme</button>
+      <button class="btn btn-g btn-sm" onclick="nav('payroll',null)">Authorise Payroll</button>
+      <button class="btn btn-d btn-sm" onclick="nav('contracts',null)">Review Contracts (3 Flagged)</button>
+      <button class="btn btn-b btn-sm" onclick="nav('gst',null)">GST Compliance (14 Defaults)</button>
+      <button class="btn btn-o btn-sm" onclick="nav('ai',null)">AI Anomaly Report</button>
+      <button class="btn btn-o btn-sm" onclick="nav('finance',null)">Loan Authorisation (Rs 14.2L)</button>
+      <button class="btn btn-r btn-sm" onclick="toast('Emergency alert broadcast initiated','ter')">Emergency Alert</button>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= AI GOVERNANCE ======================= -->
+<div class="pg" id="pg-ai">
+  <div class="ptb">
+    <div><h2>AI Governance and Anomaly Intelligence</h2><p>Machine learning–driven fraud detection, compliance monitoring, and pattern analysis across all IEE data streams</p></div>
+    <div class="ptb-r"><button class="btn btn-o btn-sm" onclick="toast('Full AI audit log downloaded','tin')">Download AI Log</button><button class="btn btn-p btn-sm" onclick="toast('AI deep scan initiated — ETA 4 minutes','tin')">Run Full Scan</button></div>
+  </div>
+
+  <div class="kg">
+    <div class="kpi c-red"><div class="kv">3</div><div class="kl">High-Risk Flags</div><div class="kd d">Immediate review</div></div>
+    <div class="kpi c-acc"><div class="kv">11</div><div class="kl">Medium Anomalies</div><div class="kd d">Under review</div></div>
+    <div class="kpi c-grn"><div class="kv">24</div><div class="kl">Resolved This Week</div><div class="kd u">+8 vs last</div></div>
+    <div class="kpi c-pur"><div class="kv">84,210</div><div class="kl">Data Points Scanned</div><div class="kd n">Last 6 hrs</div></div>
+    <div class="kpi c-blu"><div class="kv">94.2%</div><div class="kl">AI Confidence Avg</div><div class="kd u">Above threshold</div></div>
+    <div class="kpi c-ink"><div class="kv">Rs 2.1Cr</div><div class="kl">Fraud Prevented</div><div class="kd u">YTD 2026</div></div>
+  </div>
+
+  <div class="g2">
+    <div>
+      <div class="card">
+        <div class="chd"><div><h3>Active AI Anomaly Flags</h3><p>Ranked by severity — requires SA action</p></div><span class="b br">3 High Risk</span></div>
+        <div class="cbd">
+          <div class="anomaly">
+            <div class="anomaly-dot"></div>
+            <div>
+              <h4>Contract Fraud Pattern — Annur Infra (IEE-CTR-2026-0044)</h4>
+              <p>GST turnover Rs 1.2Cr but 55 workers deployed at Rs 900/day (expected revenue Rs 2.4Cr+). Worker count on EPFO ECR: 21 (actual deployed: 55). Invoice value Rs 48L — GST-3B declares Rs 31L. AI confidence: 94%.</p>
+              <div style="display:flex;gap:6px;margin-top:7px;flex-wrap:wrap;">
+                <button class="btn btn-r btn-xs" onclick="toast('Investigation notice issued to Annur Infra','ter')">Issue Notice</button>
+                <button class="btn btn-xs btn-o" onclick="toast('Contract suspended pending investigation','twa')">Suspend Contract</button>
+                <button class="btn btn-xs btn-o">View Full Report</button>
+              </div>
+            </div>
+          </div>
+          <div class="anomaly">
+            <div class="anomaly-dot"></div>
+            <div>
+              <h4>EPFO Ghost Worker Claim — Ram Nivas Contractors</h4>
+              <p>ECR filed for 42 workers in January 2026 but IEE attendance logs show maximum 28 workers on-site at any time across all projects. Salary disbursement claimed for 42 but only 28 unique UAN bank accounts transacted. AI confidence: 91%.</p>
+              <div style="display:flex;gap:6px;margin-top:7px;flex-wrap:wrap;">
+                <button class="btn btn-r btn-xs" onclick="toast('EPFO investigation referral sent','ter')">Refer to EPFO</button>
+                <button class="btn btn-xs btn-o">View Evidence</button>
+              </div>
+            </div>
+          </div>
+          <div class="anomaly" style="background:var(--accbg);border-color:rgba(139,85,0,0.2);">
+            <div class="anomaly-dot" style="background:var(--acc)"></div>
+            <div>
+              <h4 style="color:var(--acc2);">Wage Rate Suppression — Prestige Builders</h4>
+              <p>IEE payroll records show workers paid Rs 650/day but GST invoices to principal employer billed at Rs 850/day. Difference of Rs 200/day per worker over 72 workers = Rs 14,400/day diversion. AI confidence: 87%.</p>
+              <div style="display:flex;gap:6px;margin-top:7px;flex-wrap:wrap;">
+                <button class="btn btn-xs" style="background:var(--acc);color:var(--w);border:none;border-radius:3px;padding:3px 7px;font-size:10px;cursor:pointer;" onclick="toast('Wage audit initiated for Prestige Builders','twa')">Initiate Audit</button>
+                <button class="btn btn-xs btn-o">View Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <div class="chd"><h3>AI Monitoring Streams</h3><p>Data sources being continuously analysed</p></div>
+        <div class="cbd" style="display:flex;flex-direction:column;gap:8px;">
+          <div class="cm-item"><div class="cm-check cm-ok">&#10003;</div><div class="cm-info"><h4>GST Portal Sync (gstn.gov.in)</h4><p>GSTIN filings, turnover, invoice matching — 312 employers monitored</p></div><span class="b bg">Active</span></div>
+          <div class="cm-item"><div class="cm-check cm-ok">&#10003;</div><div class="cm-info"><h4>EPFO ECR Cross-Validation</h4><p>Monthly ECR vs IEE attendance — UAN headcount matching</p></div><span class="b bg">Active</span></div>
+          <div class="cm-item"><div class="cm-check cm-ok">&#10003;</div><div class="cm-info"><h4>ESIC Challan Verification</h4><p>Contribution filed vs covered employees — wage bracket check</p></div><span class="b bg">Active</span></div>
+          <div class="cm-item"><div class="cm-check cm-ok">&#10003;</div><div class="cm-info"><h4>Bank Transaction Analysis</h4><p>DBT disbursement patterns — salary vs deduction anomalies</p></div><span class="b bg">Active</span></div>
+          <div class="cm-item"><div class="cm-check cm-ok">&#10003;</div><div class="cm-info"><h4>eShram NDUW Cross-Reference</h4><p>UAN linkage — benefit duplication detection — 30.95 Crore DB</p></div><span class="b bg">Active</span></div>
+          <div class="cm-item"><div class="cm-check cm-ok">&#10003;</div><div class="cm-info"><h4>Contract Invoice Matching</h4><p>Principal employer billed vs worker wage paid — leakage detection</p></div><span class="b bg">Active</span></div>
+          <div class="cm-item"><div class="cm-check cm-wa">!</div><div class="cm-info"><h4>NCS Portal Job Matching Audit</h4><p>Cross-referencing IEE placements with NCS records</p></div><span class="b ba">Partial</span></div>
+          <div class="cm-item"><div class="cm-check cm-ok">&#10003;</div><div class="cm-info"><h4>Loan Repayment Behaviour</h4><p>NBFC disbursement vs IEE income — default risk scoring</p></div><span class="b bg">Active</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="chd"><h3>AI Risk Scoring — All Employers</h3><p>Composite AI score from GST, EPFO, ESIC, wage, and contract data</p></div>
+    <div class="cbd0">
+      <div class="tw">
+        <table>
+          <thead><tr><th>Employer</th><th>GSTIN</th><th>AI Risk Score</th><th>GST Compliance</th><th>EPFO ECR</th><th>Wage Integrity</th><th>Contract Match</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Skyline Constructions</strong></td><td><code>33AABCS1234Z1Z5</code></td><td><span class="risk-low">Low — 12/100</span></td><td><span class="b bg">Filed</span></td><td><span class="b bg">Filed</span></td><td><span class="b bg">Verified</span></td><td><span class="b bg">Match</span></td><td><button class="btn btn-o btn-xs">View</button></td></tr>
+            <tr><td><strong>Annur Infra</strong></td><td><code>33AACIA9988B1Z9</code></td><td><span class="risk-high">High — 94/100</span></td><td><span class="b ba">Mismatch</span></td><td><span class="b br">21 vs 55</span></td><td><span class="b br">Suppressed</span></td><td><span class="b br">Mismatch</span></td><td><button class="btn btn-r btn-xs" onclick="toast('Full investigation initiated — Annur Infra','ter')">Investigate</button></td></tr>
+            <tr><td><strong>Ram Nivas Contractors</strong></td><td><code>33AAFRN4421C1Z2</code></td><td><span class="risk-high">High — 91/100</span></td><td><span class="b ba">Partial</span></td><td><span class="b br">Ghost Workers</span></td><td><span class="b br">Unverified</span></td><td><span class="b ba">Review</span></td><td><button class="btn btn-r btn-xs" onclick="toast('EPFO referral issued','ter')">Refer EPFO</button></td></tr>
+            <tr><td><strong>Prestige Builders</strong></td><td><code>27AABCP8821F1Z1</code></td><td><span class="risk-high">High — 87/100</span></td><td><span class="b bg">Filed</span></td><td><span class="b bg">Filed</span></td><td><span class="b br">Suppressed</span></td><td><span class="b ba">Review</span></td><td><button class="btn btn-o btn-xs" onclick="toast('Wage audit initiated','twa')">Audit Wages</button></td></tr>
+            <tr><td><strong>Metro Works (CMRL)</strong></td><td><code>33AABCM2200H1Z4</code></td><td><span class="risk-low">Low — 8/100</span></td><td><span class="b bg">Filed</span></td><td><span class="b bg">Filed</span></td><td><span class="b bg">Verified</span></td><td><span class="b bg">Match</span></td><td><button class="btn btn-o btn-xs">View</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= WORKER JOURNEY ======================= -->
+<div class="pg" id="pg-journey">
+  <div class="ptb">
+    <div><h2>Worker Journey Tracker</h2><p>End-to-end life of every worker — registration to employment, skills, welfare, finance, and beyond</p></div>
+    <div class="ptb-r">
+      <input type="text" id="wj-search" placeholder="Enter IEE Worker ID or Name..." style="padding:6px 10px;border:1px solid rgba(255,255,255,0.15);border-radius:3px;font-size:11.5px;font-family:var(--f);background:rgba(255,255,255,0.08);color:var(--w);width:260px;">
+      <button class="btn btn-p btn-sm" onclick="loadJourney()">Load Journey</button>
+    </div>
+  </div>
+
+  <div class="g2">
+    <div>
+      <div class="wpcard" id="wpc">
+        <div class="wpc-top">
+          <div class="wpc-av">RK</div>
+          <div>
+            <div class="wpc-name">Rajan Kumar</div>
+            <div class="wpc-id">IEE-WK-2026-00045821</div>
+            <div id="journey-tags" style="display:flex;gap:5px;margin-top:5px;flex-wrap:wrap;">
+              <span class="b bg">Verified</span>
+              <span class="b ba">eShram Linked</span>
+              <span class="b bb">EPFO Active</span>
+              <span class="b bt">ESIC Covered</span>
+            </div>
+          </div>
+        </div>
+        <div class="wpc-grid">
+          <div class="wpcf"><label>Role</label><span>Construction Mason — L3 Skilled</span></div>
+          <div class="wpcf"><label>City</label><span>Chennai, Tamil Nadu</span></div>
+          <div class="wpcf"><label>eShram UAN</label><span>WB-TN-2819043821</span></div>
+          <div class="wpcf"><label>Aadhaar (Last 4)</label><span>XXXX-XXXX-4821</span></div>
+          <div class="wpcf"><label>PF UAN</label><span>100000004821</span></div>
+          <div class="wpcf"><label>ESIC IP No.</label><span>31-00-046821-000</span></div>
+          <div class="wpcf"><label>Bank (DBT)</label><span>SBI — XXXX 4821</span></div>
+          <div class="wpcf"><label>AI Risk Score</label><span style="color:#5de89a;">Low — 4/100</span></div>
+        </div>
+      </div>
+
+      <div class="card" id="journey-financial-card" style="margin-top:12px;">
+        <div class="chd"><h3>Financial Summary</h3></div>
+        <div class="cbd" id="journey-financial-body">
+          <div class="g2" style="gap:8px;">
+            <div style="background:var(--s);border-radius:3px;padding:10px;text-align:center;"><div style="font-size:16px;font-weight:700;color:var(--grn);">Rs 42,800</div><div style="font-size:10px;color:var(--ink4);">This Month</div></div>
+            <div style="background:var(--s);border-radius:3px;padding:10px;text-align:center;"><div style="font-size:16px;font-weight:700;color:var(--ink);">Rs 3,94,200</div><div style="font-size:10px;color:var(--ink4);">YTD Earnings</div></div>
+            <div style="background:var(--s);border-radius:3px;padding:10px;text-align:center;"><div style="font-size:16px;font-weight:700;color:var(--blu);">Rs 18,000</div><div style="font-size:10px;color:var(--ink4);">Active Loan</div></div>
+            <div style="background:var(--s);border-radius:3px;padding:10px;text-align:center;"><div style="font-size:16px;font-weight:700;color:var(--tel);">Rs 47,240</div><div style="font-size:10px;color:var(--ink4);">PF Balance</div></div>
+          </div>
+          <hr>
+          <div style="font-size:10.5px;color:var(--ink4);display:flex;flex-direction:column;gap:4px;">
+            <div style="display:flex;justify-content:space-between;"><span>Gross Earnings (Apr 2026)</span><strong>Rs 42,800</strong></div>
+            <div style="display:flex;justify-content:space-between;"><span>PF Deduction (12%)</span><strong style="color:var(--red);">- Rs 2,880</strong></div>
+            <div style="display:flex;justify-content:space-between;"><span>ESIC Contribution (0.75%)</span><strong style="color:var(--red);">- Rs 321</strong></div>
+            <div style="display:flex;justify-content:space-between;"><span>Loan EMI (IDFC First)</span><strong style="color:var(--red);">- Rs 6,200</strong></div>
+            <hr>
+            <div style="display:flex;justify-content:space-between;"><span style="font-weight:700;">Net Take-Home</span><strong style="color:var(--grn);font-size:13px;">Rs 33,399</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="height:fit-content;">
+      <div class="chd"><h3>Complete Journey Timeline</h3><p>Every event — Registration to today — AI audited</p></div>
+      <div class="cbd" style="max-height:560px;overflow-y:auto;">
+        <div class="jtl" id="journey-timeline">
+          <div class="jte"><div class="jt-dot grn">1</div><div class="jt-body"><h4>Registration on IEE Platform</h4><p>Registered via CSC MeeSeva, Chennai. Documents submitted: Aadhaar, Voter ID. eShram UAN linked: WB-TN-2819043821.</p><div class="jt-meta"><span>10 Apr 2026</span><span>Via CSC Centre, Ambattur</span><span>IP: 103.38.50.201</span></div></div></div>
+          <div class="jte"><div class="jt-dot acc">2</div><div class="jt-body"><h4>KYC Verification — Field Approved</h4><p>Field verifier S. Anbarasan (Zone 3) verified physical presence. Aadhaar biometric confirmed. NDUW eShram DB cross-referenced — no duplicates.</p><div class="jt-meta"><span>11 Apr 2026</span><span>Verifier: IEE-VRF-2026-001</span></div></div></div>
+          <div class="jte"><div class="jt-dot blu">3</div><div class="jt-body"><h4>Worker ID Issued — Level 3 Skilled</h4><p>IEE Worker ID Card generated with QR code. Skill level set to L3 based on PMKVY Advanced Masonry certificate from Nihar Skills Education (NSDC certified, issued 2024).</p><div class="jt-meta"><span>11 Apr 2026</span><span>Cert: NSDC-TN-PMKVY-2024-09821</span></div><div style="margin-top:4px;"><span class="jt-tag">PMKVY Certified</span><span class="jt-tag">Nihar Skills</span><span class="jt-tag">L3 Skilled</span></div></div></div>
+          <div class="jte"><div class="jt-dot pur">4</div><div class="jt-body"><h4>Job Matching — AI Engine Assigned</h4><p>System matched to 5 jobs within 3 km. Notification sent via App + WhatsApp. "Brick Mason — Skyline Constructions, 1.2 km, Rs 850/day" — accepted in 4 minutes.</p><div class="jt-meta"><span>12 Apr 2026</span><span>Match score: 94%</span><span>Accepted in 4 min</span></div></div></div>
+          <div class="jte"><div class="jt-dot grn">5</div><div class="jt-body"><h4>Placement Confirmed — Skyline Constructions</h4><p>Contract IEE-CTR-2026-0088: 3-day assignment. GPS check-in enabled. Employer: EMP-TN-001248. Principal employer declared per CLRA Act. Daily wage Rs 850 confirmed on IEE platform.</p><div class="jt-meta"><span>13 Apr 2026</span><span>Rs 2,550 expected</span><span>CLRA compliant</span></div></div></div>
+          <div class="jte"><div class="jt-dot grn">6</div><div class="jt-body"><h4>EPFO Enrolment — PF UAN Issued</h4><p>Auto-enrolled on first placement. PF UAN: 100000004821. Employer contribution 12%: Rs 306/day. Employee contribution: Rs 306/day. ECR filed by Skyline for this worker.</p><div class="jt-meta"><span>13 Apr 2026</span><span>EPFO Code: TN/CHN/001248</span></div></div></div>
+          <div class="jte"><div class="jt-dot tel">7</div><div class="jt-body"><h4>ESIC Coverage Activated</h4><p>Auto-enrolled under ESIC — daily wage Rs 850 × 26 = Rs 22,100/month. Below Rs 21,000 threshold in daily basis. ESIC IP No: 31-00-046821-000. Medical access enabled.</p><div class="jt-meta"><span>13 Apr 2026</span><span>ESIC Sub-Code: TN-CHN-014</span></div></div></div>
+          <div class="jte"><div class="jt-dot grn">8</div><div class="jt-body"><h4>Assignment Completed + Rated</h4><p>3-day assignment complete. 4.9/5 by employer. Attendance: 3/3 days. Earnings Rs 2,550 disbursed via DBT to SBI XXXX4821. Work history updated.</p><div class="jt-meta"><span>16 Apr 2026</span><span>Rating: 4.9/5</span><span>DBT: Rs 2,550</span></div></div></div>
+          <div class="jte"><div class="jt-dot blu">9</div><div class="jt-body"><h4>Micro-Loan Pre-Approved</h4><p>Based on 3 completed assignments and Rs 42,800 monthly income, AI pre-approved micro-loan of Rs 18,000 at 12% p.a. via IDFC First NBFC partnership. IEE income record used as proof.</p><div class="jt-meta"><span>18 Apr 2026</span><span>NBFC: IDFC First</span><span>Tenure: 3 months</span></div></div></div>
+          <div class="jte"><div class="jt-dot pur">10</div><div class="jt-body"><h4>eShram Welfare Benefits Activated</h4><p>PMSBY Rs 2L accident insurance auto-enrolled. PM-SYM pension contribution Rs 55/month started (govt shares Rs 55). PM Awas eligibility verified via IEE income record. myScheme 4 schemes found eligible.</p><div class="jt-meta"><span>19 Apr 2026</span><span>PMSBY: Active</span><span>PM-SYM: Active</span></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= CONTRACT INTELLIGENCE ======================= -->
+<div class="pg" id="pg-contracts">
+  <div class="ptb">
+    <div><h2>Contract Intelligence Centre</h2><p>Full visibility of all employment contracts — who awarded, who handled, workers deployed, contract value, and compliance status</p></div>
+    <div class="ptb-r"><button class="btn btn-o btn-sm" onclick="toast('Contract data exported','tin')">Export</button><button class="btn btn-p btn-sm" onclick="openModal('m-new-contract')">Register Contract</button></div>
+  </div>
+
+  <div class="kg" id="contract-kpis">
+    <div class="kpi c-ink"><div class="kv">142</div><div class="kl">Total Contracts</div></div>
+    <div class="kpi c-grn"><div class="kv">Rs 8.4Cr</div><div class="kl">Total Net Value</div></div>
+    <div class="kpi c-blu"><div class="kv">4,087</div><div class="kl">Workers Deployed</div></div>
+    <div class="kpi c-acc"><div class="kv">Rs 1,240</div><div class="kl">Avg Daily Rate</div></div>
+    <div class="kpi c-red"><div class="kv">3</div><div class="kl">AI Flagged</div></div>
+    <div class="kpi c-tel"><div class="kv">Rs 14,400/day</div><div class="kl">Wage Diversion (AI)</div></div>
+  </div>
+
+  <div id="contract-list">
+  <div class="ctc live">
+    <div class="ctc-hd"><div><div class="ctc-id">IEE-CTR-2026-0092</div><h4>CMRL Phase 2 — Foundation and Concrete Work</h4><p style="font-size:10.5px;color:var(--ink4);">Principal Employer: Chennai Metro Rail Ltd &nbsp;|&nbsp; Contractor: Metro Works Pvt Ltd &nbsp;|&nbsp; Handler: R. Krishnamurthy, PM</p></div><span class="b bg">Live</span></div>
+    <div class="ctc-grid">
+      <div class="ctcf"><strong>Rs 2.09 Crore</strong>Contract Net Value</div>
+      <div class="ctcf"><strong>220</strong>Workers Deployed</div>
+      <div class="ctcf"><strong>Rs 950/day</strong>Worker Rate</div>
+      <div class="ctcf"><strong>01 Mar – 31 Aug 2026</strong>Contract Period</div>
+      <div class="ctcf"><strong>Rs 1,045/day billed</strong>Client Invoice Rate</div>
+      <div class="ctcf"><strong>Rs 95/day</strong>Contractor Margin</div>
+      <div class="ctcf"><strong>CLRA Lic: TN-2026-0044</strong>Licence Status</div>
+      <div class="ctcf"><strong>EPFO: Filed &nbsp;|&nbsp; ESIC: Filed &nbsp;|&nbsp; GST: Filed</strong>Compliance</div>
+    </div>
+    <div class="msr"><div class="msi"><div class="v">98.6%</div><div class="l">Compliance</div></div><div class="msi"><div class="v">4.8</div><div class="l">Worker Rating</div></div><div class="msi"><div class="v">Rs 20.9L</div><div class="l">April Payment</div></div><div class="msi"><div class="v">0</div><div class="l">AI Flags</div></div></div>
+  </div>
+
+  <div class="ctc dispute">
+    <div class="ctc-hd"><div><div class="ctc-id">IEE-CTR-2026-0044</div><h4>Annur Infra — Electrical and Civil Work, Coimbatore</h4><p style="font-size:10.5px;color:var(--ink4);">Principal Employer: Annur Municipal Corp &nbsp;|&nbsp; Contractor: Annur Infra &nbsp;|&nbsp; Handler: K. Sundaram, Director</p></div><div style="display:flex;gap:5px;align-items:center;"><span class="b br">AI Flagged</span><span class="b br">Fraud Risk</span></div></div>
+    <div class="ctc-grid">
+      <div class="ctcf"><strong>Rs 48 Lakh</strong>Contract Net Value</div>
+      <div class="ctcf"><strong>55 deployed / 21 ECR</strong>Workers (Mismatch)</div>
+      <div class="ctcf"><strong>Rs 900/day (unverified)</strong>Worker Rate</div>
+      <div class="ctcf"><strong>15 Jan – 15 Jul 2026</strong>Contract Period</div>
+      <div class="ctcf"><strong>Rs 1,100/day billed</strong>Client Invoice Rate</div>
+      <div class="ctcf"><strong>Undisclosed margin</strong>Contractor Margin</div>
+      <div class="ctcf"><strong>CLRA: Not Filed</strong>Licence Status</div>
+      <div class="ctcf"><strong style="color:var(--red);">EPFO: 21/55 &nbsp;|&nbsp; ESIC: Missing &nbsp;|&nbsp; GST: Mismatch</strong>Compliance</div>
+    </div>
+    <div class="msr"><div class="msi"><div class="v" style="color:var(--red);">0%</div><div class="l">Compliance</div></div><div class="msi"><div class="v" style="color:var(--red);">Rs 14,400/day</div><div class="l">Wage Diversion (AI)</div></div><div class="msi"><div class="v" style="color:var(--red);">Rs 12.96L</div><div class="l">Estimated Misuse</div></div><div class="msi"><div class="v" style="color:var(--red);">94/100</div><div class="l">AI Risk Score</div></div></div>
+  </div>
+
+  <div class="ctc review">
+    <div class="ctc-hd"><div><div class="ctc-id">IEE-CTR-2026-0067</div><h4>Prestige Builders — Residential Complex, Mumbai</h4><p style="font-size:10.5px;color:var(--ink4);">Principal Employer: Prestige Projects Pvt Ltd &nbsp;|&nbsp; Contractor: Prestige Builders &nbsp;|&nbsp; Handler: P. Menon, Site Director</p></div><span class="b ba">Under Review</span></div>
+    <div class="ctc-grid">
+      <div class="ctcf"><strong>Rs 72 Lakh</strong>Contract Net Value</div>
+      <div class="ctcf"><strong>72</strong>Workers Deployed</div>
+      <div class="ctcf"><strong>Rs 650/day (suppressed)</strong>Worker Rate</div>
+      <div class="ctcf"><strong>01 Feb – 31 Jul 2026</strong>Contract Period</div>
+      <div class="ctcf"><strong>Rs 850/day billed</strong>Client Invoice Rate</div>
+      <div class="ctcf"><strong>Rs 200/day diversion</strong>Wage Gap (AI Detected)</div>
+      <div class="ctcf"><strong>CLRA Lic: MH-2026-0021</strong>Licence Status</div>
+      <div class="ctcf"><strong>EPFO: Filed &nbsp;|&nbsp; ESIC: Filed &nbsp;|&nbsp; GST: Filed</strong>Compliance</div>
+    </div>
+    <div class="msr"><div class="msi"><div class="v" style="color:var(--acc);">76%</div><div class="l">Compliance</div></div><div class="msi"><div class="v" style="color:var(--red);">Rs 14,400/day</div><div class="l">Wage Diversion</div></div><div class="msi"><div class="v" style="color:var(--red);">Rs 8.64L</div><div class="l">Est. Worker Loss</div></div><div class="msi"><div class="v" style="color:var(--acc);">87/100</div><div class="l">AI Risk Score</div></div></div>
+  </div>
+  </div>
+</div>
+
+<!-- ======================= FINANCE & BANKS ======================= -->
+<div class="pg" id="pg-finance">
+  <div class="ptb">
+    <div><h2>Finance, Banking, and Micro-Loan Management</h2><p>Worker accounts, DBT flow, NBFC loan partnerships, and complete financial journey per worker</p></div>
+    <div class="ptb-r"><button class="btn btn-p btn-sm" onclick="toast('Authorising Rs 14.2L micro-loan batch...','twa')">Authorise Loan Batch (Rs 14.2L)</button></div>
+  </div>
+
+  <div class="kg">
+    <div class="kpi c-grn"><div class="kv">Rs 9.4Cr</div><div class="kl">Micro-Loans Active</div><div class="kd u">1,892 workers</div></div>
+    <div class="kpi c-blu"><div class="kv">Rs 4.2Cr</div><div class="kl">April Salary DBT</div><div class="kd u">On schedule</div></div>
+    <div class="kpi c-ink"><div class="kv">Rs 2.1Cr</div><div class="kv" style="font-size:12px;color:var(--grn);margin-top:3px;"></div><div class="kl">PF Corpus (IEE Workers)</div></div>
+    <div class="kpi c-red"><div class="kv">Rs 14.2L</div><div class="kl">Loans Pending Auth</div><div class="kd d">48 applications</div></div>
+    <div class="kpi c-acc"><div class="kv">3.2%</div><div class="kl">Loan Default Rate</div><div class="kd n">Below NBFC avg</div></div>
+    <div class="kpi c-tel"><div class="kv">4 NBFCs</div><div class="kl">Active Partners</div><div class="kd n">IDFC, Ujjivan, etc.</div></div>
+  </div>
+
+  <div class="g2">
+    <div>
+      <div class="card">
+        <div class="chd"><h3>NBFC Micro-Loan Partnerships</h3><p>Active lending partners and disbursement stats</p></div>
+        <div class="cbd">
+          <div class="lncard">
+            <div class="ln-ic" style="background:var(--blubg);color:var(--blu);">IF</div>
+            <div class="ln-info"><h4>IDFC First Bank — IEE Micro-Credit</h4><p>Loan range Rs 5,000–50,000 &nbsp;|&nbsp; Rate: 12–18% p.a. &nbsp;|&nbsp; Tenure: 3–12 months</p><div style="display:flex;gap:6px;margin-top:4px;"><span class="b bb">Active</span><span class="b bk">748 loans</span></div></div>
+            <div class="ln-status"><div class="ln-amt">Rs 3.74Cr</div><div style="font-size:10px;color:var(--ink4);">Disbursed</div></div>
+          </div>
+          <div class="lncard">
+            <div class="ln-ic" style="background:var(--grnbg);color:var(--grn);">UF</div>
+            <div class="ln-info"><h4>Ujjivan Small Finance Bank</h4><p>Loan range Rs 3,000–30,000 &nbsp;|&nbsp; Rate: 14–20% p.a. &nbsp;|&nbsp; Tenure: 6 months</p><div style="display:flex;gap:6px;margin-top:4px;"><span class="b bg">Active</span><span class="b bk">512 loans</span></div></div>
+            <div class="ln-status"><div class="ln-amt">Rs 1.84Cr</div><div style="font-size:10px;color:var(--ink4);">Disbursed</div></div>
+          </div>
+          <div class="lncard">
+            <div class="ln-ic" style="background:var(--orabg);color:var(--ora);">SB</div>
+            <div class="ln-info"><h4>State Bank of India — PM MUDRA Link</h4><p>Loan range Rs 10,000–1,00,000 &nbsp;|&nbsp; Rate: 8.5% p.a. &nbsp;|&nbsp; Pradhan Mantri MUDRA Yojana</p><div style="display:flex;gap:6px;margin-top:4px;"><span class="b bo">Pilot</span><span class="b bk">214 loans</span></div></div>
+            <div class="ln-status"><div class="ln-amt">Rs 2.14Cr</div><div style="font-size:10px;color:var(--ink4);">Disbursed</div></div>
+          </div>
+          <div class="lncard">
+            <div class="ln-ic" style="background:var(--purbg);color:var(--pur);">BF</div>
+            <div class="ln-info"><h4>Bandhan Bank — Worker Finance</h4><p>Loan range Rs 5,000–25,000 &nbsp;|&nbsp; Rate: 16% p.a. &nbsp;|&nbsp; Weekly repayment option</p><div style="display:flex;gap:6px;margin-top:4px;"><span class="b bp">New</span><span class="b bk">418 loans</span></div></div>
+            <div class="ln-status"><div class="ln-amt">Rs 1.67Cr</div><div style="font-size:10px;color:var(--ink4);">Disbursed</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <div class="chd"><h3>Pending Loan Authorisations</h3><p>48 applications — Rs 14.2L — awaiting SA sign-off</p></div>
+        <div class="cbd0">
+          <div class="tw">
+            <table>
+              <thead><tr><th>Worker ID</th><th>Name</th><th>Amount</th><th>NBFC</th><th>Income Verified</th><th>AI Score</th><th>Action</th></tr></thead>
+              <tbody>
+                <tr><td><code>IEE-WK-00045821</code></td><td><strong>Rajan Kumar</strong></td><td>Rs 18,000</td><td>IDFC First</td><td><span class="b bg">Verified</span></td><td style="color:var(--grn);">Low Risk</td><td><button class="btn btn-g btn-xs" onclick="toast('Loan authorised — Rajan Kumar Rs 18,000','tok')">Approve</button></td></tr>
+                <tr><td><code>IEE-WK-00047201</code></td><td><strong>Murugan S</strong></td><td>Rs 25,000</td><td>Ujjivan</td><td><span class="b bg">Verified</span></td><td style="color:var(--grn);">Low Risk</td><td><button class="btn btn-g btn-xs" onclick="toast('Loan authorised — Murugan S Rs 25,000','tok')">Approve</button></td></tr>
+                <tr><td><code>IEE-WK-00091</code></td><td><strong>Ganesh Kumar</strong></td><td>Rs 8,000</td><td>Bandhan</td><td><span class="b ba">Partial</span></td><td style="color:var(--acc);">Medium</td><td><button class="btn btn-xs btn-o">Hold</button></td></tr>
+                <tr><td><code>IEE-WK-00048900</code></td><td><strong>Vijay R</strong></td><td>Rs 15,000</td><td>IDFC First</td><td><span class="b bg">Verified</span></td><td style="color:var(--grn);">Low Risk</td><td><button class="btn btn-g btn-xs" onclick="toast('Loan authorised — Vijay R Rs 15,000','tok')">Approve</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="cbd" style="padding-top:8px;">
+          <button class="btn btn-g btn-sm" style="width:100%;justify-content:center;" onclick="toast('Bulk loan authorisation initiated — 44 applications approved, 4 held','tok')">Bulk Approve All Low-Risk (44 Applications — Rs 13.8L)</button>
+        </div>
+      </div>
+
+      <div class="bkcard" style="margin-top:12px;">
+        <div class="bkcard-type">Government DBT Channel — IEE Platform</div>
+        <div class="bkcard-num">IFSC: SBIN0001234 &nbsp;|&nbsp; A/C: IEE-GOVT-DBT-2026</div>
+        <div class="bkcard-name">Ministry of Labour &amp; Employment — IEE Nodal Account</div>
+        <div class="bkcard-bal">Rs 4,22,14,800</div>
+        <div class="bkcard-sub">April 2026 Disbursement Balance &nbsp;|&nbsp; PFMS Linked &nbsp;|&nbsp; DBT Mission Registered</div>
+        <div style="display:flex;gap:7px;margin-top:12px;flex-wrap:wrap;">
+          <button class="btn btn-p btn-sm" onclick="toast('DBT batch processing...','twa')">Process DBT Batch</button>
+          <button class="btn btn-o btn-sm" style="border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);" onclick="toast('Ledger exported to PFMS','tin')">PFMS Ledger</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= GST / EPFO / ESIC ======================= -->
+<div class="pg" id="pg-gst">
+  <div class="ptb">
+    <div><h2>GST, EPFO, and ESIC Compliance Centre</h2><p>Complete statutory compliance monitoring for all 312 registered employers — GST, provident fund, and health insurance</p></div>
+    <div class="ptb-r"><button class="btn btn-o btn-sm" onclick="toast('Compliance report exported','tin')">Export Report</button><button class="btn btn-r btn-sm" onclick="toast('Bulk notices issued to 14 defaulters','ter')">Issue Bulk Notices</button></div>
+  </div>
+
+  <div class="kg">
+    <div class="kpi c-grn"><div class="kv">304/312</div><div class="kl">GST-3B Filed</div><div class="kd d">8 defaults</div></div>
+    <div class="kpi c-blu"><div class="kv">298/312</div><div class="kl">EPFO ECR Filed</div><div class="kd d">14 defaults</div></div>
+    <div class="kpi c-tel"><div class="kv">291/312</div><div class="kl">ESIC Challan</div><div class="kd d">21 defaults</div></div>
+    <div class="kpi c-acc"><div class="kv">Rs 48.2L</div><div class="kl">PF Contributions</div><div class="kd u">March 2026</div></div>
+    <div class="kpi c-red"><div class="kv">3</div><div class="kl">AI Fraud Alerts</div><div class="kd d">Mismatch detected</div></div>
+    <div class="kpi c-ink"><div class="kv">Rs 12.4L</div><div class="kl">ESIC Premium</div><div class="kd u">March 2026</div></div>
+  </div>
+
+  <div class="itabs"><div class="itab on" onclick="switchTab(this,'tab-gst')">GST Compliance</div><div class="itab" onclick="switchTab(this,'tab-epfo')">EPFO — PF</div><div class="itab" onclick="switchTab(this,'tab-esic')">ESIC — Health</div><div class="itab" onclick="switchTab(this,'tab-clra')">CLRA Licences</div></div>
+
+  <div id="tab-gst">
+    <div class="card">
+      <div class="chd"><h3>GST Filing Status — March 2026</h3><p>All 312 employers — GSTN cross-verified by AI</p></div>
+      <div class="cbd0">
+        <div class="tw">
+          <table>
+            <thead><tr><th>Employer</th><th>GSTIN</th><th>Turnover Declared</th><th>IEE-Implied Turnover</th><th>GSTR-1</th><th>GSTR-3B</th><th>ITC Claimed</th><th>AI Flag</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Skyline Constructions</strong></td><td><code>33AABCS1234Z1Z5</code></td><td>Rs 1.58Cr</td><td>Rs 1.55Cr</td><td><span class="b bg">Filed</span></td><td><span class="b bg">Filed</span></td><td>Rs 12.4L</td><td><span class="risk-low">Clear</span></td><td><button class="btn btn-o btn-xs">View</button></td></tr>
+              <tr><td><strong>Annur Infra</strong></td><td><code>33AACIA9988B1Z9</code></td><td>Rs 1.20Cr</td><td>Rs 2.40Cr</td><td><span class="b ba">Mismatch</span></td><td><span class="b ba">Mismatch</span></td><td>Rs 9.6L</td><td><span class="risk-high">HIGH — Rs 1.2Cr gap</span></td><td><button class="btn btn-r btn-xs" onclick="toast('GST investigation notice issued','ter')">Notice</button></td></tr>
+              <tr><td><strong>Ram Nivas Contr.</strong></td><td><code>33AAFRN4421C1Z2</code></td><td>Rs 42L</td><td>Rs 68L</td><td><span class="b br">Not Filed</span></td><td><span class="b br">Not Filed</span></td><td>—</td><td><span class="risk-high">HIGH</span></td><td><button class="btn btn-r btn-xs" onclick="toast('GST default notice issued','ter')">Notice</button></td></tr>
+              <tr><td><strong>Prestige Builders</strong></td><td><code>27AABCP8821F1Z1</code></td><td>Rs 61.2L</td><td>Rs 61.2L</td><td><span class="b bg">Filed</span></td><td><span class="b bg">Filed</span></td><td>Rs 4.9L</td><td><span class="risk-med">Med — Wage gap</span></td><td><button class="btn btn-xs btn-o">Review</button></td></tr>
+              <tr><td><strong>Metro Works (CMRL)</strong></td><td><code>33AABCM2200H1Z4</code></td><td>Rs 2.09Cr</td><td>Rs 2.09Cr</td><td><span class="b bg">Filed</span></td><td><span class="b bg">Filed</span></td><td>Rs 16.7L</td><td><span class="risk-low">Clear</span></td><td><button class="btn btn-o btn-xs">View</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-epfo" style="display:none;">
+    <div class="card">
+      <div class="chd"><h3>EPFO ECR Filing Status — March 2026</h3><p>Employee Challan cum Return — AI-verified against IEE worker count</p></div>
+      <div class="cbd0">
+        <div class="tw">
+          <table>
+            <thead><tr><th>Employer</th><th>PF Code</th><th>ECR Workers</th><th>IEE Workers</th><th>PF Contributed</th><th>TRRN</th><th>Status</th><th>Liability</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Skyline Constructions</strong></td><td><code>TN/CHN/001248</code></td><td>148</td><td>148</td><td>Rs 1.78L</td><td><code>EPFO2026041200148</code></td><td><span class="b bg">Filed</span></td><td>Clear</td><td><button class="btn btn-o btn-xs">View</button></td></tr>
+              <tr><td><strong>Annur Infra</strong></td><td><code>TN/CBE/003380</code></td><td>21</td><td>55</td><td>Rs 25,200</td><td>—</td><td><span class="b br">Mismatch</span></td><td style="color:var(--red);font-weight:700;">PE Liable</td><td><button class="btn btn-r btn-xs" onclick="toast('EPFO demand notice issued for 34 workers','ter')">Issue Demand</button></td></tr>
+              <tr><td><strong>Ram Nivas Contr.</strong></td><td><code>TN/CHN/009912</code></td><td>0</td><td>34</td><td>—</td><td>—</td><td><span class="b br">Not Filed</span></td><td style="color:var(--red);font-weight:700;">PE Liable</td><td><button class="btn btn-r btn-xs" onclick="toast('EPFO recovery action initiated','ter')">Recovery Action</button></td></tr>
+              <tr><td><strong>Metro Works (CMRL)</strong></td><td><code>TN/CHN/004499</code></td><td>220</td><td>220</td><td>Rs 2.64L</td><td><code>EPFO2026041200220</code></td><td><span class="b bg">Filed</span></td><td>Clear</td><td><button class="btn btn-o btn-xs">View</button></td></tr>
+              <tr><td><strong>Prestige Builders</strong></td><td><code>MH/MUM/002104</code></td><td>72</td><td>72</td><td>Rs 86,400</td><td><code>EPFO2026041200072</code></td><td><span class="b bg">Filed</span></td><td>Clear</td><td><button class="btn btn-o btn-xs">View</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-esic" style="display:none;">
+    <div class="card">
+      <div class="chd"><h3>ESIC Challan Status — March 2026</h3><p>Employer and employee contributions — wage bracket verified by AI</p></div>
+      <div class="cbd0">
+        <div class="tw">
+          <table>
+            <thead><tr><th>Employer</th><th>ESIC Code</th><th>Covered Workers</th><th>Employer Share</th><th>Employee Share</th><th>Challan Status</th><th>Sub-Code</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Skyline Constructions</strong></td><td><code>33-00-001248-000</code></td><td>148</td><td>Rs 46,620</td><td>Rs 8,750</td><td><span class="b bg">Filed</span></td><td>TN-CHN-014</td><td><button class="btn btn-o btn-xs">View</button></td></tr>
+              <tr><td><strong>Annur Infra</strong></td><td><code>33-00-003380-000</code></td><td>21 / 55</td><td>—</td><td>—</td><td><span class="b br">Missing 34</span></td><td>—</td><td><button class="btn btn-r btn-xs" onclick="toast('ESIC enforcement referral sent','ter')">Enforce</button></td></tr>
+              <tr><td><strong>Ram Nivas Contr.</strong></td><td><code>33-00-009912-000</code></td><td>0</td><td>—</td><td>—</td><td><span class="b br">Not Filed</span></td><td>—</td><td><button class="btn btn-r btn-xs" onclick="toast('ESIC penalty notice issued','ter')">Penalty Notice</button></td></tr>
+              <tr><td><strong>Metro Works (CMRL)</strong></td><td><code>33-00-004499-000</code></td><td>220</td><td>Rs 69,300</td><td>Rs 13,000</td><td><span class="b bg">Filed</span></td><td>TN-CHN-022</td><td><button class="btn btn-o btn-xs">View</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-clra" style="display:none;">
+    <div class="card">
+      <div class="chd"><h3>Contract Labour Regulation Act — Licence Status</h3><p>Contractors must hold CLRA licence to deploy workers legally</p></div>
+      <div class="cbd0">
+        <div class="tw">
+          <table>
+            <thead><tr><th>Contractor</th><th>CLRA Licence No.</th><th>Workers Limit</th><th>Issued</th><th>Expiry</th><th>Filing</th><th>Status</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Skyline Constructions</strong></td><td><code>TN-CLRA-2026-0188</code></td><td>200</td><td>01 Jan 2026</td><td>31 Dec 2026</td><td>Shram Suvidha</td><td><span class="b bg">Valid</span></td><td><button class="btn btn-o btn-xs">View</button></td></tr>
+              <tr><td><strong>Metro Works Pvt Ltd</strong></td><td><code>TN-CLRA-2026-0044</code></td><td>300</td><td>01 Mar 2026</td><td>28 Feb 2027</td><td>Shram Suvidha</td><td><span class="b bg">Valid</span></td><td><button class="btn btn-o btn-xs">View</button></td></tr>
+              <tr><td><strong>Annur Infra</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td><span class="b br">NOT FILED</span></td><td><button class="btn btn-r btn-xs" onclick="toast('Stop-work order issued to Annur Infra','ter')">Stop-Work Order</button></td></tr>
+              <tr><td><strong>Prestige Builders</strong></td><td><code>MH-CLRA-2026-0021</code></td><td>100</td><td>01 Feb 2026</td><td>31 Jan 2027</td><td>Shram Suvidha</td><td><span class="b bg">Valid</span></td><td><button class="btn btn-o btn-xs">View</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= ESHRAM ======================= -->
+<div class="pg" id="pg-eshram">
+  <div class="ptb">
+    <div><h2>eShram — NDUW Integration Centre</h2><p>National Database of Unorganised Workers sync — 30.95 Crore UAN holders — IEE linkage management</p></div>
+  </div>
+
+  <div class="ai-banner">
+    <div class="ai-pulse"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#5de89a" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="#5de89a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div>
+      <div class="ai-tag">eShram One-Stop Solution — Integrated 21 October 2024</div>
+      <h4>IEE is integrated with eShram portal. 3,650 IEE workers (67.3%) have eShram UAN linked. 412 new UAN links this week. All 12 eShram welfare schemes visible per worker.</h4>
+      <p>eShram UAN enables: PMSBY Rs 2L insurance, PM-SYM pension, ONORC ration card, PM Awas-G, MGNREGA, NSAP, NCS job access, Skill India Digital Hub, and myScheme eligibility check.</p>
+    </div>
+  </div>
+
+  <div class="kg">
+    <div class="kpi c-grn"><div class="kv">3,650</div><div class="kl">UAN Linked Workers</div><div class="kd u">67.3% of total</div></div>
+    <div class="kpi c-red"><div class="kv">1,771</div><div class="kl">UAN Not Linked</div><div class="kd d">Drive needed</div></div>
+    <div class="kpi c-blu"><div class="kv">412</div><div class="kl">New Links — This Week</div><div class="kd u">+41% vs last week</div></div>
+    <div class="kpi c-ink"><div class="kv">30.95Cr</div><div class="kl">NDUW Total Registrations</div><div class="kd n">National count</div></div>
+    <div class="kpi c-pur"><div class="kv">12</div><div class="kl">Schemes Integrated</div><div class="kd n">eShram OSS</div></div>
+    <div class="kpi c-acc"><div class="kv">Rs 2L</div><div class="kl">PMSBY Cover — Per Worker</div><div class="kd u">All linked workers</div></div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="chd"><h3>eShram-IEE Scheme Coverage Map</h3><p>12 integrated welfare schemes — worker access status</p></div>
+      <div class="cbd">
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          <div class="cm-item"><div class="cm-check cm-ok">&#10003;</div><div class="cm-info"><h4>PMSBY — Accidental Insurance (Rs 2L)</h4><p>3,650 UAN-linked workers auto-enrolled — Rs 20 annual premium (govt-paid for IEE workers)</p></div><span class="b bg">Active: 3,650</span></div>
+          <div class="cm-item"><div class="cm-check cm-ok">&#10003;</div><div class="cm-info"><h4>PM-SYM — Pension Scheme</h4><p>Workers 18–40 years — Rs 3,000/month pension post 60 — govt contributes 50%</p></div><span class="b bg">Active: 2,108</span></div>
+          <div class="cm-item"><div class="cm-check cm-ok">&#10003;</div><div class="cm-info"><h4>One Nation One Ration Card (ONORC)</h4><p>Linked to eShram UAN — portable across India for migrant workers</p></div><span class="b bg">Active: 1,892</span></div>
+          <div class="cm-item"><div class="cm-check cm-ok">&#10003;</div><div class="cm-info"><h4>PM Awas Yojana — Gramin (PMAY-G)</h4><p>IEE income record used for eligibility — 412 workers verified for housing</p></div><span class="b bg">Active: 412</span></div>
+          <div class="cm-item"><div class="cm-check cm-ok">&#10003;</div><div class="cm-info"><h4>NCS Portal — Job Access via UAN</h4><p>IEE workers can register on National Career Service using eShram UAN</p></div><span class="b bb">Integrated</span></div>
+          <div class="cm-item"><div class="cm-check cm-ok">&#10003;</div><div class="cm-info"><h4>Skill India Digital Hub (SIDH) — NSDC</h4><p>UAN enables PMKVY enrolment and NSDC certification tracking</p></div><span class="b bb">Integrated</span></div>
+          <div class="cm-item"><div class="cm-check cm-ok">&#10003;</div><div class="cm-info"><h4>MGNREGA Link</h4><p>Migrant workers: IEE employment proof used for MGNREGA wage gap protection</p></div><span class="b ba">Partial</span></div>
+          <div class="cm-item"><div class="cm-check cm-wa">!</div><div class="cm-info"><h4>NSAP — National Social Assistance Programme</h4><p>Disability/widow pension — manual claim process — IEE document support</p></div><span class="b ba">Manual</span></div>
+          <div class="cm-item"><div class="cm-check cm-ok">&#10003;</div><div class="cm-info"><h4>myScheme — Eligibility Discovery</h4><p>AI matches worker profile to all applicable central and state schemes automatically</p></div><span class="b bb">Integrated</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="chd"><h3>UAN Linkage Drive</h3><p>Reach unlinked 1,771 workers</p></div>
+      <div class="cbd">
+        <div style="display:flex;flex-direction:column;gap:11px;">
+          <div class="fg"><label>Target Worker Segment</label><select><option>All Unlinked Workers (1,771)</option><option>Construction — Unlinked (890)</option><option>New Registrations — No UAN</option><option>Workers without PMSBY</option></select></div>
+          <div class="fg"><label>Outreach Channel</label><select><option>SMS + WhatsApp + App Push</option><option>IVR Auto-Call (multilingual)</option><option>CSC Centre Assignment</option><option>All Channels Combined</option></select></div>
+          <div class="fg"><label>Registration Assistance</label><select><option>Self-registration link via WhatsApp</option><option>Field verifier assists</option><option>CSC MeeSeva auto-registration</option></select></div>
+          <div style="background:var(--grnbg);border-radius:3px;padding:10px;font-size:11px;color:var(--grn);">
+            <strong>Impact:</strong> Linking 1,771 additional workers activates Rs 2L PMSBY cover each = Rs 354 Crore additional insurance coverage unlocked.
+          </div>
+          <button class="btn btn-g" style="justify-content:center;width:100%;" onclick="toast('eShram UAN linkage drive launched for 1,771 workers','tok')">Launch UAN Linkage Drive</button>
+        </div>
+        <hr>
+        <div class="chd" style="padding:0;border:none;margin-bottom:10px;"><h3 style="font-size:11.5px;">Recent UAN Linkages</h3></div>
+        <div class="tw">
+          <table>
+            <thead><tr><th>Worker</th><th>IEE ID</th><th>eShram UAN</th><th>Date</th><th>Method</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Rajan Kumar</strong></td><td><code>IEE-WK-00045821</code></td><td><code>WB-TN-2819043821</code></td><td>11 Apr</td><td>CSC</td></tr>
+              <tr><td><strong>Murugan S</strong></td><td><code>IEE-WK-00047201</code></td><td><code>WB-TN-2819047201</code></td><td>12 Apr</td><td>App</td></tr>
+              <tr><td><strong>Vijay R</strong></td><td><code>IEE-WK-00048900</code></td><td><code>WB-TN-2819048900</code></td><td>14 Apr</td><td>WhatsApp</td></tr>
+              <tr><td><strong>Lakshmi Bai</strong></td><td><code>IEE-WK-00094</code></td><td><code>WB-TN-2819000094</code></td><td>16 Apr</td><td>CSC</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= SCHEMES ======================= -->
+<div class="pg" id="pg-schemes">
+  <div class="ptb">
+    <div><h2>Scheme Launcher</h2><p>Configure, target, and broadcast government welfare schemes across the full IEE-eShram ecosystem</p></div>
+    <div class="ptb-r"><button class="btn btn-p btn-sm" onclick="launchScheme()">Authorise and Launch</button></div>
+  </div>
+  <div class="card" style="margin-bottom:12px;"><div class="cbd"><div class="wz"><div class="wst"><div class="wsn done">&#10003;</div><div class="wsl">Select Scheme</div></div><div class="wst now"><div class="wsn now">2</div><div class="wsl">Configure</div></div><div class="wst"><div class="wsn">3</div><div class="wsl">Target</div></div><div class="wst"><div class="wsn">4</div><div class="wsl">Schedule</div></div><div class="wst"><div class="wsn">5</div><div class="wsl">Launch</div></div></div></div></div>
+  <div class="g2">
+    <div class="card"><div class="chd"><h3>Scheme Templates</h3></div><div class="cbd" style="display:flex;flex-direction:column;gap:0;">
+      <div class="sc sg sel" onclick="pickSch(this,'PM-SAYSAM — Wage Insurance')"><h4>PM-SAYSAM — Wage Insurance Scheme</h4><p>50% wage top-up for workers placed in new jobs during economic stress. Ministry approved April 2026.</p><div class="sc-tags"><span class="b bg">Welfare</span><span class="b bk">All Workers</span><span class="b bp">Centre-Funded</span></div></div>
+      <div class="sc sb" onclick="pickSch(this,'PMKVY-IEE — Free Skill Cert')"><h4>PMKVY-IEE — Free Skill Certification via Nihar Skills</h4><p>Auto-enrol IEE workers in NSDC-PMKVY tracks. Fully integrated with Nihar Skills Education.</p><div class="sc-tags"><span class="b bb">PMKVY</span><span class="b bk">Blue-collar</span><span class="b bt">NSDC Linked</span></div></div>
+      <div class="sc sa" onclick="pickSch(this,'ESIC Auto-Enrolment')"><h4>ESIC Medical Coverage — Auto-Enrolment on Placement</h4><p>Automatically enrol verified workers with placement history into ESIC health scheme.</p><div class="sc-tags"><span class="b ba">Health</span><span class="b bk">Verified Only</span></div></div>
+      <div class="sc st" onclick="pickSch(this,'IEE Micro-Loan')"><h4>IEE Micro-Loan Worker Credit Programme</h4><p>Enable Rs 5,000–50,000 loan applications for workers with 3+ months IEE earnings history.</p><div class="sc-tags"><span class="b bt">Finance</span><span class="b bk">Experienced</span></div></div>
+      <div class="sc sp" onclick="pickSch(this,'Nihar Skills Subsidy')"><h4>Nihar Skills — State Upskilling Subsidy</h4><p>State-subsidised enrolment in Nihar Skills courses for Level 1 and unskilled IEE workers.</p><div class="sc-tags"><span class="b bp">Nihar Skills</span><span class="b bk">Level 1</span></div></div>
+    </div></div>
+    <div>
+      <div class="card"><div class="chd"><h3>Configuration</h3><p id="sch-n">PM-SAYSAM — Wage Insurance</p></div><div class="cbd">
+        <div class="fgg f2" style="gap:10px;margin-bottom:10px;"><div class="fg"><label>Start Date</label><input type="date" value="2026-05-01"></div><div class="fg"><label>End Date</label><input type="date" value="2026-07-31"></div></div>
+        <div class="fg" style="margin-bottom:10px;"><label>Benefit Formula</label><input type="text" value="50% daily wage, max Rs 500/day, 30 days"></div>
+        <div class="fg" style="margin-bottom:10px;"><label>Eligibility</label><select><option>All verified workers (4,087)</option><option>Workers with 1+ completed jobs</option><option>Below Rs 15,000/month</option><option>New registrations (30 days)</option></select></div>
+        <div style="font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:var(--ink4);margin-bottom:8px;">Channels</div>
+        <div class="tr-row"><div class="tr-lbl">IEE App Push<div class="tr-sub">2,507 active users</div></div><label class="tgl"><input type="checkbox" checked><div class="tgltr"></div></label></div>
+        <div class="tr-row"><div class="tr-lbl">WhatsApp Broadcast<div class="tr-sub">Rural + feature phone reach</div></div><label class="tgl"><input type="checkbox" checked><div class="tgltr"></div></label></div>
+        <div class="tr-row"><div class="tr-lbl">SMS — All Mobiles</div><label class="tgl"><input type="checkbox" checked><div class="tgltr"></div></label></div>
+        <div class="tr-row"><div class="tr-lbl">eShram One-Stop Solution<div class="tr-sub">Notify via NDUW portal</div></div><label class="tgl"><input type="checkbox" checked><div class="tgltr"></div></label></div>
+        <div class="tr-row"><div class="tr-lbl">IVR Auto-Call (Tamil/Hindi/Telugu)</div><label class="tgl"><input type="checkbox"><div class="tgltr"></div></label></div>
+      </div></div>
+      <div class="hlb" style="margin-top:12px;">
+        <h3>Estimated Impact</h3><p>Based on current eligibility filter</p>
+        <div class="hlg"><div class="hli"><div class="v">4,087</div><div class="l">Eligible Workers</div></div><div class="hli"><div class="v" style="color:#a8f0c0;">Rs 2.04Cr</div><div class="l">Total Benefit</div></div><div class="hli"><div class="v">312</div><div class="l">Employers Notified</div></div><div class="hli"><div class="v">97%</div><div class="l">Est. Delivery</div></div></div>
+        <button class="btn btn-p" style="width:100%;justify-content:center;margin-top:13px;padding:9px;" onclick="launchScheme()">Authorise and Launch Scheme</button>
+      </div>
+      <div class="bpnl" id="sch-bp"><div class="bpr"><div><div class="bptit" id="schbp-t">Ready</div><div class="bpcnt" id="schbp-c">0 / 4,087</div></div><span class="b ba" id="schbp-b">Ready</span></div><div class="bpbar"><div class="bpfill" id="schbp-f" style="width:0%"></div></div><div class="bpst"><div class="bpst"><strong id="schbp-app">0</strong><span>App</span></div><div class="bpst"><strong id="schbp-sms">0</strong><span>SMS</span></div><div class="bpst"><strong id="schbp-wa">0</strong><span>WA</span></div><div class="bpst"><strong id="schbp-fail">0</strong><span>Failed</span></div></div></div>
+    </div>
+  </div>
+  <div class="card"><div class="chd"><h3>Target Regions</h3></div><div class="cbd"><div style="display:flex;gap:6px;margin-bottom:10px;"><button class="btn btn-d btn-sm" onclick="rAll()">Select All India</button><button class="btn btn-o btn-sm" onclick="rClr()">Clear</button></div><div class="rgg" id="rgrid"><div class="rt sel" onclick="rT(this)">Tamil Nadu</div><div class="rt sel" onclick="rT(this)">Maharashtra</div><div class="rt sel" onclick="rT(this)">Karnataka</div><div class="rt" onclick="rT(this)">Uttar Pradesh</div><div class="rt" onclick="rT(this)">Gujarat</div><div class="rt" onclick="rT(this)">Rajasthan</div><div class="rt" onclick="rT(this)">West Bengal</div><div class="rt" onclick="rT(this)">Bihar</div><div class="rt" onclick="rT(this)">Andhra Pradesh</div><div class="rt" onclick="rT(this)">Telangana</div><div class="rt" onclick="rT(this)">Kerala</div><div class="rt" onclick="rT(this)">Madhya Pradesh</div><div class="rt" onclick="rT(this)">Odisha</div><div class="rt" onclick="rT(this)">Jharkhand</div><div class="rt" onclick="rT(this)">Delhi NCT</div><div class="rt" onclick="rT(this)">Haryana</div><div class="rt" onclick="rT(this)">Punjab</div><div class="rt" onclick="rT(this)">Assam</div></div></div></div>
+</div>
+
+<!-- ======================= PAYROLL ======================= -->
+<div class="pg" id="pg-payroll">
+  <div class="ptb"><div><h2>Payroll and Salary Management</h2><p>Disburse wages, monitor compliance, and manage employer payment records</p></div><div class="ptb-r"><button class="btn btn-p btn-sm" onclick="procSalary()">Authorise Rs 1.84Cr Batch</button></div></div>
+  <div class="kg">
+    <div class="kpi c-grn"><div class="kv">Rs 4.2Cr</div><div class="kl">Disbursed April</div></div>
+    <div class="kpi c-ink"><div class="kv">4,087</div><div class="kl">Workers Paid</div></div>
+    <div class="kpi c-acc"><div class="kv">312</div><div class="kl">Employer Accounts</div></div>
+    <div class="kpi c-red"><div class="kv">23</div><div class="kl">Pending Payments</div></div>
+  </div>
+  <div class="g2">
+    <div class="card"><div class="chd"><h3>Bulk Salary Processing</h3></div><div class="cbd">
+      <div class="fgg f2" style="gap:10px;margin-bottom:10px;"><div class="fg"><label>Pay Period</label><select><option>April 2026</option><option>March 2026</option><option>Week 14–20 Apr</option></select></div><div class="fg"><label>Channel</label><select><option>DBT — PFMS</option><option>NEFT/IMPS</option><option>Jan Dhan</option></select></div></div>
+      <div class="fgg f2" style="gap:10px;margin-bottom:10px;"><div class="fg"><label>Employer Filter</label><select><option>All Employers (312)</option><option>Skyline Constructions</option><option>CMRL Phase 2</option></select></div><div class="fg"><label>Worker Type</label><select><option>All Workers (4,087)</option><option>Daily Wage</option><option>Contract</option></select></div></div>
+      <div style="background:var(--grnbg);border-radius:3px;padding:10px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:10.5px;color:var(--ink4);">Total Batch Amount</div><div style="font-size:10.5px;color:var(--ink4);margin-top:1px;">4,064 workers — PF/ESIC deducted</div></div><div style="font-size:20px;font-weight:700;color:var(--grn);">Rs 1,84,22,000</div></div>
+      <button class="btn btn-g" style="width:100%;justify-content:center;" onclick="procSalary()">Authorise and Process Salary Batch</button>
+      <div class="bpnl" id="sal-bp"><div class="bpr"><div><div class="bptit">Processing...</div><div class="bpcnt" id="sal-c">0 workers paid</div></div><span class="b ba">Processing</span></div><div class="bpbar"><div class="bpfill" id="sal-b" style="width:0%"></div></div><div class="bpst"><div class="bpst"><strong id="sal-ok">0</strong><span>Success</span></div><div class="bpst"><strong id="sal-fl">0</strong><span>Failed</span></div><div class="bpst"><strong id="sal-am">Rs 0</strong><span>Paid</span></div></div></div>
+    </div></div>
+    <div class="card"><div class="chd"><h3>Employer Salary Compliance</h3></div><div class="cbd0"><div class="tw"><table>
+      <thead><tr><th>Employer</th><th>Workers</th><th>Due Amount</th><th>Status</th><th>Compliance</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Skyline Constructions</strong></td><td>148</td><td>Rs 12.58L</td><td><span class="b bg">Paid</span></td><td style="color:var(--grn);font-weight:700;">100%</td><td><button class="btn btn-o btn-xs">View</button></td></tr>
+        <tr><td><strong>Metro Works (CMRL)</strong></td><td>220</td><td>Rs 20.90L</td><td><span class="b bg">Paid</span></td><td style="color:var(--grn);font-weight:700;">98.6%</td><td><button class="btn btn-o btn-xs">View</button></td></tr>
+        <tr><td><strong>Prestige Builders</strong></td><td>72</td><td>Rs 5.76L</td><td><span class="b ba">Partial</span></td><td style="color:var(--acc);font-weight:700;">76%</td><td><button class="btn btn-r btn-xs" onclick="toast('Alert sent to Prestige Builders','twa')">Alert</button></td></tr>
+        <tr><td><strong>Annur Infra</strong></td><td>55</td><td>Rs 4.95L</td><td><span class="b br">Overdue</span></td><td style="color:var(--red);font-weight:700;">0%</td><td><button class="btn btn-r btn-xs" onclick="toast('Legal notice + salary attachment order issued','ter')">Legal Notice</button></td></tr>
+      </tbody>
+    </table></div></div></div>
+  </div>
+</div>
+
+<!-- ======================= WORKERS ======================= -->
+<div class="pg" id="pg-workers">
+  <div class="ptb"><div><h2>Worker Registry</h2><p>5,421 workers — full profile with eShram, EPFO, ESIC, financial and journey data</p></div><div class="ptb-r"><button class="btn btn-p btn-sm" onclick="openModal('m-worker')">Register Worker</button></div></div>
+  <div class="card"><div class="cbd" style="padding-bottom:8px;">
+    <div style="display:flex;gap:7px;margin-bottom:12px;flex-wrap:wrap;">
+      <input type="text" placeholder="Search by name, IEE ID, UAN, Aadhaar, PAN..." style="flex:1;min-width:200px;padding:7px 9px;border:1px solid var(--r);border-radius:3px;font-size:11.5px;font-family:var(--f);">
+      <select style="padding:7px 9px;border:1px solid var(--r);border-radius:3px;font-size:11.5px;font-family:var(--f);"><option>All Status</option><option>Verified</option><option>KYC Pending</option><option>Flagged</option></select>
+      <select style="padding:7px 9px;border:1px solid var(--r);border-radius:3px;font-size:11.5px;font-family:var(--f);"><option>All Sectors</option><option>Construction</option><option>Manufacturing</option><option>Home Services</option></select>
+    </div>
+  </div>
+  <div class="cbd0"><div class="tw"><table>
+    <thead><tr><th>IEE Worker ID</th><th>Name</th><th>Role / Level</th><th>City</th><th>eShram UAN</th><th>EPFO UAN</th><th>ESIC</th><th>AI Score</th><th>Jobs</th><th>Earnings</th><th>Status</th><th>Actions</th></tr></thead>
+    <tbody id="worker-registry-tbody">
+      <tr><td><code>IEE-WK-00045821</code></td><td><strong>Rajan Kumar</strong></td><td>Mason — L3</td><td>Chennai</td><td><code>WB-TN-4821</code></td><td><code>100000004821</code></td><td><span class="b bt">Active</span></td><td style="color:var(--grn);">4/100</td><td>23</td><td>Rs 42,800</td><td><span class="b bg">Verified</span></td><td><button class="btn btn-o btn-xs" onclick="nav('journey',null)">Journey</button></td></tr>
+      <tr><td><code>IEE-WK-00047201</code></td><td><strong>Murugan S</strong></td><td>Electrician — L3</td><td>Coimbatore</td><td><code>WB-TN-7201</code></td><td><code>100000047201</code></td><td><span class="b bt">Active</span></td><td style="color:var(--grn);">6/100</td><td>31</td><td>Rs 55,200</td><td><span class="b bg">Verified</span></td><td><button class="btn btn-o btn-xs" onclick="nav('journey',null)">Journey</button></td></tr>
+      <tr><td><code>IEE-WK-00091</code></td><td><strong>Ganesh Kumar</strong></td><td>Mason — L1</td><td>Chennai</td><td>—</td><td>—</td><td><span class="b bz">Pending</span></td><td style="color:var(--acc);">—</td><td>0</td><td>—</td><td><span class="b ba">KYC Pending</span></td><td><button class="btn btn-g btn-xs" onclick="toast('KYC approved — Ganesh Kumar','tok')">Approve</button></td></tr>
+      <tr><td><code>IEE-WK-00094</code></td><td><strong>Lakshmi Bai</strong></td><td>Cook — L2</td><td>Madurai</td><td><code>WB-TN-0094</code></td><td><code>100000000094</code></td><td><span class="b bt">Active</span></td><td style="color:var(--grn);">9/100</td><td>8</td><td>Rs 18,400</td><td><span class="b bg">Verified</span></td><td><button class="btn btn-o btn-xs" onclick="nav('journey',null)">Journey</button></td></tr>
+    </tbody>
+  </table></div></div>
+  <div class="cbd" style="padding-top:8px;display:flex;justify-content:space-between;align-items:center;"><span id="worker-registry-count" style="font-size:10.5px;color:var(--ink4);">Showing 4 of 5,421</span><div style="display:flex;gap:5px;"><button class="btn btn-o btn-sm">Prev</button><button class="btn btn-o btn-sm">Next</button></div></div>
+  </div>
+</div>
+
+<!-- ======================= EMPLOYERS ======================= -->
+<div class="pg" id="pg-employers">
+  <div class="ptb"><div><h2>Employer Accounts</h2><p>312 employers — full GST, EPFO, ESIC, contract, and compliance intelligence</p></div><div class="ptb-r"><button class="btn btn-p btn-sm" onclick="openModal('m-emp')">Add Employer</button></div></div>
+  <div class="card"><div class="cbd0"><div class="tw"><table>
+    <thead><tr><th>Employer ID</th><th>Company</th><th>GSTIN</th><th>EPFO Code</th><th>ESIC Code</th><th>Workers</th><th>Contracts</th><th>AI Risk</th><th>Compliance</th><th>Actions</th></tr></thead>
+    <tbody id="employer-registry-tbody">
+      <tr><td><code>EMP-TN-001248</code></td><td><strong>Skyline Constructions</strong></td><td><code>33AABCS1234Z1Z5</code></td><td><code>TN/CHN/001248</code></td><td><code>33-00-001248</code></td><td>148</td><td>3</td><td><span class="risk-low">12/100</span></td><td style="color:var(--grn);font-weight:700;">100%</td><td><button class="btn btn-o btn-xs">View</button></td></tr>
+      <tr><td><code>EMP-TN-009912</code></td><td><strong>Ram Nivas Contractors</strong></td><td><code>33AAFRN4421C1Z2</code></td><td><code>TN/CHN/009912</code></td><td><code>33-00-009912</code></td><td>34</td><td>1</td><td><span class="risk-high">91/100</span></td><td style="color:var(--red);font-weight:700;">41%</td><td><button class="btn btn-r btn-xs" onclick="toast('Suspension notice issued','ter')">Suspend</button></td></tr>
+      <tr><td><code>EMP-TN-003380</code></td><td><strong>Annur Infra</strong></td><td><code>33AACIA9988B1Z9</code></td><td><code>TN/CBE/003380</code></td><td><code>33-00-003380</code></td><td>55</td><td>1</td><td><span class="risk-high">94/100</span></td><td style="color:var(--red);font-weight:700;">0%</td><td><button class="btn btn-r btn-xs" onclick="nav('ai',null)">Investigate</button></td></tr>
+      <tr><td><code>EMP-TN-004499</code></td><td><strong>Metro Works (CMRL)</strong></td><td><code>33AABCM2200H1Z4</code></td><td><code>TN/CHN/004499</code></td><td><code>33-00-004499</code></td><td>220</td><td>2</td><td><span class="risk-low">8/100</span></td><td style="color:var(--grn);font-weight:700;">98.6%</td><td><button class="btn btn-o btn-xs">View</button></td></tr>
+    </tbody>
+  </table></div></div></div>
+</div>
+
+<!-- ======================= SKILLS ======================= -->
+<div class="pg" id="pg-skills">
+  <div class="ptb"><div><h2>Skills and Training — NSDC / Nihar Skills Integration</h2><p>PMKVY, Nihar Skills, and Skill India Digital Hub — full IEE upskilling pipeline</p></div></div>
+  <div class="kg"><div class="kpi c-ink"><div class="kv">1,204</div><div class="kl">Certs Issued</div></div><div class="kpi c-grn"><div class="kv">892</div><div class="kl">Currently Training</div></div><div class="kpi c-acc"><div class="kv">341</div><div class="kl">Level Upgrades</div></div><div class="kpi c-blu"><div class="kv">67</div><div class="kl">Redirected from Jobs</div></div></div>
+  <div class="card"><div class="chd"><h3>Active Training Programmes</h3></div><div class="cbd0"><div class="tw"><table>
+    <thead><tr><th>Programme</th><th>Provider</th><th>NSQF Level</th><th>Enrolled</th><th>Completed</th><th>Certified</th><th>Placement Rate</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Advanced Masonry L2</strong></td><td>Nihar Skills</td><td>NSQF L2</td><td>180</td><td>142</td><td>138</td><td style="color:var(--grn);">84%</td><td><span class="b bg">Active</span></td></tr>
+      <tr><td><strong>Construction Safety OSHA</strong></td><td>NSDC-PMKVY</td><td>NSQF L1</td><td>320</td><td>298</td><td>291</td><td style="color:var(--grn);">91%</td><td><span class="b bg">Active</span></td></tr>
+      <tr><td><strong>Electrical Wiring and Safety</strong></td><td>Nihar Skills</td><td>NSQF L2</td><td>95</td><td>67</td><td>61</td><td style="color:var(--acc);">72%</td><td><span class="b ba">Ongoing</span></td></tr>
+      <tr><td><strong>Hospitality and Housekeeping</strong></td><td>Nihar Skills</td><td>NSQF L1</td><td>210</td><td>180</td><td>175</td><td style="color:var(--grn);">88%</td><td><span class="b bg">Active</span></td></tr>
+      <tr><td><strong>Domestic Plumbing L3</strong></td><td>NSDC-PMKVY</td><td>NSQF L3</td><td>44</td><td>28</td><td>28</td><td style="color:var(--grn);">100%</td><td><span class="b bk">Completed</span></td></tr>
+    </tbody>
+  </table></div></div></div>
+</div>
+
+<!-- ======================= WELFARE ======================= -->
+<div class="pg" id="pg-welfare">
+  <div class="ptb"><div><h2>Welfare and Benefits</h2><p>Government welfare scheme coverage and enrolment for all IEE workers</p></div></div>
+  <div class="kg"><div class="kpi c-grn"><div class="kv">3,241</div><div class="kl">ESIC Enrolled</div></div><div class="kpi c-ink"><div class="kv">1,892</div><div class="kl">Micro-Loans</div></div><div class="kpi c-acc"><div class="kv">412</div><div class="kl">PM Awas Linked</div></div><div class="kpi c-blu"><div class="kv">2,108</div><div class="kl">PM-SYM Pension</div></div></div>
+  <div class="card"><div class="chd"><h3>Welfare Coverage Summary</h3></div><div class="cbd" style="display:flex;flex-direction:column;gap:10px;">
+    <div><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:11px;">PMSBY — Rs 2L Accident Insurance</span><strong style="font-size:11px;">3,650 (67.3%)</strong></div><div class="pb"><div class="pbf pg2" style="width:67.3%"></div></div></div>
+    <div><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:11px;">ESIC Medical Insurance</span><strong style="font-size:11px;">3,241 (79.3% of verified)</strong></div><div class="pb"><div class="pbf pg2" style="width:79.3%"></div></div></div>
+    <div><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:11px;">PM-SYM Pension Scheme</span><strong style="font-size:11px;">2,108 (51.6%)</strong></div><div class="pb"><div class="pbf pb2" style="width:51.6%"></div></div></div>
+    <div><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:11px;">EPFO PF Enrolled</span><strong style="font-size:11px;">1,892 (46.3%)</strong></div><div class="pb"><div class="pbf pi" style="width:46.3%"></div></div></div>
+    <div><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:11px;">Micro-Loan Access</span><strong style="font-size:11px;">1,892 (46.3%)</strong></div><div class="pb"><div class="pbf pa" style="width:46.3%"></div></div></div>
+    <div><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:11px;">PM Awas Housing Link</span><strong style="font-size:11px;">412 (10.1%)</strong></div><div class="pb"><div class="pbf ppu" style="width:10.1%"></div></div></div>
+  </div></div>
+</div>
+
+<!-- ======================= BROADCAST ======================= -->
+<div class="pg" id="pg-broadcast">
+  <div class="ptb"><div><h2>Broadcast and Mass Communication</h2><p>Send notices, scheme alerts, and platform updates across all channels simultaneously</p></div></div>
+  <div class="g2">
+    <div class="card"><div class="chd"><h3>Compose Message</h3></div><div class="cbd">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="fg"><label>Title</label><input type="text" id="bc-t" value="New Welfare Scheme — PM-SAYSAM Wage Insurance — Apply Before 31 May 2026"></div>
+        <div class="fg"><label>Message</label><textarea id="bc-b">Dear Worker, PM-SAYSAM Wage Insurance Scheme is now live. All IEE-verified workers with 1+ completed placements are eligible for 50% wage top-up for up to 30 working days. Apply via IEE App or nearest CSC centre. Your IEE Worker ID required. — Ministry of Labour and Employment.</textarea></div>
+        <div class="fgg f2" style="gap:10px;"><div class="fg"><label>Audience</label><select id="bc-a"><option value="5733">All (5,733)</option><option value="5421">Workers (5,421)</option><option value="4087">Verified (4,087)</option><option value="312">Employers (312)</option></select></div><div class="fg"><label>Priority</label><select><option>Normal</option><option>Important</option><option>Urgent</option></select></div></div>
+        <div class="tr-row"><div class="tr-lbl">IEE App Push</div><label class="tgl"><input type="checkbox" checked><div class="tgltr"></div></label></div>
+        <div class="tr-row"><div class="tr-lbl">WhatsApp</div><label class="tgl"><input type="checkbox" checked><div class="tgltr"></div></label></div>
+        <div class="tr-row"><div class="tr-lbl">SMS</div><label class="tgl"><input type="checkbox" checked><div class="tgltr"></div></label></div>
+        <div class="tr-row"><div class="tr-lbl">eShram NDUW Portal</div><label class="tgl"><input type="checkbox" checked><div class="tgltr"></div></label></div>
+        <div class="tr-row"><div class="tr-lbl">IVR (Tamil/Hindi/Telugu/English)</div><label class="tgl"><input type="checkbox"><div class="tgltr"></div></label></div>
+        <button class="btn btn-p" style="justify-content:center;padding:9px;width:100%;" onclick="sendBC()">Authorise and Send Broadcast</button>
+      </div>
+      <div class="bpnl" id="bc-pnl"><div class="bpr"><div><div class="bptit" id="bcp-t">Ready</div><div class="bpcnt" id="bcp-c">0 delivered</div></div><span class="b ba" id="bcp-b">Ready</span></div><div class="bpbar"><div class="bpfill" id="bcp-f" style="width:0%"></div></div><div class="bpst"><div class="bpst"><strong id="bcp-app">0</strong><span>App</span></div><div class="bpst"><strong id="bcp-sms">0</strong><span>SMS</span></div><div class="bpst"><strong id="bcp-wa">0</strong><span>WA</span></div><div class="bpst"><strong id="bcp-fail">0</strong><span>Failed</span></div></div></div>
+    </div></div>
+    <div class="card"><div class="chd"><h3>Broadcast History</h3></div><div class="cbd0"><div class="tw"><table>
+      <thead><tr><th>Title</th><th>Recipients</th><th>Delivery</th><th>Date</th><th>Status</th></tr></thead>
+      <tbody id="broadcast-history-tbody">
+        <tr><td>PM-SAYSAM Scheme Launch</td><td>5,421</td><td>97.2%</td><td>18 Apr 2026</td><td><span class="b bg">Sent</span></td></tr>
+        <tr><td>eShram-IEE Integration Live</td><td>5,421</td><td>95.8%</td><td>15 Apr 2026</td><td><span class="b bg">Sent</span></td></tr>
+        <tr><td>EPFO Default Notice — Workers</td><td>34</td><td>100%</td><td>12 Apr 2026</td><td><span class="b bg">Sent</span></td></tr>
+        <tr><td>IEE App — Download Now</td><td>5,421</td><td>98.4%</td><td>01 Apr 2026</td><td><span class="b bg">Sent</span></td></tr>
+      </tbody>
+    </table></div></div></div>
+  </div>
+</div>
+
+<!-- ======================= SYSTEM ======================= -->
+<div class="pg" id="pg-system">
+  <div class="ptb"><div><h2>System Settings and Audit Log</h2><p>Platform controls, access management, and full audit trail — IT Act 2000 — all actions permanently logged</p></div></div>
+  <div class="al al-e"><strong>Superintendent Administrator Session Active — SA-4821.</strong> All configuration changes are permanently logged. Misuse is a criminal offence under IT Act 2000. IP: 103.38.50.x</div>
+  <div class="g2">
+    <div class="card"><div class="chd"><h3>Platform Feature Controls</h3></div><div class="cbd">
+      <div class="tr-row"><div class="tr-lbl">Worker Registration Open</div><label class="tgl"><input type="checkbox" checked><div class="tgltr"></div></label></div>
+      <div class="tr-row"><div class="tr-lbl">Employer Registration Open</div><label class="tgl"><input type="checkbox" checked><div class="tgltr"></div></label></div>
+      <div class="tr-row"><div class="tr-lbl">AI Anomaly Engine Active</div><label class="tgl"><input type="checkbox" checked><div class="tgltr"></div></label></div>
+      <div class="tr-row"><div class="tr-lbl">Job Matching Engine</div><label class="tgl"><input type="checkbox" checked><div class="tgltr"></div></label></div>
+      <div class="tr-row"><div class="tr-lbl">eShram-IEE Sync Active</div><label class="tgl"><input type="checkbox" checked><div class="tgltr"></div></label></div>
+      <div class="tr-row"><div class="tr-lbl">NSDC-PMKVY Cert Sync</div><label class="tgl"><input type="checkbox" checked><div class="tgltr"></div></label></div>
+      <div class="tr-row"><div class="tr-lbl">GST Portal AI Monitoring</div><label class="tgl"><input type="checkbox" checked><div class="tgltr"></div></label></div>
+      <div class="tr-row"><div class="tr-lbl">EPFO ECR Auto-Validation</div><label class="tgl"><input type="checkbox" checked><div class="tgltr"></div></label></div>
+      <div class="tr-row"><div class="tr-lbl">NBFC Loan Gateway</div><label class="tgl"><input type="checkbox" checked><div class="tgltr"></div></label></div>
+      <div class="tr-row"><div class="tr-lbl">Maintenance Mode</div><label class="tgl"><input type="checkbox"><div class="tgltr"></div></label></div>
+    </div></div>
+    <div class="card"><div class="chd"><h3>Audit Log — Last 24 Hours</h3></div><div class="cbd0"><div class="tw"><table>
+      <thead><tr><th>Time</th><th>User</th><th>Action</th><th>IP</th><th>Status</th></tr></thead>
+      <tbody id="audit-log-tbody">
+        <tr><td>09:42</td><td>superadmin</td><td>LOGIN — SA-4821</td><td>103.38.50.x</td><td><span class="b bg">OK</span></td></tr>
+        <tr><td>09:38</td><td>ai-engine</td><td>ANOMALY_FLAG — Annur Infra</td><td>Internal</td><td><span class="b br">Alert</span></td></tr>
+        <tr><td>09:25</td><td>epfo-sync</td><td>ECR_VALIDATION — 312 employers</td><td>Internal</td><td><span class="b bg">OK</span></td></tr>
+        <tr><td>09:10</td><td>gst-monitor</td><td>GST_SCAN — GSTN API pull</td><td>Internal</td><td><span class="b bg">OK</span></td></tr>
+        <tr><td>08:55</td><td>verifier-001</td><td>KYC_APPROVE — IEE-0092</td><td>103.38.50.x</td><td><span class="b bg">OK</span></td></tr>
+        <tr><td>08:30</td><td>nsdc-sync</td><td>CERT_MAP — 61 PMKVY certs</td><td>Internal</td><td><span class="b bg">OK</span></td></tr>
+        <tr><td>08:15</td><td>eshram-sync</td><td>UAN_LINK — 412 workers</td><td>Internal</td><td><span class="b bg">OK</span></td></tr>
+        <tr><td>07:45</td><td>finance-engine</td><td>LOAN_BATCH_PREPARED — Rs 14.2L</td><td>Internal</td><td><span class="b ba">Pending</span></td></tr>
+        <tr><td>07:30</td><td>ai-engine</td><td>RISK_SCORE_UPDATE — 312 employers</td><td>Internal</td><td><span class="b bg">OK</span></td></tr>
+      </tbody>
+    </table></div></div></div>
+  </div>
+</div>
+
+</div><!-- /main -->
+</div><!-- /layout -->
+
+<!-- MODALS -->
+<div class="mbk" id="m-worker"><div class="mdl"><div class="mhd"><h3>Register New Worker</h3><button class="mclose" onclick="closeM('m-worker')">&#x2715;</button></div><div class="mbd"><div class="fgg f2" id="worker-modal-fields" style="gap:10px;"><div class="fg"><label>Full Name</label><input type="text" placeholder="As per Aadhaar"></div><div class="fg"><label>Mobile (Aadhaar-linked)</label><input type="text" placeholder="+91"></div><div class="fg"><label>Primary Role</label><select><option>Construction Mason</option><option>Electrician</option><option>Plumber</option><option>Carpenter</option><option>Driver</option><option>Security Guard</option><option>Cook</option><option>Factory Worker</option></select></div><div class="fg"><label>Skill Level</label><select><option>L1 — Unskilled</option><option>L2 — Semi-Skilled</option><option>L3 — Skilled</option></select></div><div class="fg"><label>City / District</label><input type="text" placeholder="e.g. Chennai, TN"></div><div class="fg"><label>eShram UAN (if available)</label><input type="text" placeholder="12-digit UAN"></div><div class="fg"><label>Aadhaar (last 4)</label><input type="text" placeholder="XXXX"></div><div class="fg"><label>Bank Account (DBT)</label><input type="text" placeholder="Account number"></div></div></div><div class="mft"><button class="btn btn-o" onclick="closeM('m-worker')">Cancel</button><button class="btn btn-p" id="worker-modal-submit" onclick="closeM('m-worker');toast('Worker registered — IEE-WK-2026-05422 — KYC pending','tok')">Register and Issue ID</button></div></div></div>
+<div class="mbk" id="m-emp"><div class="mdl"><div class="mhd"><h3>Register New Employer</h3><button class="mclose" onclick="closeM('m-emp')">&#x2715;</button></div><div class="mbd"><div class="fgg f2" id="employer-modal-fields" style="gap:10px;"><div class="fg"><label>Company Name</label><input type="text" placeholder="Legal name"></div><div class="fg"><label>GSTIN (15-digit)</label><input type="text" placeholder="GSTIN"></div><div class="fg"><label>EPFO PF Code</label><input type="text" placeholder="State/City/Code"></div><div class="fg"><label>ESIC Code</label><input type="text" placeholder="17-digit code"></div><div class="fg"><label>Industry Sector</label><select><option>Construction</option><option>Manufacturing</option><option>Logistics</option><option>Security</option><option>Events</option></select></div><div class="fg"><label>City</label><input type="text" placeholder="e.g. Chennai"></div><div class="fg"><label>Contact Person</label><input type="text"></div><div class="fg"><label>Contact Mobile</label><input type="text" placeholder="+91"></div></div></div><div class="mft"><button class="btn btn-o" onclick="closeM('m-emp')">Cancel</button><button class="btn btn-p" id="employer-modal-submit" onclick="closeM('m-emp');toast('Employer registered — EMP ID issued — GST/EPFO verification pending','tok')">Register Employer</button></div></div></div>
+<div class="mbk" id="m-new-contract"><div class="mdl"><div class="mhd"><h3>Register New Contract</h3><button class="mclose" onclick="closeM('m-new-contract')">&#x2715;</button></div><div class="mbd"><div class="fgg f2" id="contract-modal-fields" style="gap:10px;"><div class="fg"><label>Principal Employer</label><select><option>CMRL Phase 2</option><option>Skyline Constructions</option><option>Prestige Builders</option></select></div><div class="fg"><label>Contractor / Agency</label><input type="text" placeholder="Registered contractor name"></div><div class="fg"><label>Contract Value (Rs)</label><input type="number" placeholder="Net contract value"></div><div class="fg"><label>Workers Required</label><input type="number" placeholder="Number"></div><div class="fg"><label>Worker Daily Rate (Rs)</label><input type="number" placeholder="Daily wage"></div><div class="fg"><label>Client Billing Rate (Rs)</label><input type="number" placeholder="Invoice rate to client"></div><div class="fg"><label>Start Date</label><input type="date"></div><div class="fg"><label>End Date</label><input type="date"></div><div class="fg"><label>CLRA Licence No.</label><input type="text" placeholder="State-CLRA-2026-XXXX"></div><div class="fg"><label>Project Handler</label><input type="text" placeholder="Name and designation"></div></div></div><div class="mft"><button class="btn btn-o" onclick="closeM('m-new-contract')">Cancel</button><button class="btn btn-p" id="contract-modal-submit" onclick="closeM('m-new-contract');toast('Contract IEE-CTR-2026-0143 registered — AI monitoring activated','tok')">Register Contract</button></div></div></div>
+
+<div id="tw"></div>
+
+<script>
+// CLOCK
+(function(){const e=document.getElementById('clk');function u(){const n=new Date(),p=v=>String(v).padStart(2,'0');e.textContent=p(n.getHours())+':'+p(n.getMinutes())+':'+p(n.getSeconds())+' IST'}setInterval(u,1000);u()})();
+
+// NAV
+function nav(id,tab){document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));const pg=document.getElementById('pg-'+id);if(pg){pg.classList.add('on')}if(tab){document.querySelectorAll('.nt').forEach(t=>t.classList.remove('on'));tab.classList.add('on')}}
+function sia(el){document.querySelectorAll('.si').forEach(i=>i.classList.remove('on'));el.classList.add('on')}
+
+// NOTIF
+function toggleNP(){document.getElementById('np').classList.toggle('on')}
+document.addEventListener('click',e=>{const np=document.getElementById('np');if(np.classList.contains('on')&&!np.contains(e.target)&&!e.target.closest('.hbtn'))np.classList.remove('on')});
+
+// TOAST
+function toast(msg,type='tok'){const tw=document.getElementById('tw');const t=document.createElement('div');t.className='toast '+type;t.innerHTML='<span style="width:14px;height:14px;border-radius:50%;background:rgba(255,255,255,0.25);display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;">&#10003;</span>'+msg;tw.appendChild(t);setTimeout(()=>{t.style.transition='all 0.3s';t.style.opacity='0';t.style.transform='translateX(50px)';setTimeout(()=>t.remove(),300)},3800)}
+
+// MODAL
+function openModal(id){document.getElementById(id).classList.add('on')}
+function closeM(id){document.getElementById(id).classList.remove('on')}
+document.querySelectorAll('.mbk').forEach(b=>b.addEventListener('click',e=>{if(e.target===b)b.classList.remove('on')}));
+
+// TAB SWITCH
+function switchTab(el,id){document.querySelectorAll('.itab').forEach(t=>t.classList.remove('on'));el.classList.add('on');document.querySelectorAll('#tab-gst,#tab-epfo,#tab-esic,#tab-clra').forEach(t=>t.style.display='none');document.getElementById(id).style.display='block'}
+
+// SCHEME
+function pickSch(el,name){document.querySelectorAll('.sc').forEach(c=>c.classList.remove('sel'));el.classList.add('sel');document.getElementById('sch-n').textContent=name;toast('Scheme selected: '+name.split(' — ')[0],'tin')}
+function launchScheme(){
+  const bp=document.getElementById('sch-bp');bp.classList.add('on');
+  toast('Scheme authorised — broadcasting to 4,087 workers...','twa');
+  let d=0;const T=4087;
+  const iv=setInterval(()=>{const chunk=Math.floor(Math.random()*220)+100;d=Math.min(d+chunk,T);const pct=Math.round(d/T*100);document.getElementById('schbp-f').style.width=pct+'%';document.getElementById('schbp-c').textContent=d.toLocaleString()+' / '+T.toLocaleString();document.getElementById('schbp-app').textContent=Math.floor(d*0.61).toLocaleString();document.getElementById('schbp-sms').textContent=Math.floor(d*0.95).toLocaleString();document.getElementById('schbp-wa').textContent=Math.floor(d*0.59).toLocaleString();document.getElementById('schbp-fail').textContent=Math.floor(d*0.027);if(d>=T){clearInterval(iv);document.getElementById('schbp-b').textContent='Delivered';document.getElementById('schbp-b').className='b bg';toast('Scheme launched — 4,087 workers reached — 97.2% delivery','tok')}},220)
+}
+
+// REGIONS
+function rAll(){document.querySelectorAll('.rt').forEach(t=>t.classList.add('sel'));toast('All 18 states selected','tin')}
+function rClr(){document.querySelectorAll('.rt').forEach(t=>t.classList.remove('sel'))}
+function rT(el){el.classList.toggle('sel')}
+
+// SALARY
+function procSalary(){
+  const bp=document.getElementById('sal-bp');bp.classList.add('on');
+  toast('Salary batch authorised — Rs 1.84Crore — 4,064 workers','twa');
+  let d=0;const T=4064;
+  const iv=setInterval(()=>{const c=Math.floor(Math.random()*210)+90;d=Math.min(d+c,T);const ok=Math.floor(d*0.994);const pct=Math.round(d/T*100);document.getElementById('sal-b').style.width=pct+'%';document.getElementById('sal-c').textContent=d.toLocaleString()+' workers paid';document.getElementById('sal-ok').textContent=ok.toLocaleString();document.getElementById('sal-fl').textContent=d-ok;document.getElementById('sal-am').textContent='Rs '+(ok*4530/100000).toFixed(1)+'L';if(d>=T){clearInterval(iv);toast('Salary complete — Rs 1.84Crore disbursed via DBT','tok')}},220)
+}
+
+// BROADCAST
+function sendBC(){
+  const total=parseInt(document.getElementById('bc-a').value)||5733;
+  const t=document.getElementById('bc-t').value||'Notice';
+  const bp=document.getElementById('bc-pnl');bp.classList.add('on');
+  document.getElementById('bcp-t').textContent='Broadcasting: '+t.substring(0,40)+'...';
+  document.getElementById('bcp-b').textContent='Live';document.getElementById('bcp-b').className='b br';
+  toast('Broadcast initiated — '+total.toLocaleString()+' recipients','twa');
+  let d=0;const iv=setInterval(()=>{const c=Math.floor(Math.random()*380)+180;d=Math.min(d+c,total);const pct=Math.round(d/total*100);document.getElementById('bcp-f').style.width=pct+'%';document.getElementById('bcp-c').textContent=d.toLocaleString()+' / '+total.toLocaleString()+' delivered';document.getElementById('bcp-app').textContent=Math.floor(d*0.61).toLocaleString();document.getElementById('bcp-sms').textContent=Math.floor(d*0.95).toLocaleString();document.getElementById('bcp-wa').textContent=Math.floor(d*0.59).toLocaleString();document.getElementById('bcp-fail').textContent=Math.floor(d*0.028);if(d>=total){clearInterval(iv);document.getElementById('bcp-b').textContent='Delivered';document.getElementById('bcp-b').className='b bg';toast('Broadcast complete — '+total.toLocaleString()+' recipients — 97.2% rate','tok')}},175)
+}
+
+// WORKER JOURNEY
+function loadJourney(){const v=document.getElementById('wj-search').value;if(v)toast('Loading journey for: '+v,'tin');else toast('Showing default: Rajan Kumar (IEE-WK-00045821)','tin')}
+
+// LIVE ACTIVITY
+const FE=[
+  {d:'g',t:'<strong>Suresh Babu</strong> completed 5-day carpentry — Rs 3,750 disbursed via DBT — SBI XXXX4012'},
+  {d:'r',t:'<strong>AI Engine:</strong> ESIC contribution gap detected — Prestige Builders — 6 workers uncovered — April 2026'},
+  {d:'b',t:'<strong>eShram UAN linked:</strong> Meenakshi D (IEE-WK-00099) — WB-TN-2819000099 — PMSBY activated'},
+  {d:'g',t:'<strong>PMKVY sync:</strong> 8 Nihar Skills certifications mapped — Advanced Masonry L2 — Skill India Hub confirmed'},
+  {d:'a',t:'<strong>GST-3B filed:</strong> Metro Works (CMRL) — Rs 2.09Cr turnover declared — GSTN verified'},
+  {d:'p',t:'<strong>Micro-loan repaid:</strong> Vijay R — IDFC First — Rs 15,000 fully repaid in 3 months — credit score updated'},
+  {d:'r',t:'<strong>AI Alert:</strong> 3 new anomaly patterns queued for SA review — Contract fraud, wage suppression'},
+];
+let fi=0;
+setInterval(()=>{const af=document.getElementById('aff');if(!af)return;const ev=FE[fi++%FE.length];const d=document.createElement('div');d.className='af';d.style.animation='fi 0.3s ease';d.innerHTML=`<div class="afd ${ev.d}"></div><div><div class="aft">${ev.t}</div><div class="afm">Just now</div></div>`;af.insertBefore(d,af.firstChild);if(af.children.length>12)af.removeChild(af.lastChild)},4200);
+</script>
+</body>
+</html>
